@@ -10,14 +10,24 @@ import UIKit
 
 final class ColorsCollectionViewCell: UICollectionViewCell{
     
-    var colorView = UIView()
+    var colorView : UIView = {
+        var colorRect = UIView(frame: .zero)
+        colorRect.translatesAutoresizingMaskIntoConstraints = false
+        return colorRect
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         contentView.addSubview(colorView)
-        colorView.translatesAutoresizingMaskIntoConstraints = false
-        colorView.frame = CGRect(x: (contentView.bounds.width - 40)/2, y: (contentView.bounds.height - 40)/2, width: 40, height: 40)
+        
+        
+        NSLayoutConstraint.activate([
+            colorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            colorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            colorView.heightAnchor.constraint(equalToConstant: 40),
+            colorView.widthAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     required init?(coder: NSCoder) {

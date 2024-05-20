@@ -97,7 +97,7 @@ super.viewDidLoad()
     }
     
     @objc func callCreateSingleEventViewController(){
-        present(CreateSingleEventViewController(), animated: true)
+        present(CreateHabitViewController(), animated: true)
     }
     
     
