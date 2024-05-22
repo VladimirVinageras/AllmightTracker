@@ -13,13 +13,17 @@ final class EmojiCollectionViewCell : UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+      
+        contentView.layer.masksToBounds = true
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-       
+        
        
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 38),
+            titleLabel.widthAnchor.constraint(equalToConstant: 32)
             ])
     }
     
