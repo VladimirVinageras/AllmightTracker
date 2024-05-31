@@ -11,7 +11,7 @@ import UIKit
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
 //MARK: - MOCK DATA
-    
+
     //Categories will equal to [] initially, after BD implementation
     var categories: [TrackerCategory] = [
         TrackerCategory(title: "Важно", trackers: [
@@ -59,7 +59,13 @@ final class TrackersViewController : UIViewController {
         let datePicker = UIDatePicker()
         datePicker.layer.backgroundColor = UIColor.trackerWhite.cgColor
         
-        if #available(iOS 14.0, *) {                // Only available for newer than IOS 14.0 versions
+        ///Этот вариант был единственный способ которое я нашел для решение задачи с формата дата "dd.MM.yy" и чтобы
+        ///оно польностью совпадало с макетой. Альтернативный вариант было бы в ручную с помошью UICollectionView создать
+        ///собственный календарь но это не простая задача в уже и так объемный Спинт.
+        ///Решение была согласована с наставником.
+        ///Прекрасного дня и хорошоего настроение  ;-)
+    
+        if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
         } else {
             datePicker.preferredDatePickerStyle = .compact
