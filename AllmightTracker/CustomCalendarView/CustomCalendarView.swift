@@ -11,10 +11,8 @@ import UIKit
 class CustomCalendarView: UIView {
     
     var onDateSelected: ((Date) -> Void)?
-    
     private let calendar = Calendar.current
     private var selectedDate = Date()
-    
     private let calendarCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
@@ -25,25 +23,19 @@ class CustomCalendarView: UIView {
         collectionView.backgroundColor = .trackerWhite
         return collectionView
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         activateConstraints()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func setupViews() {
         addSubview(calendarCollectionView)
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
-        
-        
     }
-    
     private func activateConstraints(){
         NSLayoutConstraint.activate([
             calendarCollectionView.topAnchor.constraint(equalTo: topAnchor),
@@ -52,7 +44,6 @@ class CustomCalendarView: UIView {
             calendarCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
     private func dateForCell(at indexPath: IndexPath) -> Date {
         let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: selectedDate))!
         let weekday = calendar.component(.weekday, from: startOfMonth) - calendar.firstWeekday
@@ -61,11 +52,8 @@ class CustomCalendarView: UIView {
     }
 }
 extension CustomCalendarView : UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 42
-    }
-    
+        return 42}
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customsCalendarCollectionViewCell", for: indexPath) as? CalendarDateCell else {return CalendarDateCell()}
         cell.backgroundColor = .lightGray
@@ -73,19 +61,14 @@ extension CustomCalendarView : UICollectionViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
         cell.dateLabel.text = dateFormatter.string(from: date)
-        
-        return cell
-    }
+        return cell}
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let date = Date()
-        onDateSelected?(date)
-    }
+        onDateSelected?(date)}
 }
 
 extension CustomCalendarView : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 7
         let height = collectionView.frame.height / 6

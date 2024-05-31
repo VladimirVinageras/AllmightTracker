@@ -10,7 +10,9 @@ import UIKit
 
 
 final class NewTrackerScheduleTableViewCell : UITableViewCell {
-    var selectedWeekday: Bool = false
+    
+    var day: ScheduleDay = ScheduleDay(scheduleDay: .sunday, isScheduled: false)
+    var cellDelegate : ScheduleCellProtocol?
     
     private let weekday: UILabel = {
         let weekDay = UILabel()
@@ -19,7 +21,7 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
         return weekDay
     }()
     
-    private lazy var weekdaySwitch : UISwitch = {
+    private var weekdaySwitch : UISwitch = {
        let daySwitch = UISwitch()
         daySwitch.onTintColor = .trackerBlue
         daySwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -30,10 +32,9 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = .trackerLightGray.withAlphaComponent(0.3)
+        backgroundColor = .trackerBackgroundDay
         contentView.addSubview(weekday)
         contentView.addSubview(weekdaySwitch)
-        
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 75),
             weekday.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -47,12 +48,16 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func daySwitchTapped(_ sender: UISwitch){
-        self.selectedWeekday = sender.isOn
+    @objc private func daySwitchTapped(){
+        day.isScheduled.toggle()
+        cellDelegate?.updateDayStatus(to: day, with: weekdaySwitch.isOn)
+       
     }
     
-    func updateWeekdayTitle(with title: String){
-        weekday.text = title
-    }    
+    func setupWeekday(with day: ScheduleDay){
+        self.day = day
+        weekday.text = day.scheduleDay.name
+    }
+    
 }
 

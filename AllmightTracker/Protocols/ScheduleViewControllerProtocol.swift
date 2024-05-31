@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 protocol ScheduleViewControllerProtocol{
-    func save(_ dayIndicies: [Int])
+    func updateEventSelectedDays(with newSelectedDays: String, and weekdays: [ScheduleDay]) 
+}
+
+protocol ScheduleCellProtocol{
+    func updateDayStatus(to day: ScheduleDay, with newStatus: Bool)
 }
 
 

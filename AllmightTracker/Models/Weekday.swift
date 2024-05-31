@@ -9,19 +9,16 @@ import Foundation
 import UIKit
 
 enum Weekday: Int, CaseIterable, Codable {
-    case sunday = 1
-    case monday = 2
-    case tuesday = 3
-    case wednesday = 4
-    case thursday = 5
-    case friday = 6
-    case saturday = 7
-    
+    case monday = 1
+    case tuesday = 2
+    case wednesday = 3
+    case thursday = 4
+    case friday = 5
+    case saturday = 6
+    case sunday = 7
     
     var name: String {
         switch self {
-        case .sunday:
-            return "Воскресенье"
         case .monday:
             return "Понедельник"
         case .tuesday:
@@ -34,12 +31,12 @@ enum Weekday: Int, CaseIterable, Codable {
             return "Пятница"
         case .saturday:
             return "Суббота"
+        case .sunday:
+            return "Воскресенье"
         }
     }
     var shortDaysName: String {
         switch self {
-        case .sunday:
-            return "Вс"
         case .monday:
             return "Пн"
         case .tuesday:
@@ -52,6 +49,20 @@ enum Weekday: Int, CaseIterable, Codable {
             return "Пт"
         case .saturday:
             return "Сб"
+        case .sunday:
+            return "Вс"
         }
+    }
+}
+
+
+extension Weekday {
+    init?(from date: Date) {
+        let calendar = Calendar.current
+        let weekdayIndex = calendar.component(.weekday, from: date)
+        
+        let adjustedIndex = (weekdayIndex == 1) ? 7 : (weekdayIndex - 1)
+        
+        self.init(rawValue: adjustedIndex)
     }
 }

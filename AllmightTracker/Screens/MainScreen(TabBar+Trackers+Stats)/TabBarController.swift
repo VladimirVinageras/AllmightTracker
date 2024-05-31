@@ -11,7 +11,7 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
-        let trackerViewController = UINavigationController(rootViewController: TrackersViewController())
+        let trackerViewController = UINavigationController(rootViewController: TrackersViewController.shared)
         trackerViewController.tabBarItem = UITabBarItem(title: "Трекеры", image: UIImage(named: "tabBarTrackersIcon"), selectedImage: nil)
         
         let statisticsViewController = StatisticsViewController()
@@ -23,9 +23,6 @@ final class TabBarController: UITabBarController {
     }
     
     private func prepareSeparator(){
-        //        let tabBarSeparator = UIImage()
-        //        tabBar.shadowImage = tabBarSeparator
-        //        tabBar.backgroundImage = tabBarSeparator
         tabBar.layer.borderWidth = 0.5
         tabBar.clipsToBounds = true
     }

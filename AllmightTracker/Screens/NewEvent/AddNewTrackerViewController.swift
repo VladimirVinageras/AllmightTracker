@@ -10,6 +10,7 @@ import UIKit
 
 
 class AddNewTrackerViewController : UIViewController {
+    
     private var newHabitButton : UIButton?
     private var newSingleEventButton : UIButton?
     private var viewTitlelLabel : UILabel?
@@ -57,7 +58,7 @@ super.viewDidLoad()
 
         newSingleEventButton.layer.cornerRadius = 16
         newSingleEventButton.translatesAutoresizingMaskIntoConstraints = false
-        newSingleEventButton.addTarget(self, action: #selector(callCreateHabitViewController), for: .touchUpInside)
+        newSingleEventButton.addTarget(self, action: #selector(callCreateSingleEventViewController), for: .touchUpInside)
         view.addSubview(newSingleEventButton)
         
     }
@@ -93,13 +94,14 @@ super.viewDidLoad()
     }
     
     @objc func callCreateHabitViewController(){
-        present(CreateHabitViewController(), animated: true)
+        let createHabitViewController = CreateHabitViewController(isAnHabit: true)
+        present(createHabitViewController, animated: true)
     }
     
     @objc func callCreateSingleEventViewController(){
-        present(CreateHabitViewController(), animated: true)
+        
+        let createHabitViewController = CreateHabitViewController(isAnHabit: false)
+        present(createHabitViewController, animated: true)
     }
-    
-    
-    
 }
+

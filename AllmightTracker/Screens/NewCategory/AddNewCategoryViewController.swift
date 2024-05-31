@@ -9,7 +9,13 @@ import Foundation
 import UIKit
  
 
-final class AddNewCategoryViewController : UIViewController {
+final class AddNewCategoryViewController : UIViewController{
+  
+    static var categories : [TrackerCategory] = []
+    var categoryViewControllerDelegate : CategoryViewControllerProtocol?
+
+    let categoryCellReuseIdentifier = "categoryCell"
+    
     private var newCategoryButton : UIButton = {
        let categoryButton = UIButton(type: .custom)
         categoryButton.setTitle("Добавить категорию", for: .normal)
@@ -19,9 +25,15 @@ final class AddNewCategoryViewController : UIViewController {
         categoryButton.contentEdgeInsets = UIEdgeInsets(top: 19, left: 32, bottom: 19, right: 32)
         categoryButton.layer.cornerRadius = 16
         categoryButton.translatesAutoresizingMaskIntoConstraints = false
-        categoryButton.addTarget(AddNewCategoryViewController.self, action: #selector(newCategoryButtonTapped), for: .touchUpInside)
+        categoryButton.addTarget(self, action: #selector(newCategoryButtonTapped), for: .touchUpInside)
         return categoryButton
     }()
+    
+    @objc private func newCategoryButtonTapped(){
+        let createCategoryViewController = CreateCategoryViewController()
+        createCategoryViewController.delegate = self
+        present(createCategoryViewController, animated: true)
+    }
     
     private var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
@@ -31,7 +43,22 @@ final class AddNewCategoryViewController : UIViewController {
         titleLabel.textColor = .trackerBlack
         return titleLabel
     }()
+
+    private var containerViewHolder : UIView = {
+        var container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = .trackerWhite
+        container.clipsToBounds = true
+        return container
+    }()
     
+    private let categoriesTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.layer.cornerRadius = 16
+        tableView.clipsToBounds = true
+        return tableView
+    }()
     
     
     private let starImageView :  UIImageView = {
@@ -54,7 +81,7 @@ final class AddNewCategoryViewController : UIViewController {
     }()
     
     
-    init(){
+init(){
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
     }
@@ -64,41 +91,128 @@ final class AddNewCategoryViewController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     override func viewDidLoad() {
-super.viewDidLoad()
+     super.viewDidLoad()
         addSubviews()
+        setupContainerView()
         activateConstraints()
+        
     }
+
+    func updateCategoriesTableViewHeight(){
+        let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
+        let cellHeight: CGFloat = 75
+        let totalHeight = CGFloat(numberOfCells) * cellHeight
+        categoriesTableView.heightAnchor.constraint(equalToConstant: totalHeight)
+        
+    }
+    func setupContainerView(){
+        for view in containerViewHolder.subviews {
+              view.removeFromSuperview()
+          }
+          containerViewHolder.removeConstraints(containerViewHolder.constraints)
     
+        if AddNewCategoryViewController.categories.isEmpty {
+            starLabel.isHidden = false
+            starImageView.isHidden = false
+            containerViewHolder.addSubview(starImageView)
+            containerViewHolder.addSubview(starLabel)
+            NSLayoutConstraint.activate([
+                starImageView.centerXAnchor.constraint(equalTo: containerViewHolder.centerXAnchor),
+                starImageView.topAnchor.constraint(equalTo: containerViewHolder.topAnchor, constant: 246),
+                starImageView.heightAnchor.constraint(equalToConstant: 80),
+                starImageView.widthAnchor.constraint(equalToConstant: 80),
+                starLabel.centerXAnchor.constraint(equalTo: starImageView.centerXAnchor),
+                starLabel.topAnchor.constraint(equalTo: starImageView.bottomAnchor, constant: 8),
+            ])
+        }
+        else
+        {
+            prepareCategoriesTableView()
+            containerViewHolder.addSubview(categoriesTableView)
+            starLabel.isHidden = true
+            starImageView.isHidden = true
+            let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
+            let cellHeight: CGFloat = 75
+            let totalHeight = CGFloat(numberOfCells) * cellHeight
+           
+            
+            NSLayoutConstraint.activate([
+                categoriesTableView.topAnchor.constraint(equalTo: containerViewHolder.topAnchor),
+                categoriesTableView.leadingAnchor.constraint(equalTo: containerViewHolder.leadingAnchor),
+                categoriesTableView.trailingAnchor.constraint(equalTo: containerViewHolder.trailingAnchor),
+                categoriesTableView.bottomAnchor.constraint(equalTo: containerViewHolder.topAnchor, constant: totalHeight)
+            ])
+        }
+    }
+    func prepareCategoriesTableView(){
+        categoriesTableView.delegate = self
+        categoriesTableView.dataSource = self
+        categoriesTableView.register(NewCategoryTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
+    }
     func addSubviews(){
-        view.addSubview(newCategoryButton)
         view.addSubview(viewTitleLabel)
-        view.addSubview(starImageView)
-        view.addSubview(starLabel)
+        view.addSubview(containerViewHolder)
+        view.addSubview(newCategoryButton)
     }
-    
     func activateConstraints(){
         NSLayoutConstraint.activate([
             viewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 26),
             viewTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            starImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            starImageView.topAnchor.constraint(equalTo: viewTitleLabel.bottomAnchor, constant: 246),
-            starImageView.heightAnchor.constraint(equalToConstant: 80),
-            starImageView.widthAnchor.constraint(equalToConstant: 80),
-            starLabel.centerXAnchor.constraint(equalTo: starImageView.centerXAnchor),
-            starLabel.topAnchor.constraint(equalTo: starImageView.bottomAnchor, constant: 8),
-
-            newCategoryButton.topAnchor.constraint(equalTo: starLabel.bottomAnchor, constant: 232),
+            containerViewHolder.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            containerViewHolder.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            containerViewHolder.topAnchor.constraint(equalTo: viewTitleLabel.bottomAnchor, constant: 24),
+            containerViewHolder.bottomAnchor.constraint(equalTo: newCategoryButton.topAnchor, constant: -8),
             newCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             newCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            newCategoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             newCategoryButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-    
-    
-    @objc func newCategoryButtonTapped(){
-        present(CreateCategoryViewController(), animated: true)
+}
+
+extension AddNewCategoryViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AddNewCategoryViewController.categories.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
+                                                       for: indexPath) as? NewCategoryTableViewCell else {return NewCategoryTableViewCell()}
+        let newTitle = AddNewCategoryViewController.categories[indexPath.row].title
+        cell.updateTitleCellLabel(with: newTitle)
+        return cell
+    }
+    
+    
+}
+extension AddNewCategoryViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
+                                                       for: indexPath) as? NewCategoryTableViewCell else {return}
+        
+        cell.toggleImageViewVisibility()
+        
+        let selectedCategory = AddNewCategoryViewController.categories[indexPath.row]
+        
+        categoryViewControllerDelegate?.updateEventSelectedCategory(with: selectedCategory)
+        
+        categoriesTableView.deselectRow(at: indexPath, animated: true)
+        dismiss(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
+}
+
+
+extension AddNewCategoryViewController : CreatingCategoryViewControllerProtocol {
+    func creatingNewCategory(with name: String) {
+        let newCategory = TrackerCategory(title: name, trackers: [])
+        AddNewCategoryViewController.categories.append(newCategory)
+        categoriesTableView.reloadData()
+        setupContainerView()
+    }
+    
+    
 }
     
 
