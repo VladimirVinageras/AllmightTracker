@@ -159,6 +159,10 @@ final class TrackerViewCell : UICollectionViewCell {
         prepareVerticalStack()
     }
     
+    func preventingChangesInFuture(isNecesary isTryingToChangeTheFuture: Bool){
+        plusButton.isEnabled = !isTryingToChangeTheFuture
+    }
+    
     func activateAllConstraints(){
         NSLayoutConstraint.activate([
         vStack.topAnchor.constraint(equalTo: contentView.topAnchor),

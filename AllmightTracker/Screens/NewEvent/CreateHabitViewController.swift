@@ -35,8 +35,7 @@ final class CreateHabitViewController : UIViewController{
     let headerSectionIdentifier = "header"
     private let interItemSpacing : CGFloat = 5
     private let interLinesSpacing : CGFloat = 1
-//    var collectionViewDelegate : UICollectionViewDelegateFlowLayout?
-//    
+   
     private var selectedEmojisCollectionIndexPath: IndexPath?
     private var selectedColorsCollectionIndexPath: IndexPath?
     
@@ -44,7 +43,8 @@ final class CreateHabitViewController : UIViewController{
     //MARK: TableView related Variables
     
     private let parametersTableViewCellIdentifier = "viewTableCell"
-    var tableViewDelegate: UITableViewDelegate?
+    var keepWeekdaysDelegate: KeepingScheduleDaysProtocol?
+    
     var trackerParametersTableViewTopConstraint : NSLayoutConstraint?
     
     
@@ -474,7 +474,10 @@ extension CreateHabitViewController : UITableViewDelegate, UITableViewDataSource
         else{
             let addNewTrackerScheduleViewController = AddNewTrackerScheduleViewController()
             addNewTrackerScheduleViewController.scheduleViewControllerDelegate = self
+            addNewTrackerScheduleViewController
             present(addNewTrackerScheduleViewController, animated: true)
+           
+            
         }
         
         
@@ -555,6 +558,10 @@ func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognize
 //MARK: - UIEventControllerProtocol
 
 extension CreateHabitViewController : CategoryViewControllerProtocol, ScheduleViewControllerProtocol {
+    func checkingSelectedDays() -> [ScheduleDay] {
+        return weekDays ?? []
+    }
+    
     
     func updateEventSelectedCategory(with newCategory: TrackerCategory) {
         selectedCategory = newCategory.title
@@ -570,6 +577,8 @@ extension CreateHabitViewController : CategoryViewControllerProtocol, ScheduleVi
         weekDays = weekdays
       reloadTableViewCell(at: IndexPath(row: 1, section: 0))
     }
+    
+
     
     private func reloadTableViewCell(at indexPath: IndexPath) {
         var indexPaths : [IndexPath] = []

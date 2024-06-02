@@ -9,15 +9,13 @@ import Foundation
 import UIKit
 
 final class AddNewTrackerScheduleViewController : UIViewController {
-    
+    var selectedDaysBefore: [ScheduleDay]  = []
     var cellDaysSelected = [ScheduleDay]()
-    
     var daysSelected = [String]()
     
     var scheduleViewControllerDelegate : ScheduleViewControllerProtocol?
-    
     let trackerScheduleCellReuseIdentifier = "scheduleTableViewCell"
-    var createHabitViewControllerDelegate: ScheduleViewControllerProtocol?
+    
     
     private let scheduleViewTitle: UILabel = {
         let viewTitle = UILabel()
@@ -63,7 +61,6 @@ final class AddNewTrackerScheduleViewController : UIViewController {
             let weekDay = ScheduleDay(scheduleDay: Weekday.allCases[dayIndex], isScheduled: false)
             cellDaysSelected.append(weekDay)
         }
-        
         view.backgroundColor = .trackerWhite
     }
     
@@ -75,6 +72,29 @@ super.viewDidLoad()
         addSubviews()
         activateConstraints()
         prepareScheduleTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       selectedDaysBefore =  scheduleViewControllerDelegate?.checkingSelectedDays() ?? []
+        updateCellDaysSelected()
+        scheduleTableView.reloadData()
+        daysSelected.removeAll()
+    }
+    
+    private func updateCellDaysSelected() {
+        cellDaysSelected.removeAll()
+        for dayIndex in 0..<7 {
+            var weekDay: ScheduleDay?
+            if selectedDaysBefore.isEmpty || selectedDaysBefore == nil{
+                weekDay  = ScheduleDay(scheduleDay: Weekday.allCases[dayIndex], isScheduled: false)
+            }else{
+                weekDay = ScheduleDay(scheduleDay: selectedDaysBefore[dayIndex].scheduleDay, isScheduled: selectedDaysBefore[dayIndex].isScheduled)
+            }
+            if let weekDay = weekDay{
+                cellDaysSelected.append(weekDay)
+            }
+        }
     }
     
     
@@ -135,25 +155,17 @@ extension AddNewTrackerScheduleViewController :  UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: trackerScheduleCellReuseIdentifier,
                                                        for: indexPath) as? NewTrackerScheduleTableViewCell else {return NewTrackerScheduleTableViewCell()}
         cell.cellDelegate = self
-        let weekDay = ScheduleDay(scheduleDay: Weekday.allCases[indexPath.row], isScheduled: false)
-        cell.setupWeekday(with: weekDay)
+        cell.setupWeekday(with: cellDaysSelected[indexPath.row])
         return cell
-    }
-    
-    func saveScheduledDay(from tableView: UITableView, at indexPath: IndexPath){
-        
     }
 }
 
 
 extension AddNewTrackerScheduleViewController : ScheduleCellProtocol {
     func updateDayStatus(to day: ScheduleDay, with newStatus: Bool) {
-        if newStatus {
             cellDaysSelected[day.scheduleDay.rawValue - 1] = day
-        }
     }
 }
-
 
 
 

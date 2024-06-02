@@ -57,6 +57,7 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
     func setupWeekday(with day: ScheduleDay){
         self.day = day
         weekday.text = day.scheduleDay.name
+        weekdaySwitch.setOn(day.isScheduled, animated: true)
     }
     
 }

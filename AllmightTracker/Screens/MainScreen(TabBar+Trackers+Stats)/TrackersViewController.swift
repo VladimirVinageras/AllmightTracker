@@ -35,6 +35,7 @@ final class TrackersViewController : UIViewController {
     
     
     var isActiveDateFiltering : Bool = false
+    var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
     var filteredCategories : [TrackerCategory] = []
     var completedTrackers: [TrackerRecord] = []
@@ -155,6 +156,9 @@ final class TrackersViewController : UIViewController {
         updateLabel(with: sender.date)
         isActiveDateFiltering = true
         dateForFiltering = sender.date
+        if let dateForFiltering = dateForFiltering {
+            isTryingToChangeTheFuture = Date() < dateForFiltering
+        }
         trackerDatePicker.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
         reloadView()
@@ -224,6 +228,7 @@ final class TrackersViewController : UIViewController {
             trackerSearchField.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 7),
             trackerSearchField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             trackerSearchField.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            trackerSearchField.heightAnchor.constraint(equalToConstant: 36),
             trackerDatePicker.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 7),
             trackerDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             trackerDatePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
@@ -329,6 +334,7 @@ final class TrackersViewController : UIViewController {
     //MARK: - FilteringEventsByDate
     
     private func filteringEventsByDate(from categories: [TrackerCategory]) -> [TrackerCategory]{
+        
         guard let dateForFiltering = dateForFiltering else {return categories}
         
         let selectedWeekday = Weekday(from: dateForFiltering)
@@ -376,6 +382,7 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id }
         
         cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask)
+        cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         return cell
     }
     
@@ -413,6 +420,6 @@ extension TrackersViewController : TrackersViewControllerProtocol {
                 print(tracker.name + "\n")
             }
         }
-        
+       dateForFiltering = nil
     }
 }
