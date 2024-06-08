@@ -13,6 +13,7 @@ final class AddNewCategoryViewController : UIViewController{
   
     static var categories : [TrackerCategory] = []
     var categoryViewControllerDelegate : CategoryViewControllerProtocol?
+    let trackerCategoryStore = TrackerCategoryStore()
 
     let categoryCellReuseIdentifier = "categoryCell"
     
@@ -92,6 +93,8 @@ init(){
     }
     override func viewDidLoad() {
      super.viewDidLoad()
+        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
+        AddNewCategoryViewController.categories = fetchedCategories
         addSubviews()
         setupContainerView()
         activateConstraints()

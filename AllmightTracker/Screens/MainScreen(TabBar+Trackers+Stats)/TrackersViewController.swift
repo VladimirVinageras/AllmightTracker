@@ -32,8 +32,12 @@ final class TrackersViewController : UIViewController {
             Tracker(id: UUID(), name: "Смеяться ", color: .colorSelection12, emoji: "🙂", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)]))]
                        )
     ]
+//MARK: - STORE VARIABLES
+    private var trackerStore = TrackerStore()
+    private let trackerCategoryStore = TrackerCategoryStore()
+    private var trackerRecordStore = TrackerRecordStore()
     
-    
+//MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
@@ -62,7 +66,7 @@ final class TrackersViewController : UIViewController {
         
         ///Этот вариант был единственный способ которое я нашел для решение задачи с формата дата "dd.MM.yy" и чтобы
         ///оно польностью совпадало с макетой. Альтернативный вариант было бы в ручную с помошью UICollectionView создать
-        ///собственный календарь но это не простая задача в уже и так объемный Спинт.
+        ///собственный календарь но это не простая задача в уже и так объемный Спринт.
         ///Решение была согласована с наставником.
         ///Прекрасного дня и хорошоего настроение  ;-)
     
@@ -123,6 +127,10 @@ final class TrackersViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .trackerWhite
+        trackerCategoryStore.delegate = self
+        
+     let tempCategories = try? trackerCategoryStore.fetchTrackers()
+         categories = tempCategories ?? categories
         
         filteredCategories = categories
         prepareNavigationBar()
@@ -134,6 +142,7 @@ final class TrackersViewController : UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadTrackersViewController"), object: nil)
         
+       
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadTrackersViewController"), object: nil)
@@ -162,8 +171,6 @@ final class TrackersViewController : UIViewController {
         trackerDatePicker.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
         reloadView()
-        
-        
     }
     
     @objc private func plusButtonTapped() {
@@ -401,25 +408,57 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
 
 //MARK: TrackersViewControllerProtocol
 extension TrackersViewController : TrackersViewControllerProtocol {
+    
     func saveNewTracker(with newCategoryName: String, for newEvent: Tracker) {
         
-        var eventsInCategory: [Tracker] = []
-        for category in self.categories {
-            if category.title == newCategoryName {
-                eventsInCategory = category.trackers
-                categories.removeAll(where: {$0.title == category.title})
-            }
+        do {
+            try trackerCategoryStore.saveTrackerToCategory(tracker: newEvent, in: newCategoryName)
+            dateForFiltering = nil
+        } catch {
+            print("Error saving new tracker: \(error)")
         }
-        eventsInCategory.append(newEvent)
-        let newTrackerCategory = TrackerCategory(title: newCategoryName, trackers: eventsInCategory)
-        categories.append(newTrackerCategory)
         
-        for category in self.categories {
-            print(category.title + "\n \n")
-            for tracker in category.trackers {
-                print(tracker.name + "\n")
-            }
-        }
-       dateForFiltering = nil
+//        var eventsInCategory: [Tracker] = []
+//        for category in self.categories {
+//            if category.title == newCategoryName {
+//                eventsInCategory = category.trackers
+//                categories.removeAll(where: {$0.title == category.title})
+//            }
+//        }
+//        eventsInCategory.append(newEvent)
+//        let newTrackerCategory = TrackerCategory(title: newCategoryName, trackers: eventsInCategory)
+//        categories.append(newTrackerCategory)
+//        
+//        for category in self.categories {
+//            print(category.title + "\n \n")
+//            for tracker in category.trackers {
+//                print(tracker.name + "\n")
+//            }
+//        }
+//        
+//       try? trackerCategoryStore.addNewTrackerCategory(newTrackerCategory)
+//       dateForFiltering = nil
     }
 }
+
+extension TrackersViewController: TrackerRecordStoreDelegate {
+    func storeRecord() {
+        completedTrackers = trackerRecordStore.trackerRecords
+        reloadView()
+    }
+}
+
+extension TrackersViewController : TrackerCategoryStoreDelegate {
+    func storeCategoryDidChange() {
+        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
+        self.categories = fetchedCategories
+               self.setupContainerView()
+               self.setupContainerHolder()
+       }
+}
+
+
+
+
+
+

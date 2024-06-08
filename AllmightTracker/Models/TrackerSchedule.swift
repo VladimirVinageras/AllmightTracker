@@ -10,8 +10,8 @@ import UIKit
 
 struct TrackerSchedule {
     let id: UUID
-//    let dateStart: Date
-//    let dateEnd: Date
+   // let dateStart: Date
+   // let dateEnd: Date
     let isAnHabit: Bool
     let scheduledDays : [ScheduleDay]?
 }

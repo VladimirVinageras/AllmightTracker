@@ -36,7 +36,7 @@ super.viewDidLoad()
         newHabitButton = UIButton(type: .custom)
         guard let newHabitButton = newHabitButton else {return}
 
-        newHabitButton.setTitle("Прывичка", for: .normal)
+        newHabitButton.setTitle("Привычка", for: .normal)
         newHabitButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newHabitButton.setTitleColor(.trackerWhite, for: .normal)
         newHabitButton.backgroundColor = .trackerBlack
