@@ -10,21 +10,36 @@ import UIKit
 
 final class CreateHabitTableViewCell : UITableViewCell {
     private var isEmptySelectedElementsLabel = true
-    private var cellTitleLabel : UILabel = {
-       let  titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+    private var selectedElement = ""
+    private var tableViewCellConstraints : [NSLayoutConstraint?] = []
+    
+    var cellTitleTextLabel : UILabel = {
+        let  titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = ""
+        titleLabel.textColor = .trackerBlack
+        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         return titleLabel
     }()
     
+    
     private var selectedElementsLabel : UILabel = {
         let selectedElements = UILabel()
-        selectedElements.text =  "erretet"
-        selectedElements.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        selectedElements.textColor = .trackerGray
         selectedElements.translatesAutoresizingMaskIntoConstraints = false
-        
+        selectedElements.text = ""
+        selectedElements.textColor = .trackerGray
+        selectedElements.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         return selectedElements
+    }()
+    
+    private var elementsVStack : UIStackView = {
+        let vstack = UIStackView()
+        vstack.axis = .vertical
+        vstack.translatesAutoresizingMaskIntoConstraints = false
+        vstack.spacing = 2
+    
+        return vstack
+        
     }()
     
     private var navigationRightImageView : UIImageView = {
@@ -37,24 +52,14 @@ final class CreateHabitTableViewCell : UITableViewCell {
     
     private func activateConstraints(){
         
-        if let selectedElementsLabelText = selectedElementsLabel.text{
-            isEmptySelectedElementsLabel = selectedElementsLabelText.isEmpty
-        } else{
-            isEmptySelectedElementsLabel = true
-        }
         NSLayoutConstraint.activate([
             
-            cellTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            cellTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: isEmptySelectedElementsLabel ? 27 : 15),
-            cellTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            cellTitleLabel.heightAnchor.constraint(equalToConstant: 22),
+            elementsVStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            elementsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            elementsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -56),
+            elementsVStack.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            elementsVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14),
         
-            selectedElementsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            selectedElementsLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            selectedElementsLabel.heightAnchor.constraint(equalToConstant: isEmptySelectedElementsLabel ? 0 : 22),
-            selectedElementsLabel.topAnchor.constraint(equalTo: cellTitleLabel.bottomAnchor, constant: isEmptySelectedElementsLabel ? 26 : 2),
-            selectedElementsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: isEmptySelectedElementsLabel ? 0 : -14),
-            
             navigationRightImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             navigationRightImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             navigationRightImageView.widthAnchor.constraint(equalToConstant: 24),
@@ -63,17 +68,23 @@ final class CreateHabitTableViewCell : UITableViewCell {
         ])
     }
     
+    private func setupStacks(){
+        addSubview(cellTitleTextLabel)
+        addSubview(selectedElementsLabel)
+        addSubview(elementsVStack)
+        addSubview(navigationRightImageView)
+    
+        elementsVStack.addArrangedSubview(cellTitleTextLabel)
+        elementsVStack.addArrangedSubview(selectedElementsLabel)
+
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        clipsToBounds = true
-        backgroundColor = .trackerLightGray
-        
-        addSubview(cellTitleLabel)
-        addSubview(selectedElementsLabel)
-        addSubview(navigationRightImageView)
+
+        backgroundColor = .trackerBackgroundDay
+        setupStacks()
         activateConstraints()
- 
     }
     
     required init?(coder: NSCoder) {
@@ -81,13 +92,10 @@ final class CreateHabitTableViewCell : UITableViewCell {
     }
     
     func updateSelectedElementsLabel(with newElements: String) {
-        
-         selectedElementsLabel.text = newElements
-        isEmptySelectedElementsLabel = newElements.isEmpty ? true : false
-    
+        selectedElementsLabel.text = newElements
     }
     
     func updateTitleCellLabel(with newTitle: String){
-        cellTitleLabel.text = newTitle
+        cellTitleTextLabel.text = newTitle
     }
 }

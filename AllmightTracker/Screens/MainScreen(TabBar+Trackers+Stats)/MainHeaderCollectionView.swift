@@ -1,24 +1,26 @@
 //
-//  SuplementaryView.swift
+//  MainHeaderCollectionView.swift
 //  AllmightTracker
 //
-//  Created by Vladimir Vinakheras on 09.05.2024.
+//  Created by Vladimir Vinakheras on 31.05.2024.
 //
 
 import Foundation
 import UIKit
 
-class SuplementaryView: UICollectionReusableView {
+
+final class MainHeaderCollectionView: UICollectionReusableView {
     let titleLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+
         
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo:leadingAnchor),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
