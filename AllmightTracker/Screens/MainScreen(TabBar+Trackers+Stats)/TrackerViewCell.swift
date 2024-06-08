@@ -49,7 +49,7 @@ final class TrackerViewCell : UICollectionViewCell {
         let label = UIButton(type: .system)
         label.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .trackerWhite.withAlphaComponent(0.3) //(UIColor.trackerWhite.withAlphaComponent(0.3)).cgColor\
+        label.backgroundColor = .trackerWhite.withAlphaComponent(0.3)
         label.layer.cornerRadius = 12
         label.layer.masksToBounds = true
         label.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
