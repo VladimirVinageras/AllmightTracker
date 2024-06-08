@@ -55,13 +55,6 @@ final class TrackerStore: NSObject{
         fetchedResultsController.delegate = self
     }
     
-
-
-//    func fetchTrackers() throws -> [Tracker]{
-//        let fetchRequest = TrackerCoreData.fetchRequest()
-//        let trackersFromCoreData = try context.fetch(fetchRequest)
-//        return try trackersFromCoreData.map{try self.tracker(from: $0)}
-//    }
     
     func addNewTracker(_ tracker: Tracker) throws -> TrackerCoreData{
         let trackerCoreData = TrackerCoreData(context: context)
