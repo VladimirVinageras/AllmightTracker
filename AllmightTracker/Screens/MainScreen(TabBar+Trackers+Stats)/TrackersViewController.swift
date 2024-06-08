@@ -14,23 +14,23 @@ final class TrackersViewController : UIViewController {
 
     //Categories will equal to [] initially, after BD implementation
     var categories: [TrackerCategory] = [
-        TrackerCategory(title: "Важно", trackers: [
-            Tracker(id: UUID(), name: "Спать каждый день", color: .colorSelection3, emoji: "😪", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .thursday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Кушать каждый день", color: .colorSelection10, emoji: "❤️", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .friday, isScheduled: true)])),
-            Tracker(id: UUID(), name: "Отдыхать каждый день", color: .colorSelection6, emoji: "🐥", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Гулять каждый день", color: .colorSelection9, emoji: "🌺", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .tuesday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Смеяться каждый день", color: .colorSelection14, emoji: "😃", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .saturday, isScheduled: true)]))]
-                       ),
-        
-        TrackerCategory(title: "Очень Важно", trackers: [
-            Tracker(id: UUID(), name: "Спать ", color: .colorSelection1, emoji: "🐶", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .wednesday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Кушать", color: .colorSelection15, emoji: "🍔", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .monday, isScheduled: true)])),
-            Tracker(id: UUID(), name: "Смеяться ", color: .colorSelection12, emoji: "🙂", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)]))]
-                       )
+//        TrackerCategory(title: "Важно", trackers: [
+//            Tracker(id: UUID(), name: "Спать каждый день", color: .colorSelection3, emoji: "😪", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .thursday, isScheduled: true)])),
+//            
+//            Tracker(id: UUID(), name: "Кушать каждый день", color: .colorSelection10, emoji: "❤️", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .friday, isScheduled: true)])),
+//            Tracker(id: UUID(), name: "Отдыхать каждый день", color: .colorSelection6, emoji: "🐥", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)])),
+//            
+//            Tracker(id: UUID(), name: "Гулять каждый день", color: .colorSelection9, emoji: "🌺", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .tuesday, isScheduled: true)])),
+//            
+//            Tracker(id: UUID(), name: "Смеяться каждый день", color: .colorSelection14, emoji: "😃", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .saturday, isScheduled: true)]))]
+//                       ),
+//        
+//        TrackerCategory(title: "Очень Важно", trackers: [
+//            Tracker(id: UUID(), name: "Спать ", color: .colorSelection1, emoji: "🐶", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .wednesday, isScheduled: true)])),
+//            
+//            Tracker(id: UUID(), name: "Кушать", color: .colorSelection15, emoji: "🍔", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .monday, isScheduled: true)])),
+//            Tracker(id: UUID(), name: "Смеяться ", color: .colorSelection12, emoji: "🙂", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)]))]
+//                       )
     ]
 //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
@@ -417,27 +417,6 @@ extension TrackersViewController : TrackersViewControllerProtocol {
         } catch {
             print("Error saving new tracker: \(error)")
         }
-        
-//        var eventsInCategory: [Tracker] = []
-//        for category in self.categories {
-//            if category.title == newCategoryName {
-//                eventsInCategory = category.trackers
-//                categories.removeAll(where: {$0.title == category.title})
-//            }
-//        }
-//        eventsInCategory.append(newEvent)
-//        let newTrackerCategory = TrackerCategory(title: newCategoryName, trackers: eventsInCategory)
-//        categories.append(newTrackerCategory)
-//        
-//        for category in self.categories {
-//            print(category.title + "\n \n")
-//            for tracker in category.trackers {
-//                print(tracker.name + "\n")
-//            }
-//        }
-//        
-//       try? trackerCategoryStore.addNewTrackerCategory(newTrackerCategory)
-//       dateForFiltering = nil
     }
 }
 
