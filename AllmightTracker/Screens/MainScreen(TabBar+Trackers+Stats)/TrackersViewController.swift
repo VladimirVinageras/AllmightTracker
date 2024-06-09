@@ -118,7 +118,7 @@ final class TrackersViewController : UIViewController {
     private let screenTitle = UILabel()
  
 //MARK: - INITs and VIEWDIDLOAD
-    private init() {
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {

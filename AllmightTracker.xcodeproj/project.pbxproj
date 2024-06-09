@@ -39,6 +39,8 @@
 		E762A2372BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A2362BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift */; };
 		E762A23A2BFDF092009BA621 /* ScheduleViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A2392BFDF092009BA621 /* ScheduleViewControllerProtocol.swift */; };
 		E762A23C2BFE2F12009BA621 /* TrackersViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A23B2BFE2F12009BA621 /* TrackersViewControllerProtocol.swift */; };
+		E7A659942C150B690003D6CA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A659932C150B690003D6CA /* OnboardingViewController.swift */; };
+		E7A659962C150E3B0003D6CA /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A659952C150E3B0003D6CA /* OnboardingPage.swift */; };
 		E7BF0E422BF25460008C8E09 /* AddNewTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF0E412BF25460008C8E09 /* AddNewTrackerViewController.swift */; };
 		E7BF0E442BF25C5B008C8E09 /* CreateHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF0E432BF25C5B008C8E09 /* CreateHabitViewController.swift */; };
 		E7BF0E482BF2D96F008C8E09 /* CreateHabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF0E472BF2D96F008C8E09 /* CreateHabitTableViewCell.swift */; };
@@ -87,6 +89,8 @@
 		E762A2362BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		E762A2392BFDF092009BA621 /* ScheduleViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewControllerProtocol.swift; sourceTree = "<group>"; };
 		E762A23B2BFE2F12009BA621 /* TrackersViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewControllerProtocol.swift; sourceTree = "<group>"; };
+		E7A659932C150B690003D6CA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		E7A659952C150E3B0003D6CA /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		E7BF0E412BF25460008C8E09 /* AddNewTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTrackerViewController.swift; sourceTree = "<group>"; };
 		E7BF0E432BF25C5B008C8E09 /* CreateHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewController.swift; sourceTree = "<group>"; };
 		E7BF0E472BF2D96F008C8E09 /* CreateHabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,13 +165,6 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		E70A7B032C128E5200E688AE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		E71F9DC62BFD663F003FFFA4 /* NewCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +205,15 @@
 				E73652362BFFF38C0001D8F6 /* CategoryViewControllerProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E7A659922C150B550003D6CA /* OnboardingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E7A659932C150B690003D6CA /* OnboardingViewController.swift */,
+				E7A659952C150E3B0003D6CA /* OnboardingPage.swift */,
+			);
+			path = OnboardingScreen;
 			sourceTree = "<group>";
 		};
 		E7BF0E4D2BF82B6C008C8E09 /* Screens */ = {
@@ -274,7 +280,7 @@
 		E7EEAD1A2BE59F1900221B2A /* AllmightTracker */ = {
 			isa = PBXGroup;
 			children = (
-				E70A7B032C128E5200E688AE /* Extensions */,
+				E7A659922C150B550003D6CA /* OnboardingScreen */,
 				E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */,
 				E70A7AB72C0D342D00E688AE /* CoreData */,
 				E7BF0E4E2BF82B92008C8E09 /* LaunchScreen */,
@@ -378,6 +384,7 @@
 				E762A23C2BFE2F12009BA621 /* TrackersViewControllerProtocol.swift in Sources */,
 				E7EEAD302BE7BC8900221B2A /* TabBarController.swift in Sources */,
 				E70A7AB62C0987A400E688AE /* MainHeaderCollectionView.swift in Sources */,
+				E7A659962C150E3B0003D6CA /* OnboardingPage.swift in Sources */,
 				E70A7ABC2C0D35DB00E688AE /* WeekdaysValueTransformer.swift in Sources */,
 				E762A23A2BFDF092009BA621 /* ScheduleViewControllerProtocol.swift in Sources */,
 				E7BF0E4A2BF54915008C8E09 /* EmojiCollectionViewCell.swift in Sources */,
@@ -389,6 +396,7 @@
 				E7EEAD342BE7BCF800221B2A /* StatisticsViewController.swift in Sources */,
 				E70A7AEB2C10F69A00E688AE /* UIColorMarshalling.swift in Sources */,
 				E7EEAD1C2BE59F1900221B2A /* AppDelegate.swift in Sources */,
+				E7A659942C150B690003D6CA /* OnboardingViewController.swift in Sources */,
 				E73652392C000B3E0001D8F6 /* NewCategoryTableViewCell.swift in Sources */,
 				E70A7AF32C110C7F00E688AE /* TrackerStoreDelegate.swift in Sources */,
 				E7BF0E422BF25460008C8E09 /* AddNewTrackerViewController.swift in Sources */,

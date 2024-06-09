@@ -7,18 +7,18 @@
 
 import Foundation
 import UIKit
- 
+
 
 final class AddNewCategoryViewController : UIViewController{
-  
+    
     static var categories : [TrackerCategory] = []
     var categoryViewControllerDelegate : CategoryViewControllerProtocol?
     let trackerCategoryStore = TrackerCategoryStore()
-
+    
     let categoryCellReuseIdentifier = "categoryCell"
     
     private var newCategoryButton : UIButton = {
-       let categoryButton = UIButton(type: .custom)
+        let categoryButton = UIButton(type: .custom)
         categoryButton.setTitle("Добавить категорию", for: .normal)
         categoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         categoryButton.setTitleColor(.trackerWhite, for: .normal)
@@ -44,7 +44,7 @@ final class AddNewCategoryViewController : UIViewController{
         titleLabel.textColor = .trackerBlack
         return titleLabel
     }()
-
+    
     private var containerViewHolder : UIView = {
         var container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +71,7 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     private let starLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Привычки и события можно \n объединить по смыслу"
@@ -82,7 +82,7 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     
-init(){
+    init(){
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
     }
@@ -92,7 +92,7 @@ init(){
         fatalError("init(coder:) has not been implemented")
     }
     override func viewDidLoad() {
-     super.viewDidLoad()
+        super.viewDidLoad()
         guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
         AddNewCategoryViewController.categories = fetchedCategories
         addSubviews()
@@ -100,7 +100,7 @@ init(){
         activateConstraints()
         
     }
-
+    
     func updateCategoriesTableViewHeight(){
         let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
         let cellHeight: CGFloat = 75
@@ -110,10 +110,10 @@ init(){
     }
     func setupContainerView(){
         for view in containerViewHolder.subviews {
-              view.removeFromSuperview()
-          }
-          containerViewHolder.removeConstraints(containerViewHolder.constraints)
-    
+            view.removeFromSuperview()
+        }
+        containerViewHolder.removeConstraints(containerViewHolder.constraints)
+        
         if AddNewCategoryViewController.categories.isEmpty {
             starLabel.isHidden = false
             starImageView.isHidden = false
@@ -137,7 +137,7 @@ init(){
             let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
             let cellHeight: CGFloat = 75
             let totalHeight = CGFloat(numberOfCells) * cellHeight
-           
+            
             
             NSLayoutConstraint.activate([
                 categoriesTableView.topAnchor.constraint(equalTo: containerViewHolder.topAnchor),
@@ -217,8 +217,8 @@ extension AddNewCategoryViewController : CreatingCategoryViewControllerProtocol 
     
     
 }
-    
 
 
-    
+
+
 
