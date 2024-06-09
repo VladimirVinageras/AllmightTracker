@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ScheduleDayCoreData" representedClassName="ScheduleDayCoreData" syncable="YES" codeGenerationType="class">
         <attribute name="isScheduled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="scheduledDay" attributeType="Integer 64" valueTransformerName="WeekdaysValueTransformer" defaultValueString="0" usesScalarValueType="YES" customClassName=".Int"/>
