@@ -263,7 +263,6 @@
 		E7EEAD0F2BE59F1900221B2A = {
 			isa = PBXGroup;
 			children = (
-				E70A7AEA2C10F69A00E688AE /* UIColorMarshalling.swift */,
 				E7EEAD1A2BE59F1900221B2A /* AllmightTracker */,
 				E7EEAD192BE59F1900221B2A /* Products */,
 			);
@@ -280,14 +279,15 @@
 		E7EEAD1A2BE59F1900221B2A /* AllmightTracker */ = {
 			isa = PBXGroup;
 			children = (
-				E7A659922C150B550003D6CA /* OnboardingScreen */,
+				E70A7AEA2C10F69A00E688AE /* UIColorMarshalling.swift */,
 				E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */,
+				E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */,
 				E70A7AB72C0D342D00E688AE /* CoreData */,
 				E7BF0E4E2BF82B92008C8E09 /* LaunchScreen */,
+				E7A659922C150B550003D6CA /* OnboardingScreen */,
 				E746406A2BEE9CE70028826D /* Models */,
 				E762A2382BFDEFD5009BA621 /* Protocols */,
 				E7BF0E4D2BF82B6C008C8E09 /* Screens */,
-				E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */,
 				E7EEAD242BE59F1E00221B2A /* Assets.xcassets */,
 				E7EEAD292BE59F1E00221B2A /* Info.plist */,
 			);

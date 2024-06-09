@@ -10,28 +10,8 @@ import UIKit
 
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
-//MARK: - MOCK DATA
-
-    //Categories will equal to [] initially, after BD implementation
-    var categories: [TrackerCategory] = [
-//        TrackerCategory(title: "Важно", trackers: [
-//            Tracker(id: UUID(), name: "Спать каждый день", color: .colorSelection3, emoji: "😪", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .thursday, isScheduled: true)])),
-//            
-//            Tracker(id: UUID(), name: "Кушать каждый день", color: .colorSelection10, emoji: "❤️", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .friday, isScheduled: true)])),
-//            Tracker(id: UUID(), name: "Отдыхать каждый день", color: .colorSelection6, emoji: "🐥", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)])),
-//            
-//            Tracker(id: UUID(), name: "Гулять каждый день", color: .colorSelection9, emoji: "🌺", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .tuesday, isScheduled: true)])),
-//            
-//            Tracker(id: UUID(), name: "Смеяться каждый день", color: .colorSelection14, emoji: "😃", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .saturday, isScheduled: true)]))]
-//                       ),
-//        
-//        TrackerCategory(title: "Очень Важно", trackers: [
-//            Tracker(id: UUID(), name: "Спать ", color: .colorSelection1, emoji: "🐶", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .wednesday, isScheduled: true)])),
-//            
-//            Tracker(id: UUID(), name: "Кушать", color: .colorSelection15, emoji: "🍔", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .monday, isScheduled: true)])),
-//            Tracker(id: UUID(), name: "Смеяться ", color: .colorSelection12, emoji: "🙂", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)]))]
-//                       )
-    ]
+    
+    var categories: [TrackerCategory] = []
 //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
@@ -64,12 +44,6 @@ final class TrackersViewController : UIViewController {
         let datePicker = UIDatePicker()
         datePicker.layer.backgroundColor = UIColor.trackerWhite.cgColor
         
-        ///Этот вариант был единственный способ которое я нашел для решение задачи с формата дата "dd.MM.yy" и чтобы
-        ///оно польностью совпадало с макетой. Альтернативный вариант было бы в ручную с помошью UICollectionView создать
-        ///собственный календарь но это не простая задача в уже и так объемный Спринт.
-        ///Решение была согласована с наставником.
-        ///Прекрасного дня и хорошоего настроение  ;-)
-    
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
         } else {
@@ -296,7 +270,7 @@ final class TrackersViewController : UIViewController {
             newTrackerCollectionView.tag = filteredCategories.firstIndex(of: category) ?? 0
             prepareTrackersCollectionView(for: newTrackerCollectionView)
             vStack.addArrangedSubview(newTrackerCollectionView)
-            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later 😉 🐝
+            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later 
             NSLayoutConstraint.activate([
                 newTrackerCollectionView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
                 newTrackerCollectionView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),

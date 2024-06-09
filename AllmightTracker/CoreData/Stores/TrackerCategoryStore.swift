@@ -66,7 +66,6 @@ final class TrackerCategoryStore: NSObject {
         let existingCategories = try context.fetch(fetchRequest)
         
         if let existingCategory = existingCategories.first {
-            // If the category exists, update it
             var existingTrackers = existingCategory.trackers?.allObjects as? [TrackerCoreData] ?? []
             
             let trackerStore = TrackerStore(context: context)
@@ -75,7 +74,6 @@ final class TrackerCategoryStore: NSObject {
             existingTrackers.append(newTrackerCoreData)
             existingCategory.trackers = NSSet(array: existingTrackers)
         } else {
-            // If the category doesn't exist, create a new one
             let newCategoryCoreData = TrackerCategoryCoreData(context: context)
             newCategoryCoreData.title = categoryTitle
             

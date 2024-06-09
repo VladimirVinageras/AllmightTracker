@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class AddNewTrackerViewController : UIViewController {
+final class AddNewTrackerViewController : UIViewController {
     
     private var newHabitButton : UIButton?
     private var newSingleEventButton : UIButton?
