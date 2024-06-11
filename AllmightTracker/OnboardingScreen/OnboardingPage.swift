@@ -67,13 +67,13 @@ final class OnboardingPage : UIViewController {
     }
     
     func goToMainScreen(){
-        let trackersViewController = TrackersViewController()
+        let tabBarController = TabBarController()
         
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let sceneDelegate = windowScene.delegate as? SceneDelegate {
-            sceneDelegate.window?.rootViewController = trackersViewController
+            sceneDelegate.window?.rootViewController = tabBarController
         } else if let sceneDelegate = UIApplication.shared.delegate as? SceneDelegate {
-            sceneDelegate.window?.rootViewController = trackersViewController
+            sceneDelegate.window?.rootViewController = tabBarController
         }
     }
     
