@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ScheduleDayCoreData" representedClassName="ScheduleDayCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="isScheduled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="scheduledDay" attributeType="Integer 64" valueTransformerName="WeekdaysValueTransformer" defaultValueString="0" usesScalarValueType="YES" customClassName=".Int"/>
+    </entity>
+    <entity name="TrackerCategoryCoreData" representedClassName="TrackerCategoryCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="title" attributeType="String"/>
+        <relationship name="trackers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TrackerCoreData"/>
+    </entity>
+    <entity name="TrackerCoreData" representedClassName="TrackerCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String" valueTransformerName="UIColorValueTransformer"/>
+        <attribute name="emoji" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackerScheduleCoreData"/>
+    </entity>
+    <entity name="TrackerRecordCoreData" representedClassName="TrackerRecordCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="datetTrackerCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="idCompletedTracker" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="TrackerScheduleCoreData" representedClassName="TrackerScheduleCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateStart" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isAnHabit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="scheduledDays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleDayCoreData"/>
+    </entity>
+</model>
