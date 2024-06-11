@@ -33,7 +33,7 @@
 		E7482EFC2C18AAC200184A53 /* TrackerRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7482EEB2C18AAC200184A53 /* TrackerRecordStore.swift */; };
 		E7482EFD2C18AAC200184A53 /* TrackerScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7482EEC2C18AAC200184A53 /* TrackerScheduleStore.swift */; };
 		E7482EFE2C18AAC200184A53 /* TrackerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7482EED2C18AAC200184A53 /* TrackerStore.swift */; };
-		E7482EFF2C18AAC200184A53 /* ModelCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7482EEF2C18AAC200184A53 /* ModelCoreData.xcdatamodeld */; };
+		E7482F062C18B46700184A53 /* ModelCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7482F042C18B46700184A53 /* ModelCoreData.xcdatamodeld */; };
 		E762A2342BFDE5DB009BA621 /* AddNewTrackerScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A2332BFDE5DB009BA621 /* AddNewTrackerScheduleViewController.swift */; };
 		E762A2372BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A2362BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift */; };
 		E762A23A2BFDF092009BA621 /* ScheduleViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E762A2392BFDF092009BA621 /* ScheduleViewControllerProtocol.swift */; };
@@ -82,7 +82,7 @@
 		E7482EEB2C18AAC200184A53 /* TrackerRecordStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerRecordStore.swift; sourceTree = "<group>"; };
 		E7482EEC2C18AAC200184A53 /* TrackerScheduleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerScheduleStore.swift; sourceTree = "<group>"; };
 		E7482EED2C18AAC200184A53 /* TrackerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
-		E7482EF12C18AAC200184A53 /* ModelCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelCoreData.xcdatamodel; sourceTree = "<group>"; };
+		E7482F052C18B46700184A53 /* ModelCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelCoreData.xcdatamodel; sourceTree = "<group>"; };
 		E762A2332BFDE5DB009BA621 /* AddNewTrackerScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTrackerScheduleViewController.swift; sourceTree = "<group>"; };
 		E762A2362BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		E762A2392BFDF092009BA621 /* ScheduleViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -177,10 +177,10 @@
 		E7482EF02C18AAC200184A53 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E7482F042C18B46700184A53 /* ModelCoreData.xcdatamodeld */,
 				E7482EE42C18AAC200184A53 /* Errors */,
 				E7482EE82C18AAC200184A53 /* Protocols&Delegates */,
 				E7482EEE2C18AAC200184A53 /* Stores */,
-				E7482EEF2C18AAC200184A53 /* ModelCoreData.xcdatamodeld */,
 			);
 			name = CoreData;
 			path = AllmightTracker/CoreData;
@@ -404,7 +404,7 @@
 				E73652372BFFF38C0001D8F6 /* CategoryViewControllerProtocol.swift in Sources */,
 				E7BF0E482BF2D96F008C8E09 /* CreateHabitTableViewCell.swift in Sources */,
 				E762A2342BFDE5DB009BA621 /* AddNewTrackerScheduleViewController.swift in Sources */,
-				E7482EFF2C18AAC200184A53 /* ModelCoreData.xcdatamodeld in Sources */,
+				E7482F062C18B46700184A53 /* ModelCoreData.xcdatamodeld in Sources */,
 				E7482EFD2C18AAC200184A53 /* TrackerScheduleStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,14 +630,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E7482EEF2C18AAC200184A53 /* ModelCoreData.xcdatamodeld */ = {
+		E7482F042C18B46700184A53 /* ModelCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E7482EF12C18AAC200184A53 /* ModelCoreData.xcdatamodel */,
+				E7482F052C18B46700184A53 /* ModelCoreData.xcdatamodel */,
 			);
-			currentVersion = E7482EF12C18AAC200184A53 /* ModelCoreData.xcdatamodel */;
-			name = ModelCoreData.xcdatamodeld;
-			path = /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/ModelCoreData.xcdatamodeld;
+			currentVersion = E7482F052C18B46700184A53 /* ModelCoreData.xcdatamodel */;
+			path = ModelCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
