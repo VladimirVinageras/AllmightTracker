@@ -425,6 +425,13 @@ SWIFT_CLASS("_TtC15AllmightTracker25CreateHabitViewController")
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@interface CreateHabitViewController (SWIFT_EXTENSION(AllmightTracker)) <UITextFieldDelegate>
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidChangeSelection:(UITextField * _Nonnull)textField;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class UICollectionView;
 @class UICollectionReusableView;
 
@@ -432,13 +439,6 @@ SWIFT_CLASS("_TtC15AllmightTracker25CreateHabitViewController")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionReusableView * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSString * _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface CreateHabitViewController (SWIFT_EXTENSION(AllmightTracker)) <UITextFieldDelegate>
-- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
-- (void)textFieldDidChangeSelection:(UITextField * _Nonnull)textField;
-- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -645,11 +645,6 @@ SWIFT_CLASS("_TtC15AllmightTracker18TrackerRecordStore")
 @end
 
 
-@interface TrackerRecordStore (SWIFT_EXTENSION(AllmightTracker)) <NSFetchedResultsControllerDelegate>
-- (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
-@end
-
-
 SWIFT_CLASS_NAMED("TrackerScheduleCoreData")
 @interface TrackerScheduleCoreData : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -699,7 +694,7 @@ SWIFT_CLASS("_TtC15AllmightTracker22TrackersViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
 - (void)dateLabelTapped;
-- (void)dateValueChanged:(UIDatePicker * _Nonnull)sender;
+- (BOOL)dateValueChanged:(UIDatePicker * _Nonnull)sender error:(NSError * _Nullable * _Nullable)error;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 

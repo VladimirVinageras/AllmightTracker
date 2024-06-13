@@ -12,12 +12,12 @@ final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
     var categories: [TrackerCategory] = []
-//MARK: - STORE VARIABLES
+    //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
     private var trackerRecordStore = TrackerRecordStore()
     
-//MARK: - UI VARIABLES
+    //MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
@@ -90,8 +90,8 @@ final class TrackersViewController : UIViewController {
     private let starImageView = UIImageView()
     private let starLabel = UILabel()
     private let screenTitle = UILabel()
- 
-//MARK: - INITs and VIEWDIDLOAD
+    
+    //MARK: - INITs and VIEWDIDLOAD
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -103,9 +103,11 @@ final class TrackersViewController : UIViewController {
         view.backgroundColor = .trackerWhite
         trackerCategoryStore.delegate = self
         
-     let tempCategories = try? trackerCategoryStore.fetchTrackers()
-         categories = tempCategories ?? categories
+        let tempCategories = try? trackerCategoryStore.fetchTrackers()
+        categories = tempCategories ?? categories
         
+        let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
+        completedTrackers = tempRecords ?? completedTrackers
         filteredCategories = categories
         prepareNavigationBar()
         prepareDateUIItems()
@@ -116,13 +118,13 @@ final class TrackersViewController : UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadTrackersViewController"), object: nil)
         
-       
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadTrackersViewController"), object: nil)
     }
-
-//MARK: - @OBJC Functions
+    
+    //MARK: - @OBJC Functions
     
     @objc private func reloadView() {
         
@@ -135,12 +137,16 @@ final class TrackersViewController : UIViewController {
         view.bringSubviewToFront(trackerDatePicker)
     }
     
-    @objc func dateValueChanged(_ sender: UIDatePicker) {
+    @objc func dateValueChanged(_ sender: UIDatePicker) throws {
         updateLabel(with: sender.date)
         isActiveDateFiltering = true
         dateForFiltering = sender.date
         if let dateForFiltering = dateForFiltering {
             isTryingToChangeTheFuture = Date() < dateForFiltering
+        }
+        let calendar = Calendar.current
+        completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
+            return calendar.isDate(record.dateTrackerCompleted, inSameDayAs: Date())
         }
         trackerDatePicker.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
@@ -151,7 +157,7 @@ final class TrackersViewController : UIViewController {
         present(AddNewTrackerViewController(), animated: true)
     }
     
-//MARK: - Setups , Constraints
+    //MARK: - Setups , Constraints
     private func prepareDateUIItems(){
         let currentDate = Date()
         updateLabel(with: currentDate)
@@ -270,7 +276,7 @@ final class TrackersViewController : UIViewController {
             newTrackerCollectionView.tag = filteredCategories.firstIndex(of: category) ?? 0
             prepareTrackersCollectionView(for: newTrackerCollectionView)
             vStack.addArrangedSubview(newTrackerCollectionView)
-            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later 
+            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later
             NSLayoutConstraint.activate([
                 newTrackerCollectionView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
                 newTrackerCollectionView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
@@ -319,11 +325,13 @@ final class TrackersViewController : UIViewController {
         guard let dateForFiltering = dateForFiltering else {return categories}
         
         let selectedWeekday = Weekday(from: dateForFiltering)
+        let calendar = Calendar.current
+        let isToday = calendar.isDateInToday(dateForFiltering)
         
         let repCategories = categories.compactMap { category -> TrackerCategory? in
             let filteredTrackers = category.trackers.filter { tracker in
                 guard let scheduledDays = tracker.schedule.scheduledDays else { return false }
-                return scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled }
+                return scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled } || !(tracker.schedule.isAnHabit) && isToday
             }
             return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
         }
@@ -360,9 +368,10 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let eventTitle = currentEvent.name
         let color = currentEvent.color
         let emoji = currentEvent.emoji
-        let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id }
+        let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id } && !isTryingToChangeTheFuture
+        let eventId = currentEvent.id
+        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask, trackerID: eventId)
         
-        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask)
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         return cell
     }
@@ -405,9 +414,9 @@ extension TrackersViewController : TrackerCategoryStoreDelegate {
     func storeCategoryDidChange() {
         guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
         self.categories = fetchedCategories
-               self.setupContainerView()
-               self.setupContainerHolder()
-       }
+        self.setupContainerView()
+        self.setupContainerHolder()
+    }
 }
 
 

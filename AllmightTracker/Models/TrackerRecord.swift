@@ -11,6 +11,4 @@ import UIKit
 struct TrackerRecord {
     let idCompletedTracker: UUID
     let dateTrackerCompleted: Date
-    
-    
 }

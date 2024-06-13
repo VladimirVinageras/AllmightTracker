@@ -15,6 +15,7 @@ final class TrackerViewCell : UICollectionViewCell {
     private var emoji : String = ""
     private var completedTask : Bool = false
     private var amountOfDays = 0
+    private var trackerRecordStore = TrackerRecordStore()
     
     private var vStack : UIStackView = {
         let vstack = UIStackView()
@@ -82,6 +83,19 @@ final class TrackerViewCell : UICollectionViewCell {
         amountOfDays = completedTask ? amountOfDays + 1 : amountOfDays - 1
         updateDaysLabelText()
         updatePlusButton()
+        
+        if let trackerID = trackerID {
+                    do {
+                        if completedTask {
+                            try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: Date())
+                            trackerRecordStore.delegate?.storeRecord()
+                        } else {
+                            //TODO: - Implement removing records when task is marked as not completed
+                        }
+                    } catch {
+                        print("Error saving tracker record: \(error)")
+                    }
+                }
     }
     
     private func updateDaysLabelText() {
@@ -94,6 +108,8 @@ final class TrackerViewCell : UICollectionViewCell {
         let configuration = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
         plusButton.setImage(UIImage(systemName: imageName, withConfiguration: configuration), for: .normal)
     }
+    
+    private var trackerID: UUID?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -145,11 +161,12 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
 
-    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, completedTask: Bool) {
+    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, completedTask: Bool, trackerID: UUID) {
         self.color = color
         self.eventTitle = eventTitle
         self.emoji = emoji
         self.completedTask = completedTask
+        self.trackerID = trackerID
         
         emojiLabel.backgroundColor = .trackerWhite.withAlphaComponent(0.3)
         emojiLabel.setTitle(emoji, for: .normal)

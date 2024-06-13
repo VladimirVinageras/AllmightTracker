@@ -18,7 +18,10 @@ final class TrackerScheduleStore {
     //MARK: - FUNCTIONS
      
     convenience init() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not retrieve the context from the AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
 

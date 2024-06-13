@@ -62,10 +62,11 @@ final class OnboardingViewController: UIPageViewController {
 extension OnboardingViewController : UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController as! OnboardingPage) else {
+        guard let onboardingPage = viewController as? OnboardingPage,
+              let viewControllerIndex = pages.firstIndex(of: onboardingPage) else {
             return nil
         }
-        
+
         let previousIndex = viewControllerIndex - 1
         guard previousIndex >= 0 else {
             return pages.last
@@ -74,10 +75,11 @@ extension OnboardingViewController : UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController as! OnboardingPage) else {
+        guard let onboardingPage = viewController as? OnboardingPage,
+              let viewControllerIndex = pages.firstIndex(of: onboardingPage) else {
             return nil
         }
-        
+
         let nextIndex = viewControllerIndex + 1
         guard nextIndex < pages.count else {
             return pages.first
@@ -88,9 +90,13 @@ extension OnboardingViewController : UIPageViewControllerDataSource {
 
 extension OnboardingViewController : UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed, 
+              let currentViewController = pageViewController.viewControllers?.first else {
+            return
+        }
         
-        if let currentViewController = pageViewController.viewControllers?.first,
-           let currentIndex = pages.firstIndex(of: currentViewController as! OnboardingPage) {
+        if let onboardingPage = currentViewController as? OnboardingPage,
+           let currentIndex = pages.firstIndex(of: onboardingPage) {
             pageControl.currentPage = currentIndex
         }
     }
