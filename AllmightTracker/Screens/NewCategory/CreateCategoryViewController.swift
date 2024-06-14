@@ -85,6 +85,7 @@ final class CreateCategoryViewController : UIViewController {
     override func viewDidLoad() {
         addSubviews()
         activateConstraints()
+        newCategoryNameTextField.delegate = self
     }
  
     private func addSubviews(){
@@ -133,14 +134,31 @@ final class CreateCategoryViewController : UIViewController {
     }
 }
 
-extension CreateCategoryViewController :  UITextFieldDelegate {
+
+
+//MARK: - UIGestureRecognizerDelegate Functions
+
+extension CreateCategoryViewController : UIGestureRecognizerDelegate {
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        clearTextFieldButton.isHidden = textField.text?.isEmpty ?? false
+    func handleTapsOnScreen(){
+        let tapTextFieldGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        tapTextFieldGestureRecognizer.delegate = self
+        view.addGestureRecognizer(tapTextFieldGestureRecognizer)
     }
+
+}
+
+//MARK: - TEXTFIELD DELEGATE
+
+extension CreateCategoryViewController :  UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        clearTextFieldButton.isHidden = textField.text?.isEmpty ?? false
+    }
+    
 }

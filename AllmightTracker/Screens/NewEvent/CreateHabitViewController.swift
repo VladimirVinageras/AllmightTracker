@@ -524,7 +524,7 @@ extension CreateHabitViewController : UIGestureRecognizerDelegate {
         tapTextFieldGestureRecognizer.delegate = self
         view.addGestureRecognizer(tapTextFieldGestureRecognizer)
     }
-    
+
 
     func handleSelection(for collectionView: UICollectionView, indexPath: IndexPath, selectedIndexPath: inout IndexPath?) {
         

@@ -397,9 +397,13 @@ SWIFT_CLASS("_TtC15AllmightTracker28CreateCategoryViewController")
 @end
 
 
+@interface CreateCategoryViewController (SWIFT_EXTENSION(AllmightTracker)) <UIGestureRecognizerDelegate>
+@end
+
+
 @interface CreateCategoryViewController (SWIFT_EXTENSION(AllmightTracker)) <UITextFieldDelegate>
-- (void)textFieldDidChangeSelection:(UITextField * _Nonnull)textField;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidChangeSelection:(UITextField * _Nonnull)textField;
 @end
 
 
@@ -421,6 +425,15 @@ SWIFT_CLASS("_TtC15AllmightTracker25CreateHabitViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
+@class UICollectionView;
+@class UICollectionReusableView;
+
+@interface CreateHabitViewController (SWIFT_EXTENSION(AllmightTracker)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionReusableView * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSString * _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class UIGestureRecognizer;
 
 @interface CreateHabitViewController (SWIFT_EXTENSION(AllmightTracker)) <UIGestureRecognizerDelegate>
@@ -432,15 +445,6 @@ SWIFT_CLASS("_TtC15AllmightTracker25CreateHabitViewController")
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
 - (void)textFieldDidChangeSelection:(UITextField * _Nonnull)textField;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class UICollectionView;
-@class UICollectionReusableView;
-
-@interface CreateHabitViewController (SWIFT_EXTENSION(AllmightTracker)) <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionReusableView * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSString * _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
