@@ -477,11 +477,7 @@ extension CreateHabitViewController : UITableViewDelegate, UITableViewDataSource
             addNewTrackerScheduleViewController.scheduleViewControllerDelegate = self
             addNewTrackerScheduleViewController
             present(addNewTrackerScheduleViewController, animated: true)
-           
-            
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -528,7 +524,7 @@ extension CreateHabitViewController : UIGestureRecognizerDelegate {
         tapTextFieldGestureRecognizer.delegate = self
         view.addGestureRecognizer(tapTextFieldGestureRecognizer)
     }
-    
+
 
     func handleSelection(for collectionView: UICollectionView, indexPath: IndexPath, selectedIndexPath: inout IndexPath?) {
         

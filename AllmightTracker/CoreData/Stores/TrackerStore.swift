@@ -45,7 +45,10 @@ final class TrackerStore: NSObject{
     
     // MARK: - FUNCTIONS
     convenience override init() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not retrieve the context from the AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
     
@@ -55,13 +58,6 @@ final class TrackerStore: NSObject{
         fetchedResultsController.delegate = self
     }
     
-
-
-//    func fetchTrackers() throws -> [Tracker]{
-//        let fetchRequest = TrackerCoreData.fetchRequest()
-//        let trackersFromCoreData = try context.fetch(fetchRequest)
-//        return try trackersFromCoreData.map{try self.tracker(from: $0)}
-//    }
     
     func addNewTracker(_ tracker: Tracker) throws -> TrackerCoreData{
         let trackerCoreData = TrackerCoreData(context: context)

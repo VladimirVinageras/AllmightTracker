@@ -10,34 +10,22 @@ import UIKit
 
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
-//MARK: - MOCK DATA
-
-    //Categories will equal to [] initially, after BD implementation
-    var categories: [TrackerCategory] = [
-        TrackerCategory(title: "Важно", trackers: [
-            Tracker(id: UUID(), name: "Спать каждый день", color: .colorSelection3, emoji: "😪", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .thursday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Кушать каждый день", color: .colorSelection10, emoji: "❤️", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .friday, isScheduled: true)])),
-            Tracker(id: UUID(), name: "Отдыхать каждый день", color: .colorSelection6, emoji: "🐥", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Гулять каждый день", color: .colorSelection9, emoji: "🌺", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .tuesday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Смеяться каждый день", color: .colorSelection14, emoji: "😃", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .saturday, isScheduled: true)]))]
-                       ),
-        
-        TrackerCategory(title: "Очень Важно", trackers: [
-            Tracker(id: UUID(), name: "Спать ", color: .colorSelection1, emoji: "🐶", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .wednesday, isScheduled: true)])),
-            
-            Tracker(id: UUID(), name: "Кушать", color: .colorSelection15, emoji: "🍔", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .monday, isScheduled: true)])),
-            Tracker(id: UUID(), name: "Смеяться ", color: .colorSelection12, emoji: "🙂", schedule: TrackerSchedule(id: UUID(), isAnHabit: false, scheduledDays: [ ScheduleDay(scheduleDay: .sunday, isScheduled: true)]))]
-                       )
-    ]
-//MARK: - STORE VARIABLES
+    
+    let dateFormatter : DateFormatter = {
+       let df = DateFormatter()
+        df.dateFormat = "dd.MM.yy"
+        return df
+    }()
+    
+    
+    
+    var categories: [TrackerCategory] = []
+    //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
     private var trackerRecordStore = TrackerRecordStore()
     
-//MARK: - UI VARIABLES
+    //MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
@@ -64,12 +52,6 @@ final class TrackersViewController : UIViewController {
         let datePicker = UIDatePicker()
         datePicker.layer.backgroundColor = UIColor.trackerWhite.cgColor
         
-        ///Этот вариант был единственный способ которое я нашел для решение задачи с формата дата "dd.MM.yy" и чтобы
-        ///оно польностью совпадало с макетой. Альтернативный вариант было бы в ручную с помошью UICollectionView создать
-        ///собственный календарь но это не простая задача в уже и так объемный Спринт.
-        ///Решение была согласована с наставником.
-        ///Прекрасного дня и хорошоего настроение  ;-)
-    
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
         } else {
@@ -116,9 +98,9 @@ final class TrackersViewController : UIViewController {
     private let starImageView = UIImageView()
     private let starLabel = UILabel()
     private let screenTitle = UILabel()
- 
-//MARK: - INITs and VIEWDIDLOAD
-    private init() {
+    
+    //MARK: - INITs and VIEWDIDLOAD
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -129,9 +111,11 @@ final class TrackersViewController : UIViewController {
         view.backgroundColor = .trackerWhite
         trackerCategoryStore.delegate = self
         
-     let tempCategories = try? trackerCategoryStore.fetchTrackers()
-         categories = tempCategories ?? categories
+        let tempCategories = try? trackerCategoryStore.fetchTrackers()
+        categories = tempCategories ?? categories
         
+        let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
+        completedTrackers = tempRecords ?? completedTrackers
         filteredCategories = categories
         prepareNavigationBar()
         prepareDateUIItems()
@@ -142,13 +126,13 @@ final class TrackersViewController : UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadTrackersViewController"), object: nil)
         
-       
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadTrackersViewController"), object: nil)
     }
-
-//MARK: - @OBJC Functions
+    
+    //MARK: - @OBJC Functions
     
     @objc private func reloadView() {
         
@@ -161,12 +145,18 @@ final class TrackersViewController : UIViewController {
         view.bringSubviewToFront(trackerDatePicker)
     }
     
-    @objc func dateValueChanged(_ sender: UIDatePicker) {
+    @objc func dateValueChanged(_ sender: UIDatePicker) throws {
         updateLabel(with: sender.date)
         isActiveDateFiltering = true
         dateForFiltering = sender.date
         if let dateForFiltering = dateForFiltering {
             isTryingToChangeTheFuture = Date() < dateForFiltering
+        }
+        let calendar = Calendar.current
+        completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
+            let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
+            let currentDate = dateFormatter.string(from: sender.date)
+            return recordDate == currentDate
         }
         trackerDatePicker.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
@@ -177,7 +167,7 @@ final class TrackersViewController : UIViewController {
         present(AddNewTrackerViewController(), animated: true)
     }
     
-//MARK: - Setups , Constraints
+    //MARK: - Setups , Constraints
     private func prepareDateUIItems(){
         let currentDate = Date()
         updateLabel(with: currentDate)
@@ -190,8 +180,6 @@ final class TrackersViewController : UIViewController {
     }
     
     private func updateLabel(with date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
         trackerDateLabel.text = dateFormatter.string(from: date)
     }
     
@@ -296,7 +284,7 @@ final class TrackersViewController : UIViewController {
             newTrackerCollectionView.tag = filteredCategories.firstIndex(of: category) ?? 0
             prepareTrackersCollectionView(for: newTrackerCollectionView)
             vStack.addArrangedSubview(newTrackerCollectionView)
-            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later 😉 🐝
+            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later
             NSLayoutConstraint.activate([
                 newTrackerCollectionView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
                 newTrackerCollectionView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
@@ -345,11 +333,13 @@ final class TrackersViewController : UIViewController {
         guard let dateForFiltering = dateForFiltering else {return categories}
         
         let selectedWeekday = Weekday(from: dateForFiltering)
+        let calendar = Calendar.current
+        let isToday = calendar.isDateInToday(dateForFiltering)
         
         let repCategories = categories.compactMap { category -> TrackerCategory? in
             let filteredTrackers = category.trackers.filter { tracker in
                 guard let scheduledDays = tracker.schedule.scheduledDays else { return false }
-                return scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled }
+                return scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled } || !(tracker.schedule.isAnHabit) && isToday
             }
             return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
         }
@@ -386,9 +376,11 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let eventTitle = currentEvent.name
         let color = currentEvent.color
         let emoji = currentEvent.emoji
-        let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id }
+        let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id } && !isTryingToChangeTheFuture
+        let eventId = currentEvent.id
         
-        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask)
+        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
+        
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         return cell
     }
@@ -417,27 +409,6 @@ extension TrackersViewController : TrackersViewControllerProtocol {
         } catch {
             print("Error saving new tracker: \(error)")
         }
-        
-//        var eventsInCategory: [Tracker] = []
-//        for category in self.categories {
-//            if category.title == newCategoryName {
-//                eventsInCategory = category.trackers
-//                categories.removeAll(where: {$0.title == category.title})
-//            }
-//        }
-//        eventsInCategory.append(newEvent)
-//        let newTrackerCategory = TrackerCategory(title: newCategoryName, trackers: eventsInCategory)
-//        categories.append(newTrackerCategory)
-//        
-//        for category in self.categories {
-//            print(category.title + "\n \n")
-//            for tracker in category.trackers {
-//                print(tracker.name + "\n")
-//            }
-//        }
-//        
-//       try? trackerCategoryStore.addNewTrackerCategory(newTrackerCategory)
-//       dateForFiltering = nil
     }
 }
 
@@ -452,9 +423,9 @@ extension TrackersViewController : TrackerCategoryStoreDelegate {
     func storeCategoryDidChange() {
         guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
         self.categories = fetchedCategories
-               self.setupContainerView()
-               self.setupContainerHolder()
-       }
+        self.setupContainerView()
+        self.setupContainerHolder()
+    }
 }
 
 

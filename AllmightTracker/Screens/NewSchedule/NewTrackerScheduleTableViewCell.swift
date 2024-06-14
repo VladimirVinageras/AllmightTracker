@@ -31,7 +31,7 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        selectionStyle = .none
         backgroundColor = .trackerBackgroundDay
         contentView.addSubview(weekday)
         contentView.addSubview(weekdaySwitch)

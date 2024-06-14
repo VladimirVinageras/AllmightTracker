@@ -38,7 +38,10 @@ final class TrackerRecordStore : NSObject {
     }
     
     convenience override init() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not retrieve the context from the AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
 
@@ -46,23 +49,17 @@ final class TrackerRecordStore : NSObject {
         self.context = context
     }
 
-    func fetchTrackerRecord() throws -> [TrackerRecord]{
+    func fetchTrackerRecords() throws -> [TrackerRecord]{
         let fetchRequest = TrackerRecordCoreData.fetchRequest()
         let trackerRecordFromCoreData = try context.fetch(fetchRequest)
         return try trackerRecordFromCoreData.map { try self.trackerRecord(from: $0) }
     }
 
-    func addNewSchedule(_ scheduleDay: ScheduleDay) throws -> ScheduleDayCoreData {
-        let scheduleDayCoreData = ScheduleDayCoreData(context: context)
-        updateExistingScheduleDay(scheduleDayCoreData, with: scheduleDay)
+    func addNewTrackerRecord(_ trackerID: UUID, completionDate: Date) throws {
+        let trackerRecordCoreData = TrackerRecordCoreData(context: context)
+        trackerRecordCoreData.idCompletedTracker = trackerID
+        trackerRecordCoreData.datetTrackerCompleted = completionDate
         try context.save()
-        
-        return scheduleDayCoreData
-    }
-
-    func updateExistingScheduleDay(_ scheduleDayCoreData: ScheduleDayCoreData, with scheduleDay: ScheduleDay) {
-        scheduleDayCoreData.scheduledDay = Int64(scheduleDay.scheduleDay.rawValue)
-        scheduleDayCoreData.isScheduled = scheduleDay.isScheduled
     }
     
     func trackerRecord(from trackerRecordCoreData: TrackerRecordCoreData) throws -> TrackerRecord {
@@ -77,12 +74,12 @@ final class TrackerRecordStore : NSObject {
 
 }
 
-extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegate?.storeRecord()
-    }
-}
+//extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        delegate?.storeRecord()
+//    }
+//}
 
 
 

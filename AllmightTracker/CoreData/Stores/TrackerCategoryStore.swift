@@ -43,7 +43,10 @@ final class TrackerCategoryStore: NSObject {
     
     // MARK: - FUNCTIONS
     convenience override init() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not retrieve the context from the AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
     
@@ -66,7 +69,6 @@ final class TrackerCategoryStore: NSObject {
         let existingCategories = try context.fetch(fetchRequest)
         
         if let existingCategory = existingCategories.first {
-            // If the category exists, update it
             var existingTrackers = existingCategory.trackers?.allObjects as? [TrackerCoreData] ?? []
             
             let trackerStore = TrackerStore(context: context)
@@ -75,7 +77,6 @@ final class TrackerCategoryStore: NSObject {
             existingTrackers.append(newTrackerCoreData)
             existingCategory.trackers = NSSet(array: existingTrackers)
         } else {
-            // If the category doesn't exist, create a new one
             let newCategoryCoreData = TrackerCategoryCoreData(context: context)
             newCategoryCoreData.title = categoryTitle
             
@@ -168,8 +169,8 @@ extension TrackerCategoryStore {
 // MARK: - NSFetchedResultsControllerDelegate
 extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async {
-            self.delegate?.storeCategoryDidChange()
+        DispatchQueue.main.async { [weak self] in 
+            self?.delegate?.storeCategoryDidChange()
         }
     }
 }
