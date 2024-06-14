@@ -11,6 +11,14 @@ import UIKit
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
+    let dateFormatter : DateFormatter = {
+       let df = DateFormatter()
+        df.dateFormat = "dd.MM.yy"
+        return df
+    }()
+    
+    
+    
     var categories: [TrackerCategory] = []
     //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
@@ -146,7 +154,9 @@ final class TrackersViewController : UIViewController {
         }
         let calendar = Calendar.current
         completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
-            return calendar.isDate(record.dateTrackerCompleted, inSameDayAs: Date())
+            let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
+            let currentDate = dateFormatter.string(from: sender.date)
+            return recordDate == currentDate
         }
         trackerDatePicker.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
@@ -170,8 +180,6 @@ final class TrackersViewController : UIViewController {
     }
     
     private func updateLabel(with date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
         trackerDateLabel.text = dateFormatter.string(from: date)
     }
     
@@ -370,7 +378,8 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let emoji = currentEvent.emoji
         let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id } && !isTryingToChangeTheFuture
         let eventId = currentEvent.id
-        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask, trackerID: eventId)
+        
+        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
         
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         return cell

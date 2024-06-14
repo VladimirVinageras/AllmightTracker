@@ -15,6 +15,7 @@ final class TrackerViewCell : UICollectionViewCell {
     private var emoji : String = ""
     private var completedTask : Bool = false
     private var amountOfDays = 0
+    private var calendarDate = Date()
     private var trackerRecordStore = TrackerRecordStore()
     
     private var vStack : UIStackView = {
@@ -87,7 +88,7 @@ final class TrackerViewCell : UICollectionViewCell {
         if let trackerID = trackerID {
                     do {
                         if completedTask {
-                            try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: Date())
+                            try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: calendarDate)
                             trackerRecordStore.delegate?.storeRecord()
                         } else {
                             //TODO: - Implement removing records when task is marked as not completed
@@ -161,7 +162,8 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
 
-    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, completedTask: Bool, trackerID: UUID) {
+    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, completedTask: Bool, trackerID: UUID, calendarDate : Date) {
+        self.calendarDate = calendarDate
         self.color = color
         self.eventTitle = eventTitle
         self.emoji = emoji
