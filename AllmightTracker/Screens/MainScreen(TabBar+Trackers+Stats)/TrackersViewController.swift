@@ -111,7 +111,7 @@ final class TrackersViewController : UIViewController {
         view.backgroundColor = .trackerWhite
         trackerCategoryStore.delegate = self
         
-        let tempCategories = try? trackerCategoryStore.fetchTrackers()
+        let tempCategories = try? trackerCategoryStore.fetchTrackerCategories()
         categories = tempCategories ?? categories
         
         let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
@@ -421,7 +421,7 @@ extension TrackersViewController: TrackerRecordStoreDelegate {
 
 extension TrackersViewController : TrackerCategoryStoreDelegate {
     func storeCategoryDidChange() {
-        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
+        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackerCategories() else {return}
         self.categories = fetchedCategories
         self.setupContainerView()
         self.setupContainerHolder()

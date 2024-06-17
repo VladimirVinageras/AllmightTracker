@@ -10,11 +10,10 @@ import UIKit
 
 
 final class AddNewCategoryViewController : UIViewController{
-    
-    static var categories : [TrackerCategory] = []
-    var categoryViewControllerDelegate : CategoryViewControllerProtocol?
-    let trackerCategoryStore = TrackerCategoryStore()
-    
+
+  //  var categoryViewControllerDelegate : CategoryViewControllerProtocol?
+    private var trackerCategoriesViewModel : TrackerCateogoriesViewModel
+
     let categoryCellReuseIdentifier = "categoryCell"
     
     private var newCategoryButton : UIButton = {
@@ -31,8 +30,7 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     @objc private func newCategoryButtonTapped(){
-        let createCategoryViewController = CreateCategoryViewController()
-        createCategoryViewController.delegate = self
+        let createCategoryViewController = CreateCategoryViewController(viewModel: trackerCategoriesViewModel)
         present(createCategoryViewController, animated: true)
     }
     
@@ -82,7 +80,8 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     
-    init(){
+    init(viewModel: TrackerCateogoriesViewModel){
+        self.trackerCategoriesViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
     }
@@ -93,19 +92,33 @@ final class AddNewCategoryViewController : UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
-        AddNewCategoryViewController.categories = fetchedCategories
+        binding()
         addSubviews()
-        setupContainerView()
         activateConstraints()
-        
+        self.setupContainerView()
+        self.categoriesTableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        binding()
+    }
+    
+   private func binding(){
+       trackerCategoriesViewModel.categoriesBinding = { [weak self] _ in
+               guard let self = self else  {return}
+              self.prepareCategoriesTableView()
+               self.categoriesTableView.reloadData()
+           self.setupContainerView()
+           self.categoriesTableView.reloadData()
+           }
+    }
+    
     
     func updateCategoriesTableViewHeight(){
         let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
         let cellHeight: CGFloat = 75
         let totalHeight = CGFloat(numberOfCells) * cellHeight
-        categoriesTableView.heightAnchor.constraint(equalToConstant: totalHeight)
+        categoriesTableView.heightAnchor.constraint(equalToConstant: totalHeight).isActive = true
         
     }
     func setupContainerView(){
@@ -114,7 +127,7 @@ final class AddNewCategoryViewController : UIViewController{
         }
         containerViewHolder.removeConstraints(containerViewHolder.constraints)
         
-        if AddNewCategoryViewController.categories.isEmpty {
+        if self.trackerCategoriesViewModel.trackerCategories.isEmpty {
             starLabel.isHidden = false
             starImageView.isHidden = false
             containerViewHolder.addSubview(starImageView)
@@ -137,7 +150,6 @@ final class AddNewCategoryViewController : UIViewController{
             let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
             let cellHeight: CGFloat = 75
             let totalHeight = CGFloat(numberOfCells) * cellHeight
-            
             
             NSLayoutConstraint.activate([
                 categoriesTableView.topAnchor.constraint(equalTo: containerViewHolder.topAnchor),
@@ -175,13 +187,13 @@ final class AddNewCategoryViewController : UIViewController{
 
 extension AddNewCategoryViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AddNewCategoryViewController.categories.count
+        return self.trackerCategoriesViewModel.trackerCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
                                                        for: indexPath) as? NewCategoryTableViewCell else {return NewCategoryTableViewCell()}
-        let newTitle = AddNewCategoryViewController.categories[indexPath.row].title
+        let newTitle = self.trackerCategoriesViewModel.trackerCategories[indexPath.row].title
         cell.updateTitleCellLabel(with: newTitle)
         return cell
     }
@@ -192,13 +204,10 @@ extension AddNewCategoryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
                                                        for: indexPath) as? NewCategoryTableViewCell else {return}
-        
         cell.toggleImageViewVisibility()
-        
-        let selectedCategory = AddNewCategoryViewController.categories[indexPath.row]
-        
-        categoryViewControllerDelegate?.updateEventSelectedCategory(with: selectedCategory)
-        
+    
+        self.trackerCategoriesViewModel.didSelect(at: indexPath.row)
+    
         categoriesTableView.deselectRow(at: indexPath, animated: true)
         dismiss(animated: true)
     }
@@ -206,17 +215,6 @@ extension AddNewCategoryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
 }
 
-
-extension AddNewCategoryViewController : CreatingCategoryViewControllerProtocol {
-    func creatingNewCategory(with name: String) {
-        let newCategory = TrackerCategory(title: name, trackers: [])
-        AddNewCategoryViewController.categories.append(newCategory)
-        categoriesTableView.reloadData()
-        setupContainerView()
-    }
-    
-    
-}
 
 
 

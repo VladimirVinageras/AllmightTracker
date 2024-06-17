@@ -8,9 +8,9 @@
 import Foundation
 
 
-protocol CategoryViewControllerProtocol{
-    func updateEventSelectedCategory(with newCategory: TrackerCategory)
-}
+//protocol CategoryViewControllerProtocol{
+//    func updateEventSelectedCategory(with newCategory: TrackerCategory)
+//}
 
 protocol CreatingCategoryViewControllerProtocol : AnyObject{
     func creatingNewCategory(with name: String)

@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 final class CreateHabitViewController : UIViewController{
-    
+    var viewModel : TrackerCateogoriesViewModel
+
     
     //MARK: Data
     private var eventTitle: String?
@@ -21,6 +22,7 @@ final class CreateHabitViewController : UIViewController{
     private var isAnHabit: Bool
     
     var trackersViewControllerShared = TrackersViewController.shared
+    let trackerCategoryStore = TrackerCategoryStore()
     
     private let colorsCollection: [UIColor] = [
         .colorSelection1, .colorSelection2, .colorSelection3 , .colorSelection4, .colorSelection5, .colorSelection6,
@@ -159,6 +161,8 @@ final class CreateHabitViewController : UIViewController{
     //MARK: Functions
     init(isAnHabit : Bool ){
         self.isAnHabit = isAnHabit
+       viewModel = TrackerCateogoriesViewModel(trackerCategoryStore: trackerCategoryStore)
+        
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -168,12 +172,19 @@ final class CreateHabitViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .trackerWhite
+        self.viewModel.selectedCategoryBinding = { [weak self] _ in
+            guard let self = self else {return}
+            self.selectedCategory = viewModel.selectedCategory?.title
+            self.setupTableView()
+            self.trackerParametersTableView.reloadData()
+        }
+        
         newHabitNameTextField.delegate = self
         setupCollectionViews()
         setupTableView()
         addingSubviews()
         activateConstraints()
-      
+        trackerParametersTableView.reloadData()
         weekDays = []
         creatingDayForNonHabitEvent()
     }
@@ -467,15 +478,14 @@ extension CreateHabitViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let addNewCategoryViewController = AddNewCategoryViewController()
-            addNewCategoryViewController.categoryViewControllerDelegate = self
+                if indexPath.row == 0 {
+            let addNewCategoryViewController = AddNewCategoryViewController(viewModel: viewModel)
+        //    addNewCategoryViewController.categoryViewControllerDelegate = self
             present(addNewCategoryViewController, animated: true)
         }
         else{
             let addNewTrackerScheduleViewController = AddNewTrackerScheduleViewController()
             addNewTrackerScheduleViewController.scheduleViewControllerDelegate = self
-            addNewTrackerScheduleViewController
             present(addNewTrackerScheduleViewController, animated: true)
         }
     }
@@ -554,17 +564,12 @@ func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognize
 
 //MARK: - UIEventControllerProtocol
 
-extension CreateHabitViewController : CategoryViewControllerProtocol, ScheduleViewControllerProtocol {
+extension CreateHabitViewController : ScheduleViewControllerProtocol {
     func checkingSelectedDays() -> [ScheduleDay] {
         return weekDays ?? []
     }
     
-    
-    func updateEventSelectedCategory(with newCategory: TrackerCategory) {
-        selectedCategory = newCategory.title
-    reloadTableViewCell(at: IndexPath(row: 0, section: 0))
-    }
-    
+        
     func updateEventSelectedDays(with newSelectedDays: String, and weekdays: [ScheduleDay]) {
         if newSelectedDays == "Пн, Вт, Ср, Чт, Пт, Сб, Вс" {
             selectedDays = "Каждый день"

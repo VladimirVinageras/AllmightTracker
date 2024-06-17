@@ -2,6 +2,7 @@
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Models/TrackerSchedule.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Models/ScheduleDay.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Screens/NewCategory/CreateCategoryViewController.swift
+/Users/vladimir/Desktop/AllmightTracker/Helpers/Binding.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Models/Weekday.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Screens/NewSchedule/NewTrackerScheduleTableViewCell.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Errors/TrackerRecordStoreError.swift
@@ -23,9 +24,10 @@
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Models/Tracker.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Stores/ScheduleDayStore.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Errors/ScheduleDayStoreError.swift
+/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/ViewModels/TrackerCateogoriesViewModel.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Screens/MainScreen(TabBar+Trackers+Stats)/StatisticsViewController.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Protocols&Delegates/TrackerCategoryStoreDelegate.swift
-/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/UIColorMarshalling.swift
+/Users/vladimir/Desktop/AllmightTracker/Helpers/UIColorMarshalling.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Stores/TrackerStore.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/AppDelegate.swift
 /Users/vladimir/Desktop/AllmightTracker/AllmightTracker/OnboardingScreen/OnboardingViewController.swift

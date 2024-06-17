@@ -56,7 +56,7 @@ final class TrackerCategoryStore: NSObject {
         fetchedResultsController.delegate = self
     }
     
-    func fetchTrackers() throws -> [TrackerCategory]{
+    func fetchTrackerCategories() throws -> [TrackerCategory]{
         let fetchRequest = TrackerCategoryCoreData.fetchRequest()
         let categoriesFromCoreData = try context.fetch(fetchRequest)
         return try categoriesFromCoreData.map{try self.trackerCategory(from: $0)}
