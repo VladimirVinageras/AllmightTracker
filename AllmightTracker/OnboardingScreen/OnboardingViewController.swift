@@ -8,6 +8,8 @@
 import UIKit
 
 final class OnboardingViewController: UIPageViewController {
+    
+    static let isNotMyFirstTime = "isNotMyFirstTime"
 
      init() {
          super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

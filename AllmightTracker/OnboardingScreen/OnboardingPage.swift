@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 
+
 final class OnboardingPage : UIViewController {
     var textLabel = UILabel()
     var imageView = UIImageView()
@@ -63,6 +64,7 @@ final class OnboardingPage : UIViewController {
         button.addTarget(self, action: #selector(buttonTaped), for: .touchUpInside)
     }
     @objc func buttonTaped(){
+        UserDefaults.standard.set(true, forKey: OnboardingViewController.isNotMyFirstTime)
         goToMainScreen()
     }
     
