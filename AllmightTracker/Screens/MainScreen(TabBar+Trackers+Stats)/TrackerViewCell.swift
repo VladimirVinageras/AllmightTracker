@@ -17,6 +17,7 @@ final class TrackerViewCell : UICollectionViewCell {
     private var amountOfDays = 0
     private var calendarDate = Date()
     private var trackerRecordStore = TrackerRecordStore()
+    private var trackerID: UUID?
     
     private var vStack : UIStackView = {
         let vstack = UIStackView()
@@ -80,23 +81,27 @@ final class TrackerViewCell : UICollectionViewCell {
     }()
     
     @objc private func plusButtonTapped() {
-        completedTask.toggle()
-        amountOfDays = completedTask ? amountOfDays + 1 : amountOfDays - 1
-        updateDaysLabelText()
-        updatePlusButton()
         
         if let trackerID = trackerID {
+            completedTask.toggle()
                     do {
                         if completedTask {
                             try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: calendarDate)
                             trackerRecordStore.delegate?.storeRecord()
+                            amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
                         } else {
-                            //TODO: - Implement removing records when task is marked as not completed
+                            try trackerRecordStore.deleteTrackerRecord(idCompletedTracker: trackerID, completionDate: calendarDate)
+                            trackerRecordStore.delegate?.storeRecord()
+                            amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
+                            amountOfDays = (amountOfDays < 0) ? 0 : amountOfDays
                         }
                     } catch {
                         print("Error saving tracker record: \(error)")
                     }
+            
                 }
+                updatePlusButton()
+                updateDaysLabelText()
     }
     
     private func updateDaysLabelText() {
@@ -110,7 +115,7 @@ final class TrackerViewCell : UICollectionViewCell {
         plusButton.setImage(UIImage(systemName: imageName, withConfiguration: configuration), for: .normal)
     }
     
-    private var trackerID: UUID?
+  
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -148,7 +153,6 @@ final class TrackerViewCell : UICollectionViewCell {
     
     
     private func prepareHorizontalStack(){
-        
         updateDaysLabelText()
         daysLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         hStack.addSubview(plusButton)
@@ -162,19 +166,26 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
 
-    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, completedTask: Bool, trackerID: UUID, calendarDate : Date) {
+    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : Date) {
         self.calendarDate = calendarDate
         self.color = color
         self.eventTitle = eventTitle
         self.emoji = emoji
-        self.completedTask = completedTask
         self.trackerID = trackerID
-        
+        do{
+            completedTask = try trackerRecordStore.fetchTrackerRecords().contains {
+                dateFormatter.string(from: $0.dateTrackerCompleted)  == dateFormatter.string(from: calendarDate) && $0.idCompletedTracker == trackerID
+            }
+         
+        }
+        catch{
+            print("\(TrackerStoreError.decodingErrorInvalidFetch)")
+        }
+        amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
         emojiLabel.backgroundColor = .trackerWhite.withAlphaComponent(0.3)
         emojiLabel.setTitle(emoji, for: .normal)
         trackerCard.backgroundColor = color
         updatePlusButton()
-        
         prepareVerticalStack()
     }
     
