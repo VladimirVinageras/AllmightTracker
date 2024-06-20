@@ -21,14 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = TabBarController()
 //        window?.makeKeyAndVisible()
         window = UIWindow(windowScene: scene)
-        if let isNotMyFirsTime = UserDefaults.standard.object(forKey: OnboardingViewController.isNotMyFirstTime){
+        if let isNotMyFirstTime = UserDefaults.standard.object(forKey: OnboardingViewController.isNotMyFirstTime){
             window?.rootViewController = TabBarController()
-            window?.makeKeyAndVisible()
         }
         else {
             window?.rootViewController = OnboardingViewController()
-            window?.makeKeyAndVisible()
         }
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

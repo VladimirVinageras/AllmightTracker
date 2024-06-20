@@ -11,7 +11,7 @@ import UIKit
 
 final class AddNewCategoryViewController : UIViewController{
 
-  //  var categoryViewControllerDelegate : CategoryViewControllerProtocol?
+  
     private var trackerCategoriesViewModel : TrackerCateogoriesViewModel
 
     let categoryCellReuseIdentifier = "categoryCell"
