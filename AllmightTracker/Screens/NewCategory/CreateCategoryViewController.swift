@@ -13,6 +13,8 @@ final class CreateCategoryViewController : UIViewController {
     
     weak var delegate: CreatingCategoryViewControllerProtocol?
     
+    private let viewModel : TrackerCateogoriesViewModel
+    
     private lazy var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,12 +70,14 @@ final class CreateCategoryViewController : UIViewController {
     @objc func createCategoryButtonTapped(){
         
         guard let name = newCategoryNameTextField.text else {return}
-        delegate?.creatingNewCategory(with: name)
+        let newCat = TrackerCategory(title: name, trackers: [])
+        viewModel.addCategory(category: newCat)
         dismiss(animated: true)
     }
     
     
-    init(){
+    init(viewModel: TrackerCateogoriesViewModel){
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
      }

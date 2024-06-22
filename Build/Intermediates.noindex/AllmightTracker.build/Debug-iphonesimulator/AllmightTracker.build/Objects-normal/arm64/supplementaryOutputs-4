@@ -1,0 +1,42 @@
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Stores/ScheduleDayStore.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStore.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStore.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStore.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStore.o"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStore.swiftconstvalues"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Protocols&Delegates/TrackerCategoryStoreDelegate.swift":
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCategoryStoreDelegate.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCategoryStoreDelegate.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCategoryStoreDelegate.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCategoryStoreDelegate.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCategoryStoreDelegate.dia"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/ViewModels/TrackerCateogoriesViewModel.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCateogoriesViewModel.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCateogoriesViewModel.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCateogoriesViewModel.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCateogoriesViewModel.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerCateogoriesViewModel.o"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Models/Tracker.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/Tracker.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/Tracker.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/Tracker.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/Tracker.o"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/Tracker.swiftconstvalues"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Errors/ScheduleDayStoreError.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStoreError.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStoreError.swiftconstvalues"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStoreError.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStoreError.dia"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDayStoreError.o"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/CoreData/Errors/TrackerScheduleStoreError.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerScheduleStoreError.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerScheduleStoreError.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerScheduleStoreError.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerScheduleStoreError.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/TrackerScheduleStoreError.swiftconstvalues"
+"/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Screens/MainScreen(TabBar+Trackers+Stats)/StatisticsViewController.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/StatisticsViewController.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/StatisticsViewController.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/StatisticsViewController.swiftconstvalues"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/StatisticsViewController.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/StatisticsViewController.o"

@@ -8,14 +8,16 @@
 import Foundation
 import UIKit
 
+let dateFormatter : DateFormatter = {
+   let df = DateFormatter()
+    df.dateFormat = "dd.MM.yy"
+    return df
+}()
+
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
-    let dateFormatter : DateFormatter = {
-       let df = DateFormatter()
-        df.dateFormat = "dd.MM.yy"
-        return df
-    }()
+  
     
     
     
@@ -111,7 +113,7 @@ final class TrackersViewController : UIViewController {
         view.backgroundColor = .trackerWhite
         trackerCategoryStore.delegate = self
         
-        let tempCategories = try? trackerCategoryStore.fetchTrackers()
+        let tempCategories = try? trackerCategoryStore.fetchTrackerCategories()
         categories = tempCategories ?? categories
         
         let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
@@ -135,6 +137,21 @@ final class TrackersViewController : UIViewController {
     //MARK: - @OBJC Functions
     
     @objc private func reloadView() {
+        do {
+             categories = try trackerCategoryStore.fetchTrackerCategories()
+             if let dateForFiltering = dateForFiltering {
+                 completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
+                     let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
+                     let selectedDate = dateFormatter.string(from: dateForFiltering)
+                     return recordDate == selectedDate
+                 }
+             }
+         } catch {
+             print("Error fetching data: \(error)")
+         }
+
+         filteredCategories = filteringEventsByDate(from: categories)
+        
         
         setupContainerView()
         setupContainerHolder()
@@ -145,22 +162,28 @@ final class TrackersViewController : UIViewController {
         view.bringSubviewToFront(trackerDatePicker)
     }
     
-    @objc func dateValueChanged(_ sender: UIDatePicker) throws {
+    @objc func dateValueChanged(_ sender: UIDatePicker) {
         updateLabel(with: sender.date)
         isActiveDateFiltering = true
         dateForFiltering = sender.date
         if let dateForFiltering = dateForFiltering {
             isTryingToChangeTheFuture = Date() < dateForFiltering
         }
-        let calendar = Calendar.current
-        completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
-            let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
-            let currentDate = dateFormatter.string(from: sender.date)
-            return recordDate == currentDate
+        
+        do{
+            completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
+                let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
+                let currentDate = dateFormatter.string(from: sender.date)
+                return recordDate == currentDate
+            }
+
+            trackerDatePicker.isHidden = true
+            view.sendSubviewToBack(trackerDatePicker)
+            reloadView()
         }
-        trackerDatePicker.isHidden = true
-        view.sendSubviewToBack(trackerDatePicker)
-        reloadView()
+        catch {
+            print("Error fetching tracker records: \(error)")
+        }
     }
     
     @objc private func plusButtonTapped() {
@@ -291,12 +314,6 @@ final class TrackersViewController : UIViewController {
                 newTrackerCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(collectionHeight))
             ])
             newTrackerCollectionView.reloadData()
-            
-            print("🙈🙈🙈🙈🙈Category: \(category.title)")
-            for tracker in category.trackers {
-                print("      🙈🙈🙈 Tracker: \(tracker.name)")
-            }
-            
         }
         scrollView.addSubview(vStack)
         
@@ -343,13 +360,6 @@ final class TrackersViewController : UIViewController {
             }
             return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
         }
-        
-        for category in repCategories {
-            print("Category: \(category.title)")
-            for tracker in category.trackers {
-                print(" Tracker: \(tracker.name)")
-            }
-        }
         return repCategories
     }
     
@@ -376,10 +386,9 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let eventTitle = currentEvent.name
         let color = currentEvent.color
         let emoji = currentEvent.emoji
-        let completedTask = completedTrackers.contains { $0.idCompletedTracker == currentEvent.id } && !isTryingToChangeTheFuture
         let eventId = currentEvent.id
         
-        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, completedTask: completedTask, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
+        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
         
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         return cell
@@ -421,11 +430,14 @@ extension TrackersViewController: TrackerRecordStoreDelegate {
 
 extension TrackersViewController : TrackerCategoryStoreDelegate {
     func storeCategoryDidChange() {
-        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackers() else {return}
+        guard let fetchedCategories = try? trackerCategoryStore.fetchTrackerCategories() else {return}
         self.categories = fetchedCategories
         self.setupContainerView()
         self.setupContainerHolder()
     }
+    
+    
+    
 }
 
 

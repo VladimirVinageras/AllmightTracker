@@ -8,6 +8,5 @@
 import Foundation
 
 protocol TrackerRecordStoreDelegate: AnyObject {
-    func storeRecord() 
-  
+    func storeRecord()
 }

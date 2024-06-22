@@ -21,7 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = TabBarController()
 //        window?.makeKeyAndVisible()
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = OnboardingViewController()
+        if let isNotMyFirstTime = UserDefaults.standard.object(forKey: OnboardingViewController.isNotMyFirstTime){
+            window?.rootViewController = TabBarController()
+        }
+        else {
+            window?.rootViewController = OnboardingViewController()
+        }
         window?.makeKeyAndVisible()
     }
 

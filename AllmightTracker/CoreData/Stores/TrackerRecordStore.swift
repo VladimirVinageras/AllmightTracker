@@ -17,7 +17,7 @@ final class TrackerRecordStore : NSObject {
     private lazy var fetchedResultsController = {
         let fetchRequest = TrackerRecordCoreData.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \TrackerRecordCoreData.id , ascending: true)
+            NSSortDescriptor(keyPath: \TrackerRecordCoreData.idCompletedTracker , ascending: true)
         ]
         let controller = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -62,6 +62,34 @@ final class TrackerRecordStore : NSObject {
         try context.save()
     }
     
+    func deleteTrackerRecord (idCompletedTracker: UUID, completionDate: Date) throws {
+        let fetchRequest = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
+        var trackerRecordsCoreData = try context.fetch(fetchRequest)
+        let trackerRecordCoreData = trackerRecordsCoreData.first { record in
+            record.idCompletedTracker == idCompletedTracker &&
+            record.datetTrackerCompleted == completionDate
+        }
+        guard let trackerRecordCoreData = trackerRecordCoreData else {return}
+        context.delete(trackerRecordCoreData)
+        trackerRecordsCoreData = try context.fetch(fetchRequest)
+    }
+    
+    
+    func countingTimesCompleted(idCompletedTracker: UUID) -> Int{
+        var records : [TrackerRecord] = []
+        do {
+            records = try fetchTrackerRecords().filter {
+                $0.idCompletedTracker == idCompletedTracker
+            }
+        }
+            catch{
+                print("Error fetching tracker record: \(TrackerStoreError.decodingErrorInvalidFetch)")
+                return 0
+            }
+            return records.count
+    }
+    
+    
     func trackerRecord(from trackerRecordCoreData: TrackerRecordCoreData) throws -> TrackerRecord {
         
         guard let recordDate = trackerRecordCoreData.datetTrackerCompleted,
@@ -74,12 +102,6 @@ final class TrackerRecordStore : NSObject {
 
 }
 
-//extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        delegate?.storeRecord()
-//    }
-//}
 
 
 
