@@ -14,6 +14,10 @@ let dateFormatter : DateFormatter = {
     return df
 }()
 
+
+let dictionaryUI = DictionaryUI()
+
+
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
@@ -212,12 +216,12 @@ final class TrackersViewController : UIViewController {
         addTrackerButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
-        screenTitle.text = "Трекеры"
+        screenTitle.text = dictionaryUI.trackersViewTitle
         screenTitle.textColor = .trackerBlack
         screenTitle.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         
         trackerSearchField.translatesAutoresizingMaskIntoConstraints = false
-        trackerSearchField.placeholder = "Поиск"
+        trackerSearchField.placeholder = dictionaryUI.trackersViewSearchHolderText
         trackerSearchField.frame = CGRect(origin: .zero, size: CGSize(width: 288, height: 36))
         trackerDateLabel.backgroundColor = .trackerLightGray12
         
@@ -234,7 +238,7 @@ final class TrackersViewController : UIViewController {
         starImageView.frame.size = CGSize(width: 80, height: 80)
         
         starLabel.translatesAutoresizingMaskIntoConstraints = false
-        starLabel.text = "Что будем отслеживать?"
+        starLabel.text = dictionaryUI.trackersViewHolderText
         starLabel.textColor = .trackerBlack
         starLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
     }

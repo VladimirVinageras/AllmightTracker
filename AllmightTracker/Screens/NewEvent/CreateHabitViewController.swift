@@ -72,7 +72,7 @@ final class CreateHabitViewController : UIViewController{
     private lazy var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Новая привычка"
+        titleLabel.text = dictionaryUI.createHabitViewTitle
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.textColor = .trackerBlack
         return titleLabel
@@ -80,7 +80,7 @@ final class CreateHabitViewController : UIViewController{
     private lazy var newHabitNameTextField : UITextField = {
         var newHabitTextField = UITextField()
         newHabitTextField.translatesAutoresizingMaskIntoConstraints = false
-        newHabitTextField.placeholder = "Введите название трекера"
+        newHabitTextField.placeholder = dictionaryUI.createHabitViewTextFieldHolderText
         newHabitTextField.backgroundColor = .trackerBackgroundDay
         newHabitTextField.layer.cornerRadius = 16
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
@@ -108,7 +108,7 @@ final class CreateHabitViewController : UIViewController{
     private lazy var restrictionWarningLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ограничение 38 символов"
+        label.text = dictionaryUI.createHabitViewLongTrackerTitleLimitText 
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.textColor = .trackerRed
         label.isHidden = true
@@ -126,7 +126,7 @@ final class CreateHabitViewController : UIViewController{
         cancelBtn.layer.borderColor = UIColor.trackerRed.cgColor
         cancelBtn.layer.cornerRadius = 16
         cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        cancelBtn.setTitle("Отменить", for: .normal)
+        cancelBtn.setTitle(dictionaryUI.createHabitViewBtnCancelTitle, for: .normal)
         cancelBtn.addTarget(self, action: #selector(cancelBtnTaped), for: .touchUpInside)
         cancelBtn.translatesAutoresizingMaskIntoConstraints = false
         return cancelBtn
@@ -137,7 +137,7 @@ final class CreateHabitViewController : UIViewController{
         createButton.backgroundColor = .trackerGray
         createButton.layer.cornerRadius = 16
         createButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        createButton.setTitle("Создать", for: .normal)
+        createButton.setTitle(dictionaryUI.createHabitViewBtnCreateTitle, for: .normal)
         createButton.addTarget(self, action: #selector(createEventButtonTapped), for: .touchUpInside)
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.isEnabled = false
@@ -390,7 +390,7 @@ extension CreateHabitViewController : UICollectionViewDataSource{
         }
         
         guard  let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: id, for: indexPath) as? HeaderCollectionView else { return HeaderCollectionView()}
-        header.titleLabel.text = collectionView == emojisCollectionView ? "Emojis" : "Цвет"
+        header.titleLabel.text = collectionView == emojisCollectionView ? dictionaryUI.createHabitViewEmojisCollectionTitle : dictionaryUI.createHabitViewColorCollectionTitle
         return header
     }
 }
@@ -464,12 +464,12 @@ extension CreateHabitViewController : UITableViewDelegate, UITableViewDataSource
         else { return UITableViewCell() }
         
         if indexPath.row == 0 {
-            cell.updateTitleCellLabel(with: "Категория")
+            cell.updateTitleCellLabel(with: dictionaryUI.createHabitViewCellCategory)
             if let selectedCategory = self.selectedCategory{
                 cell.updateSelectedElementsLabel(with: selectedCategory)
             }
         }else {
-            cell.updateTitleCellLabel(with: "Расписание")
+            cell.updateTitleCellLabel(with: dictionaryUI.createHabitViewCellSchedule)
             if let selectedDays = self.selectedDays {
                 cell.updateSelectedElementsLabel(with: selectedDays)
             }
@@ -571,8 +571,9 @@ extension CreateHabitViewController : ScheduleViewControllerProtocol {
     
         
     func updateEventSelectedDays(with newSelectedDays: String, and weekdays: [ScheduleDay]) {
-        if newSelectedDays == "Пн, Вт, Ср, Чт, Пт, Сб, Вс" {
-            selectedDays = "Каждый день"
+        if newSelectedDays == "\(dictionaryUI.weekDayShortMonday), \(dictionaryUI.weekDayShortThuesday), \(dictionaryUI.weekDayShortWednesday), \(dictionaryUI.weekDayShortThursday), \(dictionaryUI.weekDayShortFriday), \(dictionaryUI.weekDayShortSaturday), \(dictionaryUI.weekDayShortSunday)"
+           {
+            selectedDays = dictionaryUI.createHabitViewEveryDayHabitText
         }else{
             selectedDays = newSelectedDays
         }

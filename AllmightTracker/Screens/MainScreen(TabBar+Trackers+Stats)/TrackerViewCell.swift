@@ -105,7 +105,7 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
     private func updateDaysLabelText() {
-        daysLabel.text = "\(amountOfDays) \(dayText(amountOfDays: amountOfDays))"
+        daysLabel.text = dayText(amountOfDays: amountOfDays)
     }
     
     private func updatePlusButton() {
@@ -129,11 +129,18 @@ final class TrackerViewCell : UICollectionViewCell {
     }
         
     private func dayText(amountOfDays: Int) -> String{
-        switch amountOfDays {
-        case 1: return "день"
-        case 2...4: return "дня"
-        default: return "дней"
-        }
+        let amountOfDaysTaskCompleted = amountOfDays
+        let daysTextString = String.localizedStringWithFormat(
+            NSLocalizedString("numberOfDays", comment: ""),
+            amountOfDaysTaskCompleted
+        )
+        return daysTextString
+        
+//        switch amountOfDays {
+//        case 1: return "день"
+//        case 2...4: return "дня"
+//        default: return "дней"
+//        }
     }
     
     private func prepareCard(){

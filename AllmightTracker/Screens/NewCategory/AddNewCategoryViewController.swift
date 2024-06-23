@@ -18,7 +18,7 @@ final class AddNewCategoryViewController : UIViewController{
     
     private var newCategoryButton : UIButton = {
         let categoryButton = UIButton(type: .custom)
-        categoryButton.setTitle("Добавить категорию", for: .normal)
+        categoryButton.setTitle(dictionaryUI.addCategoryViewBtnAddCategory, for: .normal)
         categoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         categoryButton.setTitleColor(.trackerWhite, for: .normal)
         categoryButton.backgroundColor = .trackerBlack
@@ -37,7 +37,7 @@ final class AddNewCategoryViewController : UIViewController{
     private var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Категория"
+        titleLabel.text = dictionaryUI.addCategoryViewTitle
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.textColor = .trackerBlack
         return titleLabel
@@ -72,7 +72,7 @@ final class AddNewCategoryViewController : UIViewController{
         let label = UILabel()
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Привычки и события можно \n объединить по смыслу"
+        label.text = dictionaryUI.addCategoryViewHolderText
         label.textAlignment = .center
         label.textColor = .trackerBlack
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)

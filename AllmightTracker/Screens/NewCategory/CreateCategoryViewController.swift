@@ -18,7 +18,7 @@ final class CreateCategoryViewController : UIViewController {
     private lazy var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Новая категория"
+        titleLabel.text = dictionaryUI.createCategoryTitle
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.textColor = .trackerBlack
         return titleLabel
@@ -27,7 +27,7 @@ final class CreateCategoryViewController : UIViewController {
     private lazy var newCategoryNameTextField : UITextField = {
         var newCategoryTextField = UITextField()
         newCategoryTextField.translatesAutoresizingMaskIntoConstraints = false
-        newCategoryTextField.placeholder = "Введите название категории"
+        newCategoryTextField.placeholder = dictionaryUI.createCategoryTextFieldHolderText
         newCategoryTextField.backgroundColor = .trackerBackgroundDay
         newCategoryTextField.layer.cornerRadius = 16
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
@@ -60,7 +60,7 @@ final class CreateCategoryViewController : UIViewController {
         createButton.backgroundColor = .trackerGray
         createButton.layer.cornerRadius = 16
         createButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        createButton.setTitle("Готово", for: .normal)
+        createButton.setTitle(dictionaryUI.createCategoryBtnReady, for: .normal)
         createButton.addTarget(self, action: #selector(createCategoryButtonTapped), for: .touchUpInside)
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.isEnabled = false

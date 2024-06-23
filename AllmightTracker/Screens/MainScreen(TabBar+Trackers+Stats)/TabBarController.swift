@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 final class TabBarController: UITabBarController {
-    
+  
     override func viewDidLoad() {
         let trackerViewController = UINavigationController(rootViewController: TrackersViewController.shared)
-        trackerViewController.tabBarItem = UITabBarItem(title: "Трекеры", image: UIImage(named: "tabBarTrackersIcon"), selectedImage: nil)
+        trackerViewController.tabBarItem = UITabBarItem(title: dictionaryUI.tabBarTrackers, image: UIImage(named: "tabBarTrackersIcon"), selectedImage: nil)
         
         let statisticsViewController = StatisticsViewController()
-        statisticsViewController.tabBarItem = UITabBarItem(title: "Статистика", image: UIImage(named: "tabBarStatisticsIcon"), selectedImage: nil)
+        statisticsViewController.tabBarItem = UITabBarItem(title: dictionaryUI.tabBarStatistics, image: UIImage(named: "tabBarStatisticsIcon"), selectedImage: nil)
         
         self.viewControllers = [trackerViewController, statisticsViewController]
         

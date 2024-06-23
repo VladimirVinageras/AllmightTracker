@@ -56,7 +56,7 @@ final class OnboardingPage : UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
     
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Вот это технологии!", for: .normal)
+        button.setTitle(dictionaryUI.onboardingViewBtnAction, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.backgroundColor = .trackerBlack

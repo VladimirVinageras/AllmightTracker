@@ -33,10 +33,10 @@ final class OnboardingViewController: UIPageViewController {
     
     lazy var pages: [OnboardingPage] = {
         let page1 = OnboardingPage(with: UIImage(resource: .onboardingBackgroundPage1))
-        page1.textLabel.text = "Отслеживайте только \n то, что хотите"
+        page1.textLabel.text = dictionaryUI.onboardingViewTextPage1
     
         let page2 = OnboardingPage(with: UIImage(resource: .onboardingBackgroundPage2))
-        page2.textLabel.text = "Даже если это \n не литры воды и йога"
+        page2.textLabel.text = dictionaryUI.onboardingViewTextPage2
         
         return [page1, page2]
     }()
