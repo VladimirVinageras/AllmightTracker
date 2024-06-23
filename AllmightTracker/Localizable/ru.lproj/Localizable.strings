@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  AllmightTracker
+
+  Created by Vladimir Vinakheras on 22.06.2024.
+  
+*/
+"onboardingView.TextPage1" = "Отслеживайте только \n то, что хотите"
+"onboardingView.TextPage2" = "Даже если это \n не литры воды и йога"
+"onboardingView.BtnAction" = "Вот это технологии!"
+"tabBar.trackers" = "Трекеры" ;
+"tabBar.statistics" = "Статистика" ;
+"trackersView.title" = "Трекеры" ;
+"trackersView.searchHolderText" = "Поиск"
+"trackersView.holderText" = "Что будем отслеживать?"
+"addNewTrackerView.createTrackerTitle" = "Создание трекера";
+"addNewTrackerView.habit" = "Привычика";
+"addNewTrackerView.onceTimeEvent" = "Нерегулярное событие";
+"createHabitView.title" = "Новая привычка";
+"createHabtiView.cellCategory" = "Категория";
+"createHabtiView.cellSchedule" = "Расписание";
+"createHabtiView.emojisCollectionTitle" = "Emojis";
+"createHabtiView.colorCollectionTitle" = "Цвет";
+"createHabtiView.btnCancelTitle" = "Отмена";
+"createHabtiView.btnCreateTitle" = "Создать";
+"createHabtiView.textFieldHolderText" = "Введите название трекера ";
+"createHabtiView.everyDayHabit" = "Каждый день";
+"addCategoryView.title" = "Категория";
+"addCategoryView.btnAddCategory" = "Добавить категорию";
+"addCategpryView.holderText" =
+"createCategory.title" = "Новая категория";
+"createCategory.textFieldHolderText" = "Введите название категории";
+"createCategory.btnReady"  = "Готово";
+"addNewSchedule.title" = "Расписание";
+"addNewSchedule.btnReady" = "Готово";
+"addNewSchedule.monday" = "Понедельник";
+"addNewSchedule.thuesday" = "Вторник";
+"addNewSchedule.wednesday" = "Среда";
+"addNewSchedule.thursday" = "Четверг";
+"addNewSchedule.friday" = "Пятница";
+"addNewSchedule.saturday" = "Суббота";
+"addNewSchedule.sunday" = "Воскресенье";
+"addNewSchedule.shortMonday" = "Пн";
+"addNewSchedule.shortThuesday" = "Вт";
+"addNewSchedule.shortWednesday" = "Ср";
+"addNewSchedule.shortThursday" = "Чт";
+"addNewSchedule.shortFriday" = "Пт";
+"addNewSchedule.shortSaturday" = "Сб";
+"addNewSchedule.shortSunday" = "Вс";
