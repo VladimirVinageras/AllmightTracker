@@ -21,10 +21,6 @@ let dictionaryUI = DictionaryUI()
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
-  
-    
-    
-    
     var categories: [TrackerCategory] = []
     //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
@@ -33,10 +29,13 @@ final class TrackersViewController : UIViewController {
     
     //MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
+    var isActiveSearchFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
     var filteredCategories : [TrackerCategory] = []
+    var filteredData : [TrackerCategory] = []
     var completedTrackers: [TrackerRecord] = []
+    
     
     var collectionViewDelegate : UICollectionViewDelegateFlowLayout?
     let trackersCollectionViewCellIdentifier = "trackersCollectionViewCellIdentifier"
@@ -142,19 +141,19 @@ final class TrackersViewController : UIViewController {
     
     @objc private func reloadView() {
         do {
-             categories = try trackerCategoryStore.fetchTrackerCategories()
-             if let dateForFiltering = dateForFiltering {
-                 completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
-                     let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
-                     let selectedDate = dateFormatter.string(from: dateForFiltering)
-                     return recordDate == selectedDate
-                 }
-             }
-         } catch {
-             print("Error fetching data: \(error)")
-         }
-
-         filteredCategories = filteringEventsByDate(from: categories)
+            categories = try trackerCategoryStore.fetchTrackerCategories()
+            if let dateForFiltering = dateForFiltering {
+                completedTrackers = try trackerRecordStore.fetchTrackerRecords().filter { record in
+                    let recordDate = dateFormatter.string(from: record.dateTrackerCompleted)
+                    let selectedDate = dateFormatter.string(from: dateForFiltering)
+                    return recordDate == selectedDate
+                }
+            }
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+        
+        filteredCategories = filteringEventsByDate(from: categories)
         
         
         setupContainerView()
@@ -180,7 +179,7 @@ final class TrackersViewController : UIViewController {
                 let currentDate = dateFormatter.string(from: sender.date)
                 return recordDate == currentDate
             }
-
+            
             trackerDatePicker.isHidden = true
             view.sendSubviewToBack(trackerDatePicker)
             reloadView()
@@ -194,6 +193,24 @@ final class TrackersViewController : UIViewController {
         present(AddNewTrackerViewController(), animated: true)
     }
     
+    
+    @objc private func textDidChange(_ searchField: UISearchTextField) {
+        if let searchText = searchField.text, !searchText.isEmpty {
+            filteredData = categories.compactMap { category -> TrackerCategory? in
+                let filteredTrackers = category.trackers.filter {tracker in
+                    tracker.name.lowercased().contains (searchText.lowercased())
+                }
+                return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
+            }
+            isActiveSearchFiltering = true
+        }
+            else {
+                filteredData = categories
+            }
+            categories = filteredData
+            reloadView()
+    }
+
     //MARK: - Setups , Constraints
     private func prepareDateUIItems(){
         let currentDate = Date()
@@ -222,8 +239,10 @@ final class TrackersViewController : UIViewController {
         
         trackerSearchField.translatesAutoresizingMaskIntoConstraints = false
         trackerSearchField.placeholder = dictionaryUI.trackersViewSearchHolderText
+        trackerSearchField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         trackerSearchField.frame = CGRect(origin: .zero, size: CGSize(width: 288, height: 36))
         trackerDateLabel.backgroundColor = .trackerLightGray12
+        
         
         view.addSubview(trackerSearchField)
         view.addSubview(screenTitle)
@@ -304,6 +323,10 @@ final class TrackersViewController : UIViewController {
         }
         
         filteredCategories = filteringEventsByDate(from: categories)
+        if isActiveSearchFiltering {
+            filteredCategories = filteredData
+            isActiveSearchFiltering = false
+        }
         
         for category in filteredCategories {
             let layout = UICollectionViewFlowLayout()
@@ -439,10 +462,8 @@ extension TrackersViewController : TrackerCategoryStoreDelegate {
         self.setupContainerView()
         self.setupContainerHolder()
     }
-    
-    
-    
 }
+
 
 
 
