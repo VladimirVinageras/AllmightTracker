@@ -10,6 +10,11 @@
 "onboardingView.BtnAction" = "Вот это технологии!";
 "tabBar.trackers" = "Трекеры" ;
 "tabBar.statistics" = "Статистика" ;
+"trackersView.contextMenu.pin" = "Закрепить"; 
+"trackersView.contextMenu.unpin" = "Открепить";
+"trackersView.contextMenu.edit" = "Редактировать";
+"trackersView.contextMenu.delete" = "Удалить";
+"trackersView.contextMenu.deleteMessage" = "Уверены что хотите удалить трекер?";
 "trackersView.title" = "Трекеры" ;
 "trackersView.searchHolderText" = "Поиск";
 "trackersView.holderText" = "Что будем отслеживать?";

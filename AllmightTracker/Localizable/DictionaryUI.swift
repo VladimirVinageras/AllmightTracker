@@ -15,6 +15,11 @@ struct DictionaryUI {
     
     let tabBarTrackers = NSLocalizedString("tabBar.trackers", comment: "")
     let tabBarStatistics = NSLocalizedString("tabBar.statistics", comment: "")
+    let trackersViewContextMenuPin = NSLocalizedString("trackersView.contextMenu.pin", comment: "")
+    let trackersViewContextMenuUnpin = NSLocalizedString("trackersView.contextMenu.unpin", comment: "")
+    let trackersViewContextMenuEdit = NSLocalizedString("trackersView.contextMenu.edit", comment: "")
+    let trackersViewContextMenuDelete = NSLocalizedString("trackersView.contextMenu.delete", comment: "")
+    let trackersViewContextMenuDeleteMessage = NSLocalizedString("trackersView.contextMenu.deleteMessage", comment: "")
     let trackersViewTitle = NSLocalizedString("trackersView.title", comment: "")
     let trackersViewSearchHolderText = NSLocalizedString("trackersView.searchHolderText", comment: "")
     let trackersViewHolderText = NSLocalizedString("trackersView.holderText", comment: "")  

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 let dateFormatter : DateFormatter = {
-   let df = DateFormatter()
+    let df = DateFormatter()
     df.dateFormat = "dd.MM.yy"
     return df
 }()
@@ -49,6 +49,7 @@ final class TrackersViewController : UIViewController {
         label.layer.masksToBounds = true
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 17)
+        label.textColor = .trackerDateLabelText
         label.isUserInteractionEnabled = true
         
         return label
@@ -130,11 +131,14 @@ final class TrackersViewController : UIViewController {
         setupContainerHolder()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadTrackersViewController"), object: nil)
-        
-        
+
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadTrackersViewController"), object: nil)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     //MARK: - @OBJC Functions
@@ -204,13 +208,13 @@ final class TrackersViewController : UIViewController {
             }
             isActiveSearchFiltering = true
         }
-            else {
-                filteredData = categories
-            }
-            categories = filteredData
-            reloadView()
+        else {
+            filteredData = categories
+        }
+        categories = filteredData
+        reloadView()
     }
-
+    
     //MARK: - Setups , Constraints
     private func prepareDateUIItems(){
         let currentDate = Date()
@@ -239,6 +243,9 @@ final class TrackersViewController : UIViewController {
         
         trackerSearchField.translatesAutoresizingMaskIntoConstraints = false
         trackerSearchField.placeholder = dictionaryUI.trackersViewSearchHolderText
+        trackerSearchField.textColor = .trackerBlack
+        trackerSearchField.autocapitalizationType = .none
+        trackerSearchField.clearButtonMode = .whileEditing
         trackerSearchField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         trackerSearchField.frame = CGRect(origin: .zero, size: CGSize(width: 288, height: 36))
         trackerDateLabel.backgroundColor = .trackerLightGray12
@@ -332,6 +339,7 @@ final class TrackersViewController : UIViewController {
             let layout = UICollectionViewFlowLayout()
             let newTrackerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
             newTrackerCollectionView.tag = filteredCategories.firstIndex(of: category) ?? 0
+            newTrackerCollectionView.backgroundColor = .trackerWhite
             prepareTrackersCollectionView(for: newTrackerCollectionView)
             vStack.addArrangedSubview(newTrackerCollectionView)
             let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later
@@ -432,6 +440,107 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/2 - 3.5, height: 149)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        guard indexPaths.count > 0 else {return nil}
+        
+        let indexPath = indexPaths[0]
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TrackerViewCell else {
+            return UIContextMenuConfiguration()
+        }
+        
+        let actionTitle = cell.isPinHidden() ? dictionaryUI.trackersViewContextMenuPin : dictionaryUI.trackersViewContextMenuUnpin
+        
+        return UIContextMenuConfiguration( previewProvider: {
+            [weak self] in
+            cell.getTrackerCard()
+        }, actionProvider: { actions in
+            return UIMenu(children: [
+                UIAction(title: actionTitle) { [weak self] _ in
+                    if !cell.isPinHidden() {
+                        self?.unPinTracker(indexPath: indexPath)
+                        cell.willHidePin(is: true)
+                    }
+                    else{
+                        self?.pinTracker(indexPath: indexPath)
+                        cell.willHidePin(is: false)
+                    }
+                },
+                UIAction(title: dictionaryUI.trackersViewContextMenuEdit) { [weak self] _ in
+                    self?.editTracker(indexPath: indexPath)
+                },
+                UIAction(title: dictionaryUI.trackersViewContextMenuDelete, attributes: .destructive) { [weak self] _ in
+                    guard let self = self else {return}
+                    
+                    let deleteAction  = {[weak self] in
+                        guard cell.getTrackerID() != nil else {return}
+                        self?.deleteTracker(indexPath: indexPath)
+                    }
+                    
+                    let deleteConfirmationSheet = createAlert(title: "", message: dictionaryUI.trackersViewContextMenuDeleteMessage, action: deleteAction)
+                    
+                    self.present(deleteConfirmationSheet, animated: true)
+                    
+                }
+            ])
+        })
+    }
+    
+    
+    
+    private func createAlert(title: String, message: String, action: @escaping ()-> Void) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: dictionaryUI.trackersViewContextMenuDelete, style: .destructive){ _ in
+            action()
+        })
+        
+        alert.addAction(UIAlertAction(title: dictionaryUI.createHabitViewBtnCancelTitle, style: .cancel) {action in
+            alert.dismiss(animated: true)
+        })
+        
+        
+        return alert
+    }
+    
+    
+    private func pinTracker(indexPath: IndexPath){
+        let trackerId = trackerStore.trackers[indexPath.row].id
+        
+        do {
+            try trackerStore.pinUnpinTracker(id: trackerId, with: true)
+        }
+        catch{
+            print("Failed to update the tracker: \(error.localizedDescription)")
+        }
+    }
+    
+    private func unPinTracker(indexPath: IndexPath){
+        let trackerId = trackerStore.trackers[indexPath.row].id
+        
+        do {
+            try trackerStore.pinUnpinTracker(id: trackerId, with: false)
+        }
+        catch{
+            print("Failed to update the tracker: \(error.localizedDescription)")
+        }
+    }
+    
+    private func editTracker(indexPath: IndexPath){
+       //TODO: - IMPLEMENT the edit view
+    }
+    
+    private func deleteTracker(indexPath: IndexPath){
+        let trackerId = trackerStore.trackers[indexPath.row].id
+        do {
+            try  trackerStore.deleteTracker(by: trackerId)
+        }
+        catch{
+            print("Failed trying to delete the tracker: \(error.localizedDescription)")
+        }
+       
+    }
+    
 }
 
 //MARK: TrackersViewControllerProtocol

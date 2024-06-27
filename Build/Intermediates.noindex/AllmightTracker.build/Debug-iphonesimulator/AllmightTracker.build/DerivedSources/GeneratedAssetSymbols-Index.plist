@@ -198,6 +198,16 @@
 			<key>catalogPath</key>
 			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACColorNameOnboardingViewGray</string>
+			<key>relativePath</key>
+			<string>./Colors/OnboardingViewGray.colorset</string>
+			<key>swiftSymbol</key>
+			<string>onboardingViewGray</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACColorNameTrackerBackgroundDay</string>
 			<key>relativePath</key>
 			<string>./Colors/TrackerBackgroundDay.colorset</string>
@@ -223,6 +233,16 @@
 			<string>./Colors/TrackerBlue.colorset</string>
 			<key>swiftSymbol</key>
 			<string>trackerBlue</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameTrackerDateLabelTextColor</string>
+			<key>relativePath</key>
+			<string>./Colors/TrackerDateLabelTextColor.colorset</string>
+			<key>swiftSymbol</key>
+			<string>trackerDateLabelText</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -283,6 +303,16 @@
 			<string>./Colors/TrackerWhite.colorset</string>
 			<key>swiftSymbol</key>
 			<string>trackerWhite</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameOnboardingViewBlack</string>
+			<key>relativePath</key>
+			<string>./Colors/onboardingViewBlack.colorset</string>
+			<key>swiftSymbol</key>
+			<string>onboardingViewBlack</string>
 		</dict>
 	</array>
 	<key>images</key>
@@ -366,6 +396,16 @@
 			<string>./Icons/notFoundImage.imageset</string>
 			<key>swiftSymbol</key>
 			<string>notFound</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePinSquare</string>
+			<key>relativePath</key>
+			<string>./Icons/pinSquare.imageset</string>
+			<key>swiftSymbol</key>
+			<string>pinSquare</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

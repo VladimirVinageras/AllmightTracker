@@ -66,6 +66,9 @@ static NSString * const ACColorNameColorSelection9 AC_SWIFT_PRIVATE = @"ColorSel
 /// The "LaunchScreenBackground" asset catalog color resource.
 static NSString * const ACColorNameLaunchScreenBackground AC_SWIFT_PRIVATE = @"LaunchScreenBackground";
 
+/// The "OnboardingViewGray" asset catalog color resource.
+static NSString * const ACColorNameOnboardingViewGray AC_SWIFT_PRIVATE = @"OnboardingViewGray";
+
 /// The "TrackerBackgroundDay" asset catalog color resource.
 static NSString * const ACColorNameTrackerBackgroundDay AC_SWIFT_PRIVATE = @"TrackerBackgroundDay";
 
@@ -74,6 +77,9 @@ static NSString * const ACColorNameTrackerBlack AC_SWIFT_PRIVATE = @"TrackerBlac
 
 /// The "TrackerBlue" asset catalog color resource.
 static NSString * const ACColorNameTrackerBlue AC_SWIFT_PRIVATE = @"TrackerBlue";
+
+/// The "TrackerDateLabelTextColor" asset catalog color resource.
+static NSString * const ACColorNameTrackerDateLabelTextColor AC_SWIFT_PRIVATE = @"TrackerDateLabelTextColor";
 
 /// The "TrackerGray" asset catalog color resource.
 static NSString * const ACColorNameTrackerGray AC_SWIFT_PRIVATE = @"TrackerGray";
@@ -92,6 +98,9 @@ static NSString * const ACColorNameTrackerSuperLightGray AC_SWIFT_PRIVATE = @"Tr
 
 /// The "TrackerWhite" asset catalog color resource.
 static NSString * const ACColorNameTrackerWhite AC_SWIFT_PRIVATE = @"TrackerWhite";
+
+/// The "onboardingViewBlack" asset catalog color resource.
+static NSString * const ACColorNameOnboardingViewBlack AC_SWIFT_PRIVATE = @"onboardingViewBlack";
 
 /// The "Logo" asset catalog image resource.
 static NSString * const ACImageNameLogo AC_SWIFT_PRIVATE = @"Logo";
@@ -116,6 +125,9 @@ static NSString * const ACImageNameNavigationRight AC_SWIFT_PRIVATE = @"navigati
 
 /// The "notFoundImage" asset catalog image resource.
 static NSString * const ACImageNameNotFoundImage AC_SWIFT_PRIVATE = @"notFoundImage";
+
+/// The "pinSquare" asset catalog image resource.
+static NSString * const ACImageNamePinSquare AC_SWIFT_PRIVATE = @"pinSquare";
 
 /// The "plus" asset catalog image resource.
 static NSString * const ACImageNamePlus AC_SWIFT_PRIVATE = @"plus";

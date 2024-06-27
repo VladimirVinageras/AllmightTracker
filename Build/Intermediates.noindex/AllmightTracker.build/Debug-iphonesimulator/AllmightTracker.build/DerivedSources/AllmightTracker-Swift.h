@@ -577,6 +577,14 @@ SWIFT_CLASS("_TtC15AllmightTracker16TabBarController")
 @end
 
 
+SWIFT_CLASS("_TtC15AllmightTracker11TrackerCard")
+@interface TrackerCard : UIView
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
 SWIFT_CLASS_NAMED("TrackerCategoryCoreData")
 @interface TrackerCategoryCoreData : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -623,8 +631,9 @@ SWIFT_CLASS_NAMED("TrackerCoreData")
 @interface TrackerCoreData (SWIFT_EXTENSION(AllmightTracker))
 @property (nonatomic, copy) NSString * _Nullable color;
 @property (nonatomic, copy) NSString * _Nullable emoji;
-@property (nonatomic, copy) NSUUID * _Nullable id;
+@property (nonatomic) BOOL isPinned;
 @property (nonatomic, copy) NSString * _Nullable name;
+@property (nonatomic, copy) NSUUID * _Nullable trackerId;
 @property (nonatomic, strong) TrackerScheduleCoreData * _Nullable schedule;
 @end
 
@@ -697,6 +706,7 @@ SWIFT_CLASS("_TtC15AllmightTracker22TrackersViewController")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)dateLabelTapped;
 - (void)dateValueChanged:(UIDatePicker * _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
@@ -705,6 +715,7 @@ SWIFT_CLASS("_TtC15AllmightTracker22TrackersViewController")
 
 
 
+@class UIContextMenuConfiguration;
 
 @interface TrackersViewController (SWIFT_EXTENSION(AllmightTracker)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
@@ -712,6 +723,7 @@ SWIFT_CLASS("_TtC15AllmightTracker22TrackersViewController")
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionReusableView * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSString * _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UIContextMenuConfiguration * _Nullable)collectionView:(UICollectionView * _Nonnull)collectionView contextMenuConfigurationForItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths point:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

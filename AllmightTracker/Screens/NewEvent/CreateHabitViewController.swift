@@ -202,7 +202,7 @@ final class CreateHabitViewController : UIViewController{
 
         let newCategoryName = selectedCategory
         let newTrackerSchedule = TrackerSchedule(id: UUID(), isAnHabit: isAnHabit, scheduledDays: weekDays)
-        let newTracker = Tracker(id: UUID(), name: eventTitle, color: selectedColor, emoji: selectedEmoji, schedule: newTrackerSchedule)
+        let newTracker = Tracker(id: UUID(), name: eventTitle, color: selectedColor, emoji: selectedEmoji, schedule: newTrackerSchedule, isPinned: false)
         
         trackersViewControllerShared.saveNewTracker(with: newCategoryName, for: newTracker)
         

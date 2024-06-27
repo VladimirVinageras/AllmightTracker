@@ -10,6 +10,11 @@
 "onboardingView.BtnAction" = "What a technology!";
 "tabBar.trackers" = "Trackers" ;
 "tabBar.statistics" = "Statistics" ;
+"trackersView.contextMenu.pin" = "Pin";
+"trackersView.contextMenu.unpin" = "Unpin";
+"trackersView.contextMenu.edit" = "Edit";
+"trackersView.contextMenu.delete" = "Delete";
+"trackersView.contextMenu.deleteMessage" = "Are you sure you want to delete the tracker?";
 "trackersView.title" = "Trackers" ;
 "trackersView.searchHolderText" = "Search";
 "trackersView.holderText" = "What will we track?";

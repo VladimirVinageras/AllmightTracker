@@ -51,6 +51,7 @@
 		E7DEF9C62C2768C700D4AA96 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7DEF9C42C2768C700D4AA96 /* Localizable.strings */; };
 		E7DEF9CA2C27708800D4AA96 /* DictionaryUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEF9C92C27708800D4AA96 /* DictionaryUI.swift */; };
 		E7DEF9D22C27975200D4AA96 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = E7DEF9D02C27975200D4AA96 /* Localizable.stringsdict */; };
+		E7DEF9D62C2CE25800D4AA96 /* TrackerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEF9D52C2CE25800D4AA96 /* TrackerCard.swift */; };
 		E7EEAD1C2BE59F1900221B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */; };
 		E7EEAD1E2BE59F1900221B2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */; };
 		E7EEAD252BE59F1E00221B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7EEAD242BE59F1E00221B2A /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		E7DEF9D12C27975200D4AA96 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E7DEF9D32C2799A700D4AA96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E7DEF9D42C2799AB00D4AA96 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		E7DEF9D52C2CE25800D4AA96 /* TrackerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCard.swift; sourceTree = "<group>"; };
 		E7EEAD182BE59F1900221B2A /* AllmightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllmightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				E7EEAD2F2BE7BC8900221B2A /* TabBarController.swift */,
 				E70A7AB32C076D0400E688AE /* TrackerViewCell.swift */,
 				E70A7AB52C0987A400E688AE /* MainHeaderCollectionView.swift */,
+				E7DEF9D52C2CE25800D4AA96 /* TrackerCard.swift */,
 			);
 			path = "MainScreen(TabBar+Trackers+Stats)";
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				E762A23A2BFDF092009BA621 /* ScheduleViewControllerProtocol.swift in Sources */,
 				E7482EF92C18AAC200184A53 /* TrackerStoreDelegate.swift in Sources */,
 				E7BF0E4A2BF54915008C8E09 /* EmojiCollectionViewCell.swift in Sources */,
+				E7DEF9D62C2CE25800D4AA96 /* TrackerCard.swift in Sources */,
 				E74640702BEE9D140028826D /* TrackerRecord.swift in Sources */,
 				E7BF0E4C2BF552B1008C8E09 /* ColorsCollectionViewCell.swift in Sources */,
 				E70A7AB42C076D0400E688AE /* TrackerViewCell.swift in Sources */,

@@ -9,10 +9,13 @@ import Foundation
 import UIKit
 
 final class TrackerViewCell : UICollectionViewCell {
+    
+    
 
     private var color : UIColor = .clear
     private var eventTitle : String = ""
-    private var emoji : String = ""
+    private var emoji: String = ""
+
     private var completedTask : Bool = false
     private var amountOfDays = 0
     private var calendarDate = Date()
@@ -35,31 +38,7 @@ final class TrackerViewCell : UICollectionViewCell {
         return hstack
     }()
     
-    private var trackerCard : UIView = {
-        let card = UIView(frame: CGRect(x: 0, y: 0, width: 167, height: 90))
-        card.layer.cornerRadius = 16
-        card.translatesAutoresizingMaskIntoConstraints = false
-        return card
-    }()
-    private var titleEventLabel : UILabel = {
-        var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    
-    private var emojiLabel : UIButton = {
-        let label = UIButton(type: .system)
-        label.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .trackerWhite.withAlphaComponent(0.3)
-        label.layer.cornerRadius = 12
-        label.layer.masksToBounds = true
-        label.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.titleLabel?.textAlignment = .center
-        label.isEnabled = false
-        return label
-    }()
+    var trackerCard = TrackerCard()
 
     private var plusButton : UIButton = {
         var pButton = UIButton(type: .system)
@@ -79,6 +58,19 @@ final class TrackerViewCell : UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(vStack)
+        prepareTrackerCard()
+        prepareVerticalStack()
+        activateAllConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     @objc private func plusButtonTapped() {
         
@@ -113,21 +105,10 @@ final class TrackerViewCell : UICollectionViewCell {
         let imageName = completedTask ? "checkmark" : "plus"
         let configuration = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
         plusButton.setImage(UIImage(systemName: imageName, withConfiguration: configuration), for: .normal)
+        plusButton.tintColor = .trackerWhite
     }
     
   
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        contentView.addSubview(vStack)
-        prepareVerticalStack()
-        activateAllConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-        
     private func dayText(amountOfDays: Int) -> String{
         let amountOfDaysTaskCompleted = amountOfDays
         let daysTextString = String.localizedStringWithFormat(
@@ -135,29 +116,14 @@ final class TrackerViewCell : UICollectionViewCell {
             amountOfDaysTaskCompleted
         )
         return daysTextString
-        
-//        switch amountOfDays {
-//        case 1: return "день"
-//        case 2...4: return "дня"
-//        default: return "дней"
-//        }
     }
-    
-    private func prepareCard(){
-    
-        trackerCard.addSubview(emojiLabel)
-        
-        titleEventLabel.text = eventTitle
-        titleEventLabel.textAlignment = .left
-        titleEventLabel.textColor = .trackerWhite
-        titleEventLabel.numberOfLines = 2
-        titleEventLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        trackerCard.addSubview(titleEventLabel)
-        trackerCard.backgroundColor = color
-        trackerCard.layer.cornerRadius = 16
-  
+
+    private func prepareTrackerCard(){
+        trackerCard.color = color
+        trackerCard.eventTitle = eventTitle
+        trackerCard.emoji = emoji
+        trackerCard.prepareCard()
     }
-    
     
     private func prepareHorizontalStack(){
         updateDaysLabelText()
@@ -166,7 +132,7 @@ final class TrackerViewCell : UICollectionViewCell {
         hStack.addSubview(daysLabel)
     }
     private func prepareVerticalStack(){
-        prepareCard()
+        trackerCard.prepareCard()
         prepareHorizontalStack()
         vStack.addSubview(trackerCard)
         vStack.addSubview(hStack)
@@ -189,9 +155,8 @@ final class TrackerViewCell : UICollectionViewCell {
             print("\(TrackerStoreError.decodingErrorInvalidFetch)")
         }
         amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
-        emojiLabel.backgroundColor = .trackerWhite.withAlphaComponent(0.3)
-        emojiLabel.setTitle(emoji, for: .normal)
-        trackerCard.backgroundColor = color
+        
+        prepareTrackerCard()
         updatePlusButton()
         prepareVerticalStack()
     }
@@ -218,16 +183,6 @@ final class TrackerViewCell : UICollectionViewCell {
         hStack.widthAnchor.constraint(equalToConstant: 167),
         hStack.heightAnchor.constraint(equalToConstant: 58),
         
-        emojiLabel.topAnchor.constraint(equalTo: trackerCard.topAnchor, constant: 12),
-        emojiLabel.leadingAnchor.constraint(equalTo: trackerCard.leadingAnchor, constant: 12),
-        emojiLabel.heightAnchor.constraint(equalToConstant: 24),
-        emojiLabel.widthAnchor.constraint(equalToConstant: 24),
-        
-        titleEventLabel.centerXAnchor.constraint(equalTo: trackerCard.centerXAnchor),
-        titleEventLabel.bottomAnchor.constraint(equalTo: trackerCard.bottomAnchor, constant: -12),
-        titleEventLabel.heightAnchor.constraint(equalToConstant: 34),
-        titleEventLabel.widthAnchor.constraint(equalToConstant: 143),
-        
         plusButton.topAnchor.constraint(equalTo: hStack.topAnchor, constant: 8),
         plusButton.trailingAnchor.constraint(equalTo: hStack.trailingAnchor, constant: -12),
         plusButton.heightAnchor.constraint(equalToConstant: 34),
@@ -242,5 +197,32 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
     
+    func getTrackerID() -> UUID? {
+        return trackerID
+    }
+    
+    func getTrackerCard()-> UIViewController {
+        
+        var temporalTrackerCard = TrackerCard(color: color, eventTitle: eventTitle, emoji: emoji)
+        let trackerCardViewController = UIViewController()
+        trackerCardViewController.view.backgroundColor = color
+        trackerCardViewController.view.frame = CGRect(x: 0, y: 0, width: temporalTrackerCard.bounds.width, height: temporalTrackerCard.bounds.height)
+        trackerCardViewController.view.layer.cornerRadius = 0
+        trackerCardViewController.view.clipsToBounds = true
+        temporalTrackerCard.center = trackerCardViewController.view.center
+        trackerCardViewController.view.addSubview(temporalTrackerCard)
+        trackerCardViewController.preferredContentSize = CGSize(width: temporalTrackerCard.frame.width , height: temporalTrackerCard.frame.height)
+        return trackerCardViewController
+    }
+    
+    
+    func willHidePin(is toHide: Bool) {
+        trackerCard.pinnedEvent.isHidden = toHide
+    }
+    
+    func isPinHidden() -> Bool{
+        return trackerCard.pinnedEvent.isHidden
+    }
+
 }
 

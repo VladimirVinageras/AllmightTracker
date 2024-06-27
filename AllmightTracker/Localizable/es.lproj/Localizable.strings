@@ -10,6 +10,11 @@
 "onboardingView.BtnAction" = "¡Vaya tecnología!";
 "tabBar.trackers" = "Rastreadores" ;
 "tabBar.statistics" = "Estadísticas" ;
+"trackersView.contextMenu.pin" = "Fijar";
+"trackersView.contextMenu.unpin" = "Desanclar";
+"trackersView.contextMenu.edit" = "Editar";
+"trackersView.contextMenu.delete" = "Eliminar";
+"trackersView.contextMenu.deleteMessage" = "¿Estás seguro de que quieres eliminar el rastreador?";
 "trackersView.title" = "Rastreadores" ;
 "trackersView.searchHolderText" = "Buscar";
 "trackersView.holderText" = "¿Qué vamos a rastrear?";
