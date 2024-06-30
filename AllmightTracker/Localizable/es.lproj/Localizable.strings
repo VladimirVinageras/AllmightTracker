@@ -18,6 +18,7 @@
 "trackersView.title" = "Rastreadores" ;
 "trackersView.searchHolderText" = "Buscar";
 "trackersView.holderText" = "¿Qué vamos a rastrear?";
+"trackersView.pinnedCategoryName" = "Rastreadores Anclados";
 "addNewTrackerView.createTrackerTitle" = "Creando un rastreador";
 "addNewTrackerView.habit" = "Hábito";
 "addNewTrackerView.onceTimeEvent" = "Evento irregular";

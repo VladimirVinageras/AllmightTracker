@@ -59,6 +59,7 @@ final class TrackerCategoryStore: NSObject {
     func fetchTrackerCategories() throws -> [TrackerCategory]{
         let fetchRequest = TrackerCategoryCoreData.fetchRequest()
         let categoriesFromCoreData = try context.fetch(fetchRequest)
+        
         return try categoriesFromCoreData.map{try self.trackerCategory(from: $0)}
     }
     
@@ -120,6 +121,27 @@ final class TrackerCategoryStore: NSObject {
         
         try context.save()
     }
+  
+
+    func deleteEmptyCategories() throws {
+        let fetchRequest = TrackerCategoryCoreData.fetchRequest()
+        let results = try context.fetch(fetchRequest)
+        
+        for category in results {
+            if category.trackers?.count == 0 {
+                context.delete(category)
+            }
+        }
+        
+        try context.save()
+    }
+    
+    
+     
+
+    
+    
+    
     
     func trackerCategory(from trackerCategoryCoreData: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard let title = trackerCategoryCoreData.title

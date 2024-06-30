@@ -2,7 +2,7 @@
 //  TrackerCoreData+CoreDataProperties.swift
 //  
 //
-//  Created by Vladimir Vinakheras on 27.06.2024.
+//  Created by Vladimir Vinakheras on 28.06.2024.
 //
 //  This file was automatically generated and should not be edited.
 //
@@ -19,9 +19,10 @@ extension TrackerCoreData {
 
     @NSManaged public var color: String?
     @NSManaged public var emoji: String?
+    @NSManaged public var id: UUID?
     @NSManaged public var isPinned: Bool
     @NSManaged public var name: String?
-    @NSManaged public var trackerId: UUID?
+    @NSManaged public var category: TrackerCategoryCoreData?
     @NSManaged public var schedule: TrackerScheduleCoreData?
 
 }

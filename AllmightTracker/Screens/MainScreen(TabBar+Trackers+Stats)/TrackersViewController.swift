@@ -21,20 +21,25 @@ let dictionaryUI = DictionaryUI()
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
-    var categories: [TrackerCategory] = []
     //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
     private var trackerRecordStore = TrackerRecordStore()
-    
+   
     //MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
     var isActiveSearchFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
     var dateForFiltering: Date?
-    var filteredCategories : [TrackerCategory] = []
-    var filteredData : [TrackerCategory] = []
-    var completedTrackers: [TrackerRecord] = []
+    
+    //MARK: - ARRAY Variables
+    private var categories: [TrackerCategory] = []
+    private var filteredCategories : [TrackerCategory] = []
+    private var filteredData : [TrackerCategory] = []
+    private var completedTrackers: [TrackerRecord] = []
+    private var unpinnedTrackers: [TrackerCategory]  = []
+    private var pinCategory : TrackerCategory = TrackerCategory(title: dictionaryUI.trackersViewPinnedCategoryName, trackers: [])
+    
     
     
     var collectionViewDelegate : UICollectionViewDelegateFlowLayout?
@@ -75,7 +80,6 @@ final class TrackersViewController : UIViewController {
         datePicker.layer.shadowRadius = 10
         return datePicker
     }()
-    
     private var containerViewHolder : UIView = {
         var container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -83,14 +87,12 @@ final class TrackersViewController : UIViewController {
         container.clipsToBounds = true
         return container
     }()
-    
     private let scrollView: UIScrollView = {
         let scrllView = UIScrollView()
         scrllView.translatesAutoresizingMaskIntoConstraints = false
         scrllView.isScrollEnabled = true
         return scrllView
     }()
-    
     private let vStack : UIStackView = {
         let vstack = UIStackView()
         vstack.axis = .vertical
@@ -98,7 +100,6 @@ final class TrackersViewController : UIViewController {
         vstack.spacing = 16
         return vstack
     }()
-    
     private let addTrackerButton = UIButton()
     private let trackerSearchField = UISearchTextField()
     private let starImageView = UIImageView()
@@ -122,7 +123,7 @@ final class TrackersViewController : UIViewController {
         
         let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
         completedTrackers = tempRecords ?? completedTrackers
-        filteredCategories = categories
+            
         prepareNavigationBar()
         prepareDateUIItems()
         view.addSubview(containerViewHolder)
@@ -144,6 +145,7 @@ final class TrackersViewController : UIViewController {
     //MARK: - @OBJC Functions
     
     @objc private func reloadView() {
+        
         do {
             categories = try trackerCategoryStore.fetchTrackerCategories()
             if let dateForFiltering = dateForFiltering {
@@ -156,9 +158,6 @@ final class TrackersViewController : UIViewController {
         } catch {
             print("Error fetching data: \(error)")
         }
-        
-        filteredCategories = filteringEventsByDate(from: categories)
-        
         
         setupContainerView()
         setupContainerHolder()
@@ -329,26 +328,18 @@ final class TrackersViewController : UIViewController {
             view.removeFromSuperview()
         }
         
-        filteredCategories = filteringEventsByDate(from: categories)
+        var unpinnedTrackers = separetingTrackers(mainList: categories)
+        
+        filteredCategories = filteringEventsByDate(from: unpinnedTrackers)
         if isActiveSearchFiltering {
             filteredCategories = filteredData
             isActiveSearchFiltering = false
         }
         
+        creatingCollectionsView(with: pinCategory, from: nil)
+        
         for category in filteredCategories {
-            let layout = UICollectionViewFlowLayout()
-            let newTrackerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            newTrackerCollectionView.tag = filteredCategories.firstIndex(of: category) ?? 0
-            newTrackerCollectionView.backgroundColor = .trackerWhite
-            prepareTrackersCollectionView(for: newTrackerCollectionView)
-            vStack.addArrangedSubview(newTrackerCollectionView)
-            let collectionHeight = CGFloat((category.trackers.count / 2 + category.trackers.count % 2) * 148 + 30) // Refactoring gonna be later
-            NSLayoutConstraint.activate([
-                newTrackerCollectionView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
-                newTrackerCollectionView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
-                newTrackerCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(collectionHeight))
-            ])
-            newTrackerCollectionView.reloadData()
+                creatingCollectionsView(with: category, from: filteredCategories)
         }
         scrollView.addSubview(vStack)
         
@@ -360,6 +351,25 @@ final class TrackersViewController : UIViewController {
             vStack.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
+    private func creatingCollectionsView(with neededCategory: TrackerCategory, from parentList: [TrackerCategory]? ){
+        if !neededCategory.trackers.isEmpty {
+            let layout = UICollectionViewFlowLayout()
+            let newTrackerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            newTrackerCollectionView.tag = (parentList?.firstIndex(of: neededCategory) ?? -1)
+            newTrackerCollectionView.backgroundColor = .trackerWhite
+            prepareTrackersCollectionView(for: newTrackerCollectionView)
+            vStack.addArrangedSubview(newTrackerCollectionView)
+            let collectionHeight = CGFloat((neededCategory.trackers.count / 2 + neededCategory.trackers.count % 2) * 148 + 30) // Refactoring gonna be later
+            NSLayoutConstraint.activate([
+                newTrackerCollectionView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
+                newTrackerCollectionView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
+                newTrackerCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(collectionHeight))
+            ])
+            newTrackerCollectionView.reloadData()
+        }
+    }
+    
+  
     
     private func prepareTrackersCollectionView(for trackersCollectionView: UICollectionView){
         let layout = UICollectionViewFlowLayout()
@@ -378,7 +388,21 @@ final class TrackersViewController : UIViewController {
         trackersCollectionView.delegate = self
     }
     
-    //MARK: - FilteringEventsByDate
+    //MARK: - FilteringEvents
+    
+    /// This function save pinned trackers in the class private variable pinnedCategory and at the same time return a list of categories without pinned trackers.
+    private func separetingTrackers(mainList categories: [TrackerCategory])-> [TrackerCategory]{
+        filteringEventsByPin(categories: categories)
+        
+        let repCategories = categories.compactMap { category -> TrackerCategory? in
+            let unpinnedTrackers = category.trackers.filter { tracker in
+                !tracker.isPinned
+            }
+            return unpinnedTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: unpinnedTrackers)
+        }
+        return repCategories
+    }
+    
     
     private func filteringEventsByDate(from categories: [TrackerCategory]) -> [TrackerCategory]{
         
@@ -391,18 +415,33 @@ final class TrackersViewController : UIViewController {
         let repCategories = categories.compactMap { category -> TrackerCategory? in
             let filteredTrackers = category.trackers.filter { tracker in
                 guard let scheduledDays = tracker.schedule.scheduledDays else { return false }
-                return scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled } || !(tracker.schedule.isAnHabit) && isToday
+                return (scheduledDays.contains { $0.scheduleDay == selectedWeekday && $0.isScheduled } || !(tracker.schedule.isAnHabit) && isToday) && !tracker.isPinned
             }
             return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
         }
         return repCategories
     }
     
+    private func filteringEventsByPin(categories: [TrackerCategory]){
+        pinCategory.trackers.removeAll()
+        for category in categories {
+            let filteredTrackers = category.trackers.filter{tracker in
+                tracker.isPinned
+            }
+            for tracker in filteredTrackers {
+                pinCategory.trackers.append(tracker)
+            }
+        }
+    }
+    
+    
     
     
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+
 extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -410,14 +449,24 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let categoryIndex = collectionView.tag
-        return filteredCategories[categoryIndex].trackers.count
+        if categoryIndex < 0 {
+            return pinCategory.trackers.count
+        }else{
+            return filteredCategories[categoryIndex].trackers.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: trackersCollectionViewCellIdentifier, for: indexPath) as? TrackerViewCell else {return TrackerViewCell()}
         let categoryIndex = collectionView.tag
-        let currentEvent = filteredCategories[categoryIndex].trackers[indexPath.item]
+        let currentEvent : Tracker
+        if categoryIndex < 0 {
+            currentEvent = pinCategory.trackers[indexPath.item]
+        }
+        else{
+            currentEvent = filteredCategories[categoryIndex].trackers[indexPath.item]
+        }
         let eventTitle = currentEvent.name
         let color = currentEvent.color
         let emoji = currentEvent.emoji
@@ -426,14 +475,21 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
         
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
+        
+        cell.willHidePin(is: !currentEvent.isPinned)
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard  let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerSectionIdentifier + "\(collectionView.tag)", for: indexPath) as? MainHeaderCollectionView else { return MainHeaderCollectionView()}
-        let categoryIndex = collectionView.tag
-        header.titleLabel.text = filteredCategories[categoryIndex].title
+        let categoryIndex =  collectionView.tag
+        if categoryIndex < 0 {
+            header.titleLabel.text = pinCategory.title
+        }else{
+            header.titleLabel.text = filteredCategories[categoryIndex].title
+        }
         return header
     }
     
@@ -458,12 +514,14 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
             return UIMenu(children: [
                 UIAction(title: actionTitle) { [weak self] _ in
                     if !cell.isPinHidden() {
-                        self?.unPinTracker(indexPath: indexPath)
                         cell.willHidePin(is: true)
+                        guard let trackerId = cell.getTrackerID() else {return}
+                       self?.pinUnpinTracker(withId: trackerId, willBePined: false)  //Unpin Tracker
                     }
                     else{
-                        self?.pinTracker(indexPath: indexPath)
                         cell.willHidePin(is: false)
+                        guard let trackerId = cell.getTrackerID() else {return}
+                       self?.pinUnpinTracker(withId: trackerId, willBePined: true)
                     }
                 },
                 UIAction(title: dictionaryUI.trackersViewContextMenuEdit) { [weak self] _ in
@@ -499,31 +557,18 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
             alert.dismiss(animated: true)
         })
         
-        
         return alert
     }
     
     
-    private func pinTracker(indexPath: IndexPath){
-        let trackerId = trackerStore.trackers[indexPath.row].id
-        
-        do {
-            try trackerStore.pinUnpinTracker(id: trackerId, with: true)
-        }
-        catch{
-            print("Failed to update the tracker: \(error.localizedDescription)")
-        }
-    }
-    
-    private func unPinTracker(indexPath: IndexPath){
-        let trackerId = trackerStore.trackers[indexPath.row].id
-        
-        do {
-            try trackerStore.pinUnpinTracker(id: trackerId, with: false)
-        }
-        catch{
-            print("Failed to update the tracker: \(error.localizedDescription)")
-        }
+    private func pinUnpinTracker(withId trackerId: UUID, willBePined newValue: Bool){
+           do {
+               try trackerStore.pinUnpinTracker(id: trackerId, with: newValue)
+           } catch {
+               print("Failed to update the tracker: \(error.localizedDescription)")
+           }
+        reloadView()
+       
     }
     
     private func editTracker(indexPath: IndexPath){
@@ -534,13 +579,12 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         let trackerId = trackerStore.trackers[indexPath.row].id
         do {
             try  trackerStore.deleteTracker(by: trackerId)
-        }
-        catch{
+            try trackerCategoryStore.deleteEmptyCategories()
+        }catch{
             print("Failed trying to delete the tracker: \(error.localizedDescription)")
+            return
         }
-       
     }
-    
 }
 
 //MARK: TrackersViewControllerProtocol

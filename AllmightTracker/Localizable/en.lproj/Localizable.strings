@@ -18,6 +18,7 @@
 "trackersView.title" = "Trackers" ;
 "trackersView.searchHolderText" = "Search";
 "trackersView.holderText" = "What will we track?";
+"trackersView.pinnedCategoryName" = "Pinned Trackers";
 "addNewTrackerView.createTrackerTitle" = "Creating a tracker";
 "addNewTrackerView.habit" = "Habit";
 "addNewTrackerView.onceTimeEvent" = "Irregular event";

@@ -13,6 +13,6 @@ struct TrackerCategory: Equatable{
         return lhs.title == rhs.title
     }
     
-    let title: String
-    let trackers: [Tracker]
+    var title: String
+    var trackers: [Tracker]
 }

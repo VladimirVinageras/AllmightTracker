@@ -629,9 +629,10 @@ SWIFT_CLASS_NAMED("TrackerCoreData")
 @interface TrackerCoreData (SWIFT_EXTENSION(AllmightTracker))
 @property (nonatomic, copy) NSString * _Nullable color;
 @property (nonatomic, copy) NSString * _Nullable emoji;
+@property (nonatomic, copy) NSUUID * _Nullable id;
 @property (nonatomic) BOOL isPinned;
 @property (nonatomic, copy) NSString * _Nullable name;
-@property (nonatomic, copy) NSUUID * _Nullable trackerId;
+@property (nonatomic, strong) TrackerCategoryCoreData * _Nullable category;
 @property (nonatomic, strong) TrackerScheduleCoreData * _Nullable schedule;
 @end
 

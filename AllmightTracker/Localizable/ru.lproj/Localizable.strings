@@ -18,6 +18,7 @@
 "trackersView.title" = "Трекеры" ;
 "trackersView.searchHolderText" = "Поиск";
 "trackersView.holderText" = "Что будем отслеживать?";
+"trackersView.pinnedCategoryName" = "Закрепленые трекеры";
 "addNewTrackerView.createTrackerTitle" = "Создание трекера";
 "addNewTrackerView.habit" = "Привычика";
 "addNewTrackerView.onceTimeEvent" = "Нерегулярное событие";

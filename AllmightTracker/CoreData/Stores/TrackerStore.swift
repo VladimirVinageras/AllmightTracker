@@ -68,7 +68,7 @@ final class TrackerStore: NSObject{
     
     
     func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) throws {
-        trackerCoreData.trackerId = tracker.id
+        trackerCoreData.id = tracker.id
         trackerCoreData.name = tracker.name
         trackerCoreData.emoji = tracker.emoji
         trackerCoreData.color = UIColorMarshalling().hexString(from: tracker.color)
@@ -79,29 +79,22 @@ final class TrackerStore: NSObject{
         trackerCoreData.schedule = newTrackerScheduleCoreData
     }
 
-    func pinUnpinTracker(id: UUID, with isPinned: Bool) throws {
-        guard let trackerToUpdate = fetchTracker(by: id) else {return}
-        var trackerStore = try tracker(from: trackerToUpdate)
-        trackerStore.isPinned = isPinned
-        try updateExistingTracker(trackerToUpdate, with: trackerStore)
-        try context.save()
-    }
+    
     
     private func fetchTracker(by id: UUID) -> TrackerCoreData? {
         let fetchRequest = NSFetchRequest<TrackerCoreData>(entityName: "TrackerCoreData")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerId), id as CVarArg)
-        
-        guard let trackerCoreData = try? context.fetch(fetchRequest) as [TrackerCoreData] else {
+        guard let trackerCoreData = try? context.fetch(fetchRequest) else {
             return nil
         }
-        
         return trackerCoreData.first
     }
+
     
     
     func tracker(from trackerCoreData: TrackerCoreData) throws -> Tracker {
-         guard let id = trackerCoreData.trackerId,
+         guard let id = trackerCoreData.id,
                let emoji = trackerCoreData.emoji,
                let colorString = trackerCoreData.color,
                let name = trackerCoreData.name else {
@@ -124,8 +117,18 @@ final class TrackerStore: NSObject{
         return try TrackerScheduleStore(context: context).trackerSchedule(from: trackerScheduleCoreData)
     }
     
+    func pinUnpinTracker(id: UUID, with isPinned: Bool) throws {
+        guard let trackerToUpdate = fetchTracker(by: id) else {return}
+        var trackerStore = try tracker(from: trackerToUpdate)
+        trackerStore.isPinned = isPinned
+        try updateExistingTracker(trackerToUpdate, with: trackerStore)
+        try context.save()
+        
+    }
+    
     func deleteTracker(by id: UUID) throws {
-        guard let trackerToDelete = fetchTracker(by: id) else {return}
+        
+       guard let trackerToDelete = fetchTracker(by: id) else {return}
         context.delete(trackerToDelete)
         try context.save()
     }
