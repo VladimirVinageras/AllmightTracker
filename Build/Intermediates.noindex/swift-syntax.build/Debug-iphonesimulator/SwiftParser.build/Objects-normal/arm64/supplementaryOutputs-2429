@@ -1,0 +1,30 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/TokenPrecedence.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenPrecedence.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenPrecedence.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenPrecedence.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenPrecedence.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenPrecedence.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/TokenSpec.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpec.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpec.swiftconstvalues"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpec.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpec.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpec.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/TriviaParser.swift":
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TriviaParser.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TriviaParser.dia"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TriviaParser.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TriviaParser.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TriviaParser.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/TokenSpecSet.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpecSet.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpecSet.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpecSet.d"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpecSet.dia"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TokenSpecSet.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/TopLevel.swift":
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TopLevel.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TopLevel.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TopLevel.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TopLevel.dia"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/TopLevel.o"

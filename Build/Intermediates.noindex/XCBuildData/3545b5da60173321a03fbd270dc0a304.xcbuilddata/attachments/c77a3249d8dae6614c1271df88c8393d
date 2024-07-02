@@ -1,0 +1,4 @@
+module InlineSnapshotTesting {
+header "InlineSnapshotTesting-Swift.h"
+export *
+}

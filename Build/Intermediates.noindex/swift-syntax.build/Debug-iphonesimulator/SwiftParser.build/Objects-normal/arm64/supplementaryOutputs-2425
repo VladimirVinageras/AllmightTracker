@@ -1,0 +1,30 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/Lookahead.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lookahead.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lookahead.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lookahead.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lookahead.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lookahead.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/Lexer/RegexLiteralLexer.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/RegexLiteralLexer.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/RegexLiteralLexer.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/RegexLiteralLexer.o"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/RegexLiteralLexer.swiftconstvalues"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/RegexLiteralLexer.swiftdeps"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/Lexer/UnicodeScalarExtensions.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/UnicodeScalarExtensions.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/UnicodeScalarExtensions.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/UnicodeScalarExtensions.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/UnicodeScalarExtensions.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/UnicodeScalarExtensions.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/LoopProgressCondition.swift":
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/LoopProgressCondition.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/LoopProgressCondition.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/LoopProgressCondition.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/LoopProgressCondition.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/LoopProgressCondition.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftParser/Lexer/Lexer.swift":
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lexer.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lexer.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lexer.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lexer.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParser.build/Objects-normal/arm64/Lexer.dia"

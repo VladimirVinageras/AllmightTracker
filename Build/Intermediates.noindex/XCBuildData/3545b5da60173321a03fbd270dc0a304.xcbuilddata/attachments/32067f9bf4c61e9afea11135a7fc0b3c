@@ -1,0 +1,28 @@
+{
+  "" : {
+    "diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master.dia",
+    "emit-module-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master-emit-module.dia",
+    "swift-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master.swiftdeps"
+  },
+  "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/InlineSnapshotTesting/AssertInlineSnapshot.swift" : {
+    "const-values" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.swiftconstvalues",
+    "dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.d",
+    "diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.dia",
+    "index-unit-output-path" : "/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.o",
+    "llvm-bc" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.bc",
+    "object" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.o",
+    "swift-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot.swiftdeps",
+    "swiftmodule" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/AssertInlineSnapshot~partial.swiftmodule"
+  },
+  "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/InlineSnapshotTesting/Exports.swift" : {
+    "const-values" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.swiftconstvalues",
+    "dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.d",
+    "diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.dia",
+    "index-unit-output-path" : "/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.o",
+    "llvm-bc" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.bc",
+    "object" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.o",
+    "swift-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports.swiftdeps",
+    "swiftmodule" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/Exports~partial.swiftmodule"
+  }
+}

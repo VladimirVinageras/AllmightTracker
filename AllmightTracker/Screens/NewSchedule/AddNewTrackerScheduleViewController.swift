@@ -76,7 +76,7 @@ super.viewDidLoad()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       selectedDaysBefore =  scheduleViewControllerDelegate?.checkingSelectedDays() ?? []
+        selectedDaysBefore =  scheduleViewControllerDelegate?.checkingSelectedDays() ?? []
         updateCellDaysSelected()
         scheduleTableView.reloadData()
         daysSelected.removeAll()
@@ -84,6 +84,11 @@ super.viewDidLoad()
     
     private func updateCellDaysSelected() {
         cellDaysSelected.removeAll()
+        
+        selectedDaysBefore.sort{ day0,day1  in
+            return day0.scheduleDay.rawValue < day1.scheduleDay.rawValue
+        }
+        
         for dayIndex in 0..<7 {
             var weekDay: ScheduleDay?
             if selectedDaysBefore.isEmpty || selectedDaysBefore == nil{

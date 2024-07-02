@@ -1,0 +1,48 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/raw/RawSyntaxNodesC.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesC.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesC.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesC.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesC.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesC.dia"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxVisitor.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxVisitor.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxVisitor.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxVisitor.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxVisitor.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxVisitor.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/raw/RawSyntaxNodesAB.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesAB.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesAB.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesAB.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesAB.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesAB.dia"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/TokenKind.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TokenKind.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TokenKind.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TokenKind.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TokenKind.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TokenKind.swiftdeps"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxTransform.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxTransform.o"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxTransform.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxTransform.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxTransform.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/SyntaxTransform.dia"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/raw/RawSyntaxNodesD.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesD.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesD.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesD.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesD.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/RawSyntaxNodesD.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/Tokens.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/Tokens.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/Tokens.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/Tokens.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/Tokens.o"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/Tokens.swiftdeps"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/TriviaPieces.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TriviaPieces.o"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TriviaPieces.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TriviaPieces.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TriviaPieces.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntax.build/Objects-normal/arm64/TriviaPieces.swiftdeps"

@@ -1,0 +1,24 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Snapshotting/CGPath.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CGPath.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CGPath.d"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CGPath.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CGPath.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CGPath.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Snapshotting/CaseIterable.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CaseIterable.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CaseIterable.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CaseIterable.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CaseIterable.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CaseIterable.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Snapshotting/Any.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Any.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Any.o"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Any.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Any.dia"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Any.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Snapshotting/CALayer.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CALayer.swiftdeps"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CALayer.d"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CALayer.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CALayer.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/CALayer.o"

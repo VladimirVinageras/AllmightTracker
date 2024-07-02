@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests-master.dia",
+    "emit-module-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests-master-emit-module.dia",
+    "swift-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests-master.swiftdeps"
+  },
+  "/Users/vladimir/Desktop/AllmightTracker/AllmightTrackerTests/AllmightTrackerTests.swift" : {
+    "const-values" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.swiftconstvalues",
+    "dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.d",
+    "diagnostics" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.dia",
+    "index-unit-output-path" : "/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.o",
+    "llvm-bc" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.bc",
+    "object" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.o",
+    "swift-dependencies" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests.swiftdeps",
+    "swiftmodule" : "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTrackerTests.build/Objects-normal/arm64/AllmightTrackerTests~partial.swiftmodule"
+  }
+}

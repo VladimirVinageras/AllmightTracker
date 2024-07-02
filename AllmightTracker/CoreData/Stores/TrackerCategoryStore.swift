@@ -89,21 +89,20 @@ final class TrackerCategoryStore: NSObject {
         try context.save()
     }
     
-  func addNewTrackerCategory(_ trackerCategory: TrackerCategory) throws {
-    let fetchRequest: NSFetchRequest<TrackerCategoryCoreData> = TrackerCategoryCoreData.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "title == %@", trackerCategory.title)
-    let results = try context.fetch(fetchRequest)
-    
-    if let existingCategory = results.first {
-        try updateExistingTrackerCategory(existingCategory, with: trackerCategory)
-    } else {
-        let trackerCategoryCoreData = TrackerCategoryCoreData(context: context)
-        try updateExistingTrackerCategory(trackerCategoryCoreData, with: trackerCategory)
+    func addNewTrackerCategory(_ trackerCategory: TrackerCategory) throws {
+        let fetchRequest: NSFetchRequest<TrackerCategoryCoreData> = TrackerCategoryCoreData.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "title == %@", trackerCategory.title)
+        let results = try context.fetch(fetchRequest)
+        
+        if let existingCategory = results.first {
+            try updateExistingTrackerCategory(existingCategory, with: trackerCategory)
+        } else {
+            let trackerCategoryCoreData = TrackerCategoryCoreData(context: context)
+            try updateExistingTrackerCategory(trackerCategoryCoreData, with: trackerCategory)
+        }
+        
+        try context.save()
     }
-    
-    try context.save()
-}
-
     
     func updateExistingTrackerCategory(_ trackerCategoryCoreData: TrackerCategoryCoreData, with trackerCategory: TrackerCategory) throws {
         trackerCategoryCoreData.title = trackerCategory.title
@@ -121,8 +120,7 @@ final class TrackerCategoryStore: NSObject {
         
         try context.save()
     }
-  
-
+    
     func deleteEmptyCategories() throws {
         let fetchRequest = TrackerCategoryCoreData.fetchRequest()
         let results = try context.fetch(fetchRequest)
@@ -136,18 +134,11 @@ final class TrackerCategoryStore: NSObject {
         try context.save()
     }
     
-    
-     
-
-    
-    
-    
-    
     func trackerCategory(from trackerCategoryCoreData: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard let title = trackerCategoryCoreData.title
-              else {
+        else {
             throw TrackerCategoryStoreError.decodingErrorInvalidTitle
-         }
+        }
         
         let trackerCategoryCoreDataSet = trackerCategoryCoreData.trackers as? Set<TrackerCoreData>
         let trackers = try trackerCategoryCoreDataSet?.compactMap {
@@ -158,7 +149,7 @@ final class TrackerCategoryStore: NSObject {
         }
         
         return TrackerCategory(title: title, trackers: trackers)
-     }
+    }
 }
 
 //MARK: - ADDING FUNCTIONS
@@ -177,7 +168,6 @@ extension TrackerCategoryStore {
             existingTrackers.insert(newTrackerCoreData)
             existingCategory.trackers = NSSet(set: existingTrackers)
             
-            try context.save()
         } else {
             let newCategory = TrackerCategory(title: categoryTitle, trackers: [tracker])
             try addNewTrackerCategory(newCategory)
@@ -191,7 +181,7 @@ extension TrackerCategoryStore {
 // MARK: - NSFetchedResultsControllerDelegate
 extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async { [weak self] in 
+        DispatchQueue.main.async { [weak self] in
             self?.delegate?.storeCategoryDidChange()
         }
     }

@@ -1,0 +1,24 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Common/PlistEncoder.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/PlistEncoder.swiftdeps"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/PlistEncoder.o"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/PlistEncoder.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/PlistEncoder.swiftconstvalues"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/PlistEncoder.dia"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/AssertSnapshot.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/AssertSnapshot.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/AssertSnapshot.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/AssertSnapshot.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/AssertSnapshot.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/AssertSnapshot.swiftdeps"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Common/Internal.swift":
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Internal.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Internal.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Internal.d"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Internal.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Internal.dia"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Async.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Async.o"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Async.d"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Async.swiftconstvalues"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Async.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Async.dia"

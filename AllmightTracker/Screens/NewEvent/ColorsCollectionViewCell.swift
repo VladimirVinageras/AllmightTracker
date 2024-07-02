@@ -11,11 +11,11 @@ import UIKit
 final class ColorsCollectionViewCell: UICollectionViewCell{
     
     var colorView  = UIView(frame: .zero)
+    var colorName  = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-       
+    
         self.contentView.layer.masksToBounds = true
         self.contentView.addSubview(colorView)
         colorView.translatesAutoresizingMaskIntoConstraints = false
