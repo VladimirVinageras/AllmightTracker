@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "65C2A1A6-7FDD-4AD4-8DFA-F78C11100041"
-            shouldBeEnabled = "No"
+            uuid = "7C06FB89-2F06-451C-93CB-1F4F95B9BA80"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AllmightTracker/Screens/MainScreen(TabBar+Trackers+Stats)/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
-            landmarkName = "deleteTracker(indexPath:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "reloadView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

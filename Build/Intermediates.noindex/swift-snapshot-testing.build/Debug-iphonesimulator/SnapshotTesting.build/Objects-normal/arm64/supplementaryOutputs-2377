@@ -1,0 +1,24 @@
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Internal/Deprecations.swift":
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Deprecations.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Deprecations.swiftdeps"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Deprecations.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Deprecations.swiftconstvalues"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Deprecations.o"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Diffing.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Diffing.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Diffing.dia"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Diffing.swiftdeps"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Diffing.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Diffing.d"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Extensions/Wait.swift":
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Wait.dia"
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Wait.o"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Wait.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Wait.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Wait.swiftdeps"
+"/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/swift-snapshot-testing/Sources/SnapshotTesting/Snapshotting.swift":
+  object: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Snapshotting.o"
+  diagnostics: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Snapshotting.dia"
+  const-values: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Snapshotting.swiftconstvalues"
+  dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Snapshotting.d"
+  swift-dependencies: "/Users/vladimir/Desktop/AllmightTracker/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/SnapshotTesting.build/Objects-normal/arm64/Snapshotting.swiftdeps"

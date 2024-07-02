@@ -139,9 +139,9 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
 
-    func prepareDataForUsing(color: UIColor, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : Date) {
+    func prepareDataForUsing(colorName: String, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : Date) {
         self.calendarDate = calendarDate
-        self.color = color
+        self.color = UIColor(named: colorName) ?? .trackerGray
         self.eventTitle = eventTitle
         self.emoji = emoji
         self.trackerID = trackerID

@@ -2,7 +2,7 @@
 //  ScheduleDayCoreData+CoreDataClass.swift
 //  
 //
-//  Created by Vladimir Vinakheras on 28.06.2024.
+//  Created by Vladimir Vinakheras on 02.07.2024.
 //
 //  This file was automatically generated and should not be edited.
 //

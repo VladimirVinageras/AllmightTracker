@@ -67,16 +67,30 @@ final class TrackerStore: NSObject{
     }
     
     
-    func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) throws {
+    private func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) throws {
         trackerCoreData.id = tracker.id
         trackerCoreData.name = tracker.name
         trackerCoreData.emoji = tracker.emoji
-        trackerCoreData.color = UIColorMarshalling().hexString(from: tracker.color)
+        trackerCoreData.color = tracker.colorName
         trackerCoreData.isPinned = tracker.isPinned
         let schedule = tracker.schedule
         let trackerScheduleStore = TrackerScheduleStore(context: context)
         let newTrackerScheduleCoreData = try trackerScheduleStore.addNewTrackerSchedule(schedule)
         trackerCoreData.schedule = newTrackerScheduleCoreData
+        try context.save()
+    }
+    
+    func updateTrackerWith(this newTracker: Tracker, from newCategoryName: String) throws {
+        guard let trackerToUpdate = fetchTracker(by: newTracker.id) else {return}
+        if trackerToUpdate.category?.title == newCategoryName{
+            try updateExistingTracker(trackerToUpdate, with: newTracker)
+            
+        } else{
+            try deleteTracker(by: newTracker.id)
+            let trackerCategoryStore = TrackerCategoryStore(context: context)
+            try trackerCategoryStore.saveTrackerToCategory(tracker: newTracker, in: newCategoryName)
+        }
+        try context.save()
     }
 
     
@@ -100,7 +114,7 @@ final class TrackerStore: NSObject{
                let name = trackerCoreData.name else {
              throw TrackerStoreError.decodingErrorInvalidFetch
          }
-        let color = uiColorMarshalling.color(from: colorString)
+        let colorName = colorString
         let isPinned = trackerCoreData.isPinned
     
          var schedule: TrackerSchedule? = nil
@@ -110,7 +124,7 @@ final class TrackerStore: NSObject{
         guard let schedule = schedule else {
             throw TrackerStoreError.decodingErrorInvalidSchedule
         }
-        return Tracker(id: id, name: name, color: color, emoji: emoji, schedule: schedule, isPinned: isPinned)
+        return Tracker(id: id, name: name, colorName: colorName, emoji: emoji, schedule: schedule, isPinned: isPinned)
      }
      
     private func trackerSchedule(from trackerScheduleCoreData: TrackerScheduleCoreData) throws -> TrackerSchedule {

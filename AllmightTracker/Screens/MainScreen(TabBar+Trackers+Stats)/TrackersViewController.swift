@@ -13,23 +13,23 @@ let dateFormatter : DateFormatter = {
     df.dateFormat = "dd.MM.yy"
     return df
 }()
-
-
 let dictionaryUI = DictionaryUI()
-
 
 final class TrackersViewController : UIViewController {
     static var shared = TrackersViewController()
     
+    var eventToUpdate : Tracker?
+    var ammountOfDaysText = ""
     //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
     private let trackerCategoryStore = TrackerCategoryStore()
     private var trackerRecordStore = TrackerRecordStore()
-   
+    
     //MARK: - UI VARIABLES
     var isActiveDateFiltering : Bool = false
     var isActiveSearchFiltering : Bool = false
     var isTryingToChangeTheFuture : Bool = false
+    var isEmptySearchResult: Bool = true
     var dateForFiltering: Date?
     
     //MARK: - ARRAY Variables
@@ -39,7 +39,6 @@ final class TrackersViewController : UIViewController {
     private var completedTrackers: [TrackerRecord] = []
     private var unpinnedTrackers: [TrackerCategory]  = []
     private var pinCategory : TrackerCategory = TrackerCategory(title: dictionaryUI.trackersViewPinnedCategoryName, trackers: [])
-    
     
     
     var collectionViewDelegate : UICollectionViewDelegateFlowLayout?
@@ -123,7 +122,7 @@ final class TrackersViewController : UIViewController {
         
         let tempRecords = try? trackerRecordStore.fetchTrackerRecords()
         completedTrackers = tempRecords ?? completedTrackers
-            
+        
         prepareNavigationBar()
         prepareDateUIItems()
         view.addSubview(containerViewHolder)
@@ -132,7 +131,7 @@ final class TrackersViewController : UIViewController {
         setupContainerHolder()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadTrackersViewController"), object: nil)
-
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadTrackersViewController"), object: nil)
@@ -198,6 +197,7 @@ final class TrackersViewController : UIViewController {
     
     
     @objc private func textDidChange(_ searchField: UISearchTextField) {
+        
         if let searchText = searchField.text, !searchText.isEmpty {
             filteredData = categories.compactMap { category -> TrackerCategory? in
                 let filteredTrackers = category.trackers.filter {tracker in
@@ -205,10 +205,12 @@ final class TrackersViewController : UIViewController {
                 }
                 return filteredTrackers.isEmpty ? nil : TrackerCategory(title: category.title, trackers: filteredTrackers)
             }
+            isEmptySearchResult = filteredData.isEmpty
             isActiveSearchFiltering = true
         }
         else {
             filteredData = categories
+            isEmptySearchResult = false
         }
         categories = filteredData
         reloadView()
@@ -257,9 +259,19 @@ final class TrackersViewController : UIViewController {
     }
     
     private func prepareStarMainScreen(){
+        let imageToShow : UIImage?
+        let textToShow : String
+        if isActiveSearchFiltering && isEmptySearchResult {
+            imageToShow = UIImage(named: "notFoundImage")
+            textToShow = dictionaryUI.trackersViewEmptySearchText
+        }
+        else{
+            imageToShow = UIImage(named: "StarMainScreen")
+            textToShow = dictionaryUI.trackersViewHolderText
+        }
         
         starImageView.translatesAutoresizingMaskIntoConstraints = false
-        starImageView.image = UIImage(named: "StarMainScreen")
+        starImageView.image = imageToShow
         starImageView.frame.size = CGSize(width: 80, height: 80)
         
         starLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -292,7 +304,11 @@ final class TrackersViewController : UIViewController {
         }
         containerViewHolder.removeConstraints(containerViewHolder.constraints)
         
-        if categories.isEmpty{
+        if isActiveSearchFiltering && isEmptySearchResult {
+            prepareStarMainScreen()
+        }
+        
+        if categories.isEmpty || (isActiveSearchFiltering && isEmptySearchResult){
             starLabel.isHidden = false
             starImageView.isHidden = false
             prepareStarMainScreen()
@@ -328,7 +344,7 @@ final class TrackersViewController : UIViewController {
             view.removeFromSuperview()
         }
         
-        var unpinnedTrackers = separetingTrackers(mainList: categories)
+        let unpinnedTrackers = separetingTrackers(mainList: categories)
         
         filteredCategories = filteringEventsByDate(from: unpinnedTrackers)
         if isActiveSearchFiltering {
@@ -339,7 +355,7 @@ final class TrackersViewController : UIViewController {
         creatingCollectionsView(with: pinCategory, from: nil)
         
         for category in filteredCategories {
-                creatingCollectionsView(with: category, from: filteredCategories)
+            creatingCollectionsView(with: category, from: filteredCategories)
         }
         scrollView.addSubview(vStack)
         
@@ -369,7 +385,7 @@ final class TrackersViewController : UIViewController {
         }
     }
     
-  
+    
     
     private func prepareTrackersCollectionView(for trackersCollectionView: UICollectionView){
         let layout = UICollectionViewFlowLayout()
@@ -468,11 +484,11 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
             currentEvent = filteredCategories[categoryIndex].trackers[indexPath.item]
         }
         let eventTitle = currentEvent.name
-        let color = currentEvent.color
+        let colorName = currentEvent.colorName
         let emoji = currentEvent.emoji
         let eventId = currentEvent.id
         
-        cell.prepareDataForUsing(color: color, eventTitle: eventTitle, emoji: emoji, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
+        cell.prepareDataForUsing(colorName: colorName, eventTitle: eventTitle, emoji: emoji, trackerID: eventId, calendarDate: dateForFiltering ?? Date())
         
         cell.preventingChangesInFuture(isNecesary: isTryingToChangeTheFuture)
         
@@ -516,16 +532,17 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
                     if !cell.isPinHidden() {
                         cell.willHidePin(is: true)
                         guard let trackerId = cell.getTrackerID() else {return}
-                       self?.pinUnpinTracker(withId: trackerId, willBePined: false)  //Unpin Tracker
+                        self?.pinUnpinTracker(withId: trackerId, willBePined: false)  //Unpin Tracker
                     }
                     else{
                         cell.willHidePin(is: false)
                         guard let trackerId = cell.getTrackerID() else {return}
-                       self?.pinUnpinTracker(withId: trackerId, willBePined: true)
+                        self?.pinUnpinTracker(withId: trackerId, willBePined: true)
                     }
                 },
                 UIAction(title: dictionaryUI.trackersViewContextMenuEdit) { [weak self] _ in
-                    self?.editTracker(indexPath: indexPath)
+                    guard let trackerId = cell.getTrackerID() else {return}
+                    self?.editTracker(withId: trackerId)
                 },
                 UIAction(title: dictionaryUI.trackersViewContextMenuDelete, attributes: .destructive) { [weak self] _ in
                     guard let self = self else {return}
@@ -544,8 +561,6 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         })
     }
     
-    
-    
     private func createAlert(title: String, message: String, action: @escaping ()-> Void) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
@@ -560,21 +575,26 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
         return alert
     }
     
-    
     private func pinUnpinTracker(withId trackerId: UUID, willBePined newValue: Bool){
-           do {
-               try trackerStore.pinUnpinTracker(id: trackerId, with: newValue)
-           } catch {
-               print("Failed to update the tracker: \(error.localizedDescription)")
-           }
+        do {
+            try trackerStore.pinUnpinTracker(id: trackerId, with: newValue)
+        } catch {
+            print("Failed to update the tracker: \(error.localizedDescription)")
+        }
         reloadView()
-       
+        
     }
     
-    private func editTracker(indexPath: IndexPath){
-       //TODO: - IMPLEMENT the edit view
+    private func editTracker(withId trackerId: UUID){
+        eventToUpdate =  trackerStore.trackers.first(where: {$0.id == trackerId})
+        let amountOfDaysTaskCompleted = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerId)
+        ammountOfDaysText = String.localizedStringWithFormat(
+            NSLocalizedString("numberOfDays", comment: ""), amountOfDaysTaskCompleted)
+           
+        let createHabitViewController = CreateHabitViewController(isAnHabit: true, isEditingAHabit: true)
+        present(createHabitViewController, animated: true)
     }
-    
+
     private func deleteTracker(indexPath: IndexPath){
         let trackerId = trackerStore.trackers[indexPath.row].id
         do {
@@ -585,10 +605,20 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
             return
         }
     }
+    
 }
 
 //MARK: TrackersViewControllerProtocol
 extension TrackersViewController : TrackersViewControllerProtocol {
+    func updateNewTracker(with categoryName: String, for eventToUpdate: Tracker) {
+        do {
+            try trackerStore.updateTrackerWith(this: eventToUpdate, from: categoryName)
+            dateForFiltering = nil
+        } catch {
+            print("Error updating new tracker: \(error)")
+        }
+    }
+    
     
     func saveNewTracker(with newCategoryName: String, for newEvent: Tracker) {
         
@@ -599,6 +629,8 @@ extension TrackersViewController : TrackersViewControllerProtocol {
             print("Error saving new tracker: \(error)")
         }
     }
+    
+    
 }
 
 extension TrackersViewController: TrackerRecordStoreDelegate {

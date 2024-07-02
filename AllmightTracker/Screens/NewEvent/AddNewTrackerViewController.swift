@@ -94,13 +94,13 @@ super.viewDidLoad()
     }
     
     @objc func callCreateHabitViewController(){
-        let createHabitViewController = CreateHabitViewController(isAnHabit: true)
+        let createHabitViewController = CreateHabitViewController(isAnHabit: true, isEditingAHabit: false)
         present(createHabitViewController, animated: true)
     }
     
     @objc func callCreateSingleEventViewController(){
         
-        let createHabitViewController = CreateHabitViewController(isAnHabit: false)
+        let createHabitViewController = CreateHabitViewController(isAnHabit: false, isEditingAHabit: false)
         present(createHabitViewController, animated: true)
     }
 }

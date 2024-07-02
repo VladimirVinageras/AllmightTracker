@@ -10,4 +10,5 @@ import UIKit
 
 protocol TrackersViewControllerProtocol{
     func saveNewTracker(with newCategoryName: String, for newEvent: Tracker)
+    func updateNewTracker(with categoryName: String, for eventToUpdate: Tracker)
 }
