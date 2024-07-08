@@ -10,6 +10,8 @@
 "onboardingView.BtnAction" = "What a technology!";
 "tabBar.trackers" = "Trackers" ;
 "tabBar.statistics" = "Statistics" ;
+"statisticsView.EmptyViewText" = "Nothing to analize right now";
+"statisticsView.ParameterTitle" = "Trackers completed";
 "trackersView.contextMenu.pin" = "Pin";
 "trackersView.contextMenu.unpin" = "Unpin";
 "trackersView.contextMenu.edit" = "Edit";
@@ -18,8 +20,9 @@
 "trackersView.title" = "Trackers" ;
 "trackersView.searchHolderText" = "Search";
 "trackersView.holderText" = "What will we track?";
-"trackersView.EmptySearchText" = "Not results found";
+"trackersView.emptySearchText" = "Not results found";
 "trackersView.pinnedCategoryName" = "Pinned Trackers";
+"trackersView.filtersButtonTitle" = "Filters";
 "addNewTrackerView.createTrackerTitle" = "Creating a tracker";
 "addNewTrackerView.habit" = "Habit";
 "addNewTrackerView.onceTimeEvent" = "Irregular event";
@@ -43,6 +46,11 @@
 "createCategory.btnReady" = "Done";
 "addNewSchedule.title" = "Schedule";
 "addNewSchedule.btnReady" = "Done";
+"filterListView.title" = "Filters";
+"filterListView.filters.allTrackers" = "All trackers";
+"filterListView.filters.todayTrackers" = "Trackers for today";
+"filterListView.filters.completedTrackers" = "Completed";
+"filterListView.filters.notCompletedTrackers" = "Not completed";
 "weekDay.monday" = "Monday";
 "weekDay.thuesday" = "Tuesday";
 "weekDay.wednesday" = "Wednesday";

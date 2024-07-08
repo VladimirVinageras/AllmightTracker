@@ -1,5 +1,5 @@
 //
-//  NewCategoryTableViewCell.swift
+//  CheckedTextLabelTableViewCell.swift
 //  AllmightTracker
 //
 //  Created by Vladimir Vinakheras on 24.05.2024.
@@ -10,7 +10,7 @@ import UIKit
 
 final class CheckedTextLabelTableViewCell : UITableViewCell {
     
-    private var cellTitleTextLabel : UILabel = {
+    var cellTitleTextLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = ""

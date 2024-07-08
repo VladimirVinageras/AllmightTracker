@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+protocol FilterListViewControllerDelegate {
+    func customFilterDidSelect(withFilterIndex filterIndex: Int)
+}

@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashC.c \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashC.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitorType.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashReportWriter.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashCachedData.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSThread.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashReport.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitorContext.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSMachineContext.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashReportFixer.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSCrashReportStore.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_CPPException.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_Deadlock.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_User.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSFileUtils.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSObjC.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSString.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_System.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_Zombie.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Monitors/KSCrashMonitor_AppState.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/KSSystemCapabilities.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools/KSLogger.h

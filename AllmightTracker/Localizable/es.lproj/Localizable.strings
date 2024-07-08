@@ -10,6 +10,8 @@
 "onboardingView.BtnAction" = "¡Vaya tecnología!";
 "tabBar.trackers" = "Rastreadores" ;
 "tabBar.statistics" = "Estadísticas" ;
+"statisticsView.EmptyViewText" = "Nada que analizar por ahora";
+"statisticsView.ParameterTitle" = "Rastreadores completados";
 "trackersView.contextMenu.pin" = "Fijar";
 "trackersView.contextMenu.unpin" = "Desanclar";
 "trackersView.contextMenu.edit" = "Editar";
@@ -18,8 +20,9 @@
 "trackersView.title" = "Rastreadores" ;
 "trackersView.searchHolderText" = "Buscar";
 "trackersView.holderText" = "¿Qué vamos a rastrear?";
-"trackersView.EmptySearchText" = "No se han encontrado resultados";
+"trackersView.emptySearchText" = "No se han encontrado resultados";
 "trackersView.pinnedCategoryName" = "Rastreadores Anclados";
+"trackersView.filtersButtonTitle" = "Filtros";
 "addNewTrackerView.createTrackerTitle" = "Creando un rastreador";
 "addNewTrackerView.habit" = "Hábito";
 "addNewTrackerView.onceTimeEvent" = "Evento irregular";
@@ -43,6 +46,11 @@
 "createCategory.btnReady" = "Listo";
 "addNewSchedule.title" = "Horario";
 "addNewSchedule.btnReady" = "Listo";
+"filterListView.title" = "Filters";
+"filterListView.filters.allTrackers" = "Todos los rastreadores";
+"filterListView.filters.todayTrackers" = "Rastreadores para hoy";
+"filterListView.filters.completedTrackers" = "Completados";
+"filterListView.filters.notCompletedTrackers" = "No completados";
 "weekDay.monday" = "Lunes";
 "weekDay.thuesday" = "Martes";
 "weekDay.wednesday" = "Miércoles";

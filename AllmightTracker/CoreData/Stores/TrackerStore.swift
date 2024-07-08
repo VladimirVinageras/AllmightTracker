@@ -141,12 +141,10 @@ final class TrackerStore: NSObject{
     }
     
     func deleteTracker(by id: UUID) throws {
-        
        guard let trackerToDelete = fetchTracker(by: id) else {return}
         context.delete(trackerToDelete)
         try context.save()
     }
-    
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {

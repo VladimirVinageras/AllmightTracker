@@ -78,6 +78,15 @@ extension ColorResource {
     /// The "ColorSelection9" asset catalog color resource.
     static let colorSelection9 = ColorResource(name: "ColorSelection9", bundle: resourceBundle)
 
+    /// The "GradientColor1" asset catalog color resource.
+    static let gradientColor1 = ColorResource(name: "GradientColor1", bundle: resourceBundle)
+
+    /// The "GradientColor2" asset catalog color resource.
+    static let gradientColor2 = ColorResource(name: "GradientColor2", bundle: resourceBundle)
+
+    /// The "GradientColor3" asset catalog color resource.
+    static let gradientColor3 = ColorResource(name: "GradientColor3", bundle: resourceBundle)
+
     /// The "LaunchScreenBackground" asset catalog color resource.
     static let launchScreenBackground = ColorResource(name: "LaunchScreenBackground", bundle: resourceBundle)
 
@@ -133,11 +142,11 @@ extension ImageResource {
     /// The "OnboardingBackgroundPage2" asset catalog image resource.
     static let onboardingBackgroundPage2 = ImageResource(name: "OnboardingBackgroundPage2", bundle: resourceBundle)
 
-    /// The "StarMainScreen" asset catalog image resource.
-    static let starMainScreen = ImageResource(name: "StarMainScreen", bundle: resourceBundle)
-
     /// The "checkedBlue" asset catalog image resource.
     static let checkedBlue = ImageResource(name: "checkedBlue", bundle: resourceBundle)
+
+    /// The "emptyStatsImage" asset catalog image resource.
+    static let emptyStats = ImageResource(name: "emptyStatsImage", bundle: resourceBundle)
 
     /// The "navBarAddIcon" asset catalog image resource.
     static let navBarAddIcon = ImageResource(name: "navBarAddIcon", bundle: resourceBundle)
@@ -153,6 +162,9 @@ extension ImageResource {
 
     /// The "plus" asset catalog image resource.
     static let plus = ImageResource(name: "plus", bundle: resourceBundle)
+
+    /// The "starMainScreen" asset catalog image resource.
+    static let starMainScreen = ImageResource(name: "starMainScreen", bundle: resourceBundle)
 
     /// The "tabBarStatisticsIcon" asset catalog image resource.
     static let tabBarStatisticsIcon = ImageResource(name: "tabBarStatisticsIcon", bundle: resourceBundle)
@@ -329,6 +341,33 @@ extension AppKit.NSColor {
     static var colorSelection9: AppKit.NSColor {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .colorSelection9)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor3)
 #else
         .init()
 #endif
@@ -621,6 +660,33 @@ extension UIKit.UIColor {
 #endif
     }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor3)
+#else
+        .init()
+#endif
+    }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: UIKit.UIColor {
 #if !os(watchOS)
@@ -799,6 +865,15 @@ extension SwiftUI.Color {
     /// The "ColorSelection9" asset catalog color.
     static var colorSelection9: SwiftUI.Color { .init(.colorSelection9) }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: SwiftUI.Color { .init(.gradientColor1) }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: SwiftUI.Color { .init(.gradientColor2) }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: SwiftUI.Color { .init(.gradientColor3) }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: SwiftUI.Color { .init(.launchScreenBackground) }
 
@@ -897,6 +972,15 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
     /// The "ColorSelection9" asset catalog color.
     static var colorSelection9: SwiftUI.Color { .init(.colorSelection9) }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: SwiftUI.Color { .init(.gradientColor1) }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: SwiftUI.Color { .init(.gradientColor2) }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: SwiftUI.Color { .init(.gradientColor3) }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: SwiftUI.Color { .init(.launchScreenBackground) }
 
@@ -973,19 +1057,19 @@ extension AppKit.NSImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: AppKit.NSImage {
+    /// The "checkedBlue" asset catalog image.
+    static var checkedBlue: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
-        .init(resource: .starMainScreen)
+        .init(resource: .checkedBlue)
 #else
         .init()
 #endif
     }
 
-    /// The "checkedBlue" asset catalog image.
-    static var checkedBlue: AppKit.NSImage {
+    /// The "emptyStatsImage" asset catalog image.
+    static var emptyStats: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
-        .init(resource: .checkedBlue)
+        .init(resource: .emptyStats)
 #else
         .init()
 #endif
@@ -1031,6 +1115,15 @@ extension AppKit.NSImage {
     static var plus: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif
@@ -1098,19 +1191,19 @@ extension UIKit.UIImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: UIKit.UIImage {
+    /// The "checkedBlue" asset catalog image.
+    static var checkedBlue: UIKit.UIImage {
 #if !os(watchOS)
-        .init(resource: .starMainScreen)
+        .init(resource: .checkedBlue)
 #else
         .init()
 #endif
     }
 
-    /// The "checkedBlue" asset catalog image.
-    static var checkedBlue: UIKit.UIImage {
+    /// The "emptyStatsImage" asset catalog image.
+    static var emptyStats: UIKit.UIImage {
 #if !os(watchOS)
-        .init(resource: .checkedBlue)
+        .init(resource: .emptyStats)
 #else
         .init()
 #endif
@@ -1156,6 +1249,15 @@ extension UIKit.UIImage {
     static var plus: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif

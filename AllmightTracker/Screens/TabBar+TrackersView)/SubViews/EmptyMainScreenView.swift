@@ -1,5 +1,5 @@
 //
-//  EmptyMainScreenViewController.swift
+//  EmptyMainScreenView.swift
 //  AllmightTracker
 //
 //  Created by Vladimir Vinakheras on 05.07.2024.

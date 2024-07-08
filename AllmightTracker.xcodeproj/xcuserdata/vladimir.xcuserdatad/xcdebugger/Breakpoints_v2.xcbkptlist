@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7C06FB89-2F06-451C-93CB-1F4F95B9BA80"
+            uuid = "E0B26CA3-91FA-41E9-9D5D-2F1587DD0E87"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AllmightTracker/Screens/MainScreen(TabBar+Trackers+Stats)/TrackersViewController.swift"
+            filePath = "AllmightTracker/Screens/TabBar+TrackersView)/TrackerViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "reloadView()"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "cellPlusButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01A65D76-6D6A-462B-B18C-F457DD0C9CE7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AllmightTracker/Screens/TabBar+TrackersView)/StatisticsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "getAmountOfRecords()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

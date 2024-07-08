@@ -321,7 +321,7 @@ final class CreateHabitViewController : UIViewController{
         
         trackerParametersTableView.delegate = self
         trackerParametersTableView.dataSource = self
-        trackerParametersTableView.register(CreateHabitTableViewCell.self, forCellReuseIdentifier: parametersTableViewCellIdentifier)
+        trackerParametersTableView.register(TextLabelTableViewCell.self, forCellReuseIdentifier: parametersTableViewCellIdentifier)
         trackerParametersTableView.layer.cornerRadius = 16
         trackerParametersTableView.separatorStyle = .none
         trackerParametersTableView.isScrollEnabled = false
@@ -584,7 +584,7 @@ extension CreateHabitViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: parametersTableViewCellIdentifier,
-                                                       for: indexPath) as? CreateHabitTableViewCell
+                                                       for: indexPath) as? TextLabelTableViewCell
         else { return UITableViewCell() }
         
         if indexPath.row == 0 {

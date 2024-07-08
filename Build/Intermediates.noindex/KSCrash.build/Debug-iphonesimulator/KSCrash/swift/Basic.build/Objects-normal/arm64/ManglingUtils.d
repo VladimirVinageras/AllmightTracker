@@ -1,0 +1,8 @@
+dependencies: \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/swift/Basic/ManglingUtils.cpp \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/swift/Basic/ManglingUtils.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/llvm/ADT/StringRef.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/llvm/Support/Compiler.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/llvm/Config/llvm-config.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/swift/Basic/Punycode.h \
+  /Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/swift/Basic/StandardTypesMangling.def

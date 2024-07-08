@@ -63,6 +63,15 @@ static NSString * const ACColorNameColorSelection8 AC_SWIFT_PRIVATE = @"ColorSel
 /// The "ColorSelection9" asset catalog color resource.
 static NSString * const ACColorNameColorSelection9 AC_SWIFT_PRIVATE = @"ColorSelection9";
 
+/// The "GradientColor1" asset catalog color resource.
+static NSString * const ACColorNameGradientColor1 AC_SWIFT_PRIVATE = @"GradientColor1";
+
+/// The "GradientColor2" asset catalog color resource.
+static NSString * const ACColorNameGradientColor2 AC_SWIFT_PRIVATE = @"GradientColor2";
+
+/// The "GradientColor3" asset catalog color resource.
+static NSString * const ACColorNameGradientColor3 AC_SWIFT_PRIVATE = @"GradientColor3";
+
 /// The "LaunchScreenBackground" asset catalog color resource.
 static NSString * const ACColorNameLaunchScreenBackground AC_SWIFT_PRIVATE = @"LaunchScreenBackground";
 
@@ -111,11 +120,11 @@ static NSString * const ACImageNameOnboardingBackgroundPage1 AC_SWIFT_PRIVATE = 
 /// The "OnboardingBackgroundPage2" asset catalog image resource.
 static NSString * const ACImageNameOnboardingBackgroundPage2 AC_SWIFT_PRIVATE = @"OnboardingBackgroundPage2";
 
-/// The "StarMainScreen" asset catalog image resource.
-static NSString * const ACImageNameStarMainScreen AC_SWIFT_PRIVATE = @"StarMainScreen";
-
 /// The "checkedBlue" asset catalog image resource.
 static NSString * const ACImageNameCheckedBlue AC_SWIFT_PRIVATE = @"checkedBlue";
+
+/// The "emptyStatsImage" asset catalog image resource.
+static NSString * const ACImageNameEmptyStatsImage AC_SWIFT_PRIVATE = @"emptyStatsImage";
 
 /// The "navBarAddIcon" asset catalog image resource.
 static NSString * const ACImageNameNavBarAddIcon AC_SWIFT_PRIVATE = @"navBarAddIcon";
@@ -131,6 +140,9 @@ static NSString * const ACImageNamePinSquare AC_SWIFT_PRIVATE = @"pinSquare";
 
 /// The "plus" asset catalog image resource.
 static NSString * const ACImageNamePlus AC_SWIFT_PRIVATE = @"plus";
+
+/// The "starMainScreen" asset catalog image resource.
+static NSString * const ACImageNameStarMainScreen AC_SWIFT_PRIVATE = @"starMainScreen";
 
 /// The "tabBarStatisticsIcon" asset catalog image resource.
 static NSString * const ACImageNameTabBarStatisticsIcon AC_SWIFT_PRIVATE = @"tabBarStatisticsIcon";

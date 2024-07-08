@@ -26,6 +26,12 @@ final class StatisticsViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        borderGradientLayer.frame = contentView.bounds
+        borderShapeLayer.path = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: 16).cgPath
+    }
+    
     func setupUIElements(){
         countStatsLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         countStatsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -34,15 +40,15 @@ final class StatisticsViewCell : UITableViewCell {
         countStatsLabel.text = ""
         
         titleParameterLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        countStatsLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleParameterLabel.translatesAutoresizingMaskIntoConstraints = false
         titleParameterLabel.textAlignment = .left
         titleParameterLabel.textColor = .trackerBlack
         titleParameterLabel.text = ""
         
         borderGradientLayer.colors = [
-            UIColor.gradientColor1,
-            UIColor.gradientColor2,
-            UIColor.gradientColor3
+            UIColor.gradientColor1.cgColor,
+            UIColor.gradientColor2.cgColor,
+            UIColor.gradientColor3.cgColor
             ]
         borderGradientLayer.startPoint = CGPoint(x: 0, y: 0)
         borderGradientLayer.endPoint = CGPoint(x: 1, y: 1)
@@ -60,6 +66,7 @@ final class StatisticsViewCell : UITableViewCell {
     private func addSubviews(){
         contentView.addSubview(countStatsLabel)
         contentView.addSubview(titleParameterLabel)
+
     }
     private func activateConstraints(){
         NSLayoutConstraint.activate([

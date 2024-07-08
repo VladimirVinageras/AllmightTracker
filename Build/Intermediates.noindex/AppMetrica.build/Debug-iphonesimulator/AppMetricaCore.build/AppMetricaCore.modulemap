@@ -1,0 +1,4 @@
+module AppMetricaCore {
+umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaCore/Sources/include/AppMetricaCore/AppMetricaCore.h"
+export *
+}

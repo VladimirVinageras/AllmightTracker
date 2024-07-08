@@ -162,7 +162,7 @@ final class AddNewCategoryViewController : UIViewController{
     func prepareCategoriesTableView(){
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
-        categoriesTableView.register(NewCategoryTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
+        categoriesTableView.register(CheckedTextLabelTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
     }
     func addSubviews(){
         view.addSubview(viewTitleLabel)
@@ -192,7 +192,7 @@ extension AddNewCategoryViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
-                                                       for: indexPath) as? NewCategoryTableViewCell else {return NewCategoryTableViewCell()}
+                                                       for: indexPath) as? CheckedTextLabelTableViewCell else {return CheckedTextLabelTableViewCell()}
         let newTitle = self.trackerCategoriesViewModel.trackerCategories[indexPath.row].title
         cell.updateTitleCellLabel(with: newTitle)
         return cell
@@ -203,7 +203,7 @@ extension AddNewCategoryViewController : UITableViewDataSource {
 extension AddNewCategoryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
-                                                       for: indexPath) as? NewCategoryTableViewCell else {return}
+                                                       for: indexPath) as? CheckedTextLabelTableViewCell else {return}
         cell.toggleImageViewVisibility()
     
         self.trackerCategoriesViewModel.didSelect(at: indexPath.row)

@@ -10,7 +10,9 @@
 "onboardingView.BtnAction" = "Вот это технологии!";
 "tabBar.trackers" = "Трекеры" ;
 "tabBar.statistics" = "Статистика" ;
-"trackersView.contextMenu.pin" = "Закрепить"; 
+"statisticsView.EmptyViewText" = "Анализировать пока нечего";
+"statisticsView.ParameterTitle" = "Трекеров завершено";
+"trackersView.contextMenu.pin" = "Закрепить";
 "trackersView.contextMenu.unpin" = "Открепить";
 "trackersView.contextMenu.edit" = "Редактировать";
 "trackersView.contextMenu.delete" = "Удалить";
@@ -18,8 +20,9 @@
 "trackersView.title" = "Трекеры" ;
 "trackersView.searchHolderText" = "Поиск";
 "trackersView.holderText" = "Что будем отслеживать?";
-"trackersView.EmptySearchText" = "Ничего не найдено";
+"trackersView.emptySearchText" = "Ничего не найдено";
 "trackersView.pinnedCategoryName" = "Закрепленые трекеры";
+"trackersView.filtersButtonTitle" = "Фильтры";
 "addNewTrackerView.createTrackerTitle" = "Создание трекера";
 "addNewTrackerView.habit" = "Привычика";
 "addNewTrackerView.onceTimeEvent" = "Нерегулярное событие";
@@ -43,6 +46,11 @@
 "createCategory.btnReady"  = "Готово";
 "addNewSchedule.title" = "Расписание";
 "addNewSchedule.btnReady" = "Готово";
+"filterListView.title" = "Фильтры";
+"filterListView.filters.allTrackers" = "Все трекеры";
+"filterListView.filters.todayTrackers" = "Трекеры на сегодня";
+"filterListView.filters.completedTrackers" = "Завершенные";
+"filterListView.filters.notCompletedTrackers" = "Не завершенные";
 "weekDay.monday" = "Понедельник";
 "weekDay.thuesday" = "Вторник";
 "weekDay.wednesday" = "Среда";

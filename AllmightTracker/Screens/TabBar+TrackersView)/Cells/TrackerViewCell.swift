@@ -10,7 +10,7 @@ import UIKit
 
 final class TrackerViewCell : UICollectionViewCell {
     
-    
+    private let appMetricAnalyticsService = AnalyticsService()
 
     private var color : UIColor = .clear
     private var eventTitle : String = ""
@@ -73,6 +73,7 @@ final class TrackerViewCell : UICollectionViewCell {
     
     
     @objc private func cellPlusButtonTapped() {
+        appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "track"])
         guard let newDate = dateFormatter.date(from: calendarDate) else {return}
         if let trackerID = trackerID {
             completedTask.toggle()

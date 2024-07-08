@@ -188,6 +188,36 @@
 			<key>catalogPath</key>
 			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACColorNameGradientColor1</string>
+			<key>relativePath</key>
+			<string>./Colors/GradientColors/GradientColor1.colorset</string>
+			<key>swiftSymbol</key>
+			<string>gradientColor1</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameGradientColor2</string>
+			<key>relativePath</key>
+			<string>./Colors/GradientColors/GradientColor2.colorset</string>
+			<key>swiftSymbol</key>
+			<string>gradientColor2</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameGradientColor3</string>
+			<key>relativePath</key>
+			<string>./Colors/GradientColors/GradientColor3.colorset</string>
+			<key>swiftSymbol</key>
+			<string>gradientColor3</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACColorNameLaunchScreenBackground</string>
 			<key>relativePath</key>
 			<string>./Colors/LaunchScreenBackground.colorset</string>
@@ -351,21 +381,21 @@
 			<key>catalogPath</key>
 			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
 			<key>objcSymbol</key>
-			<string>ACImageNameStarMainScreen</string>
-			<key>relativePath</key>
-			<string>./Icons/StarMainScreen.imageset</string>
-			<key>swiftSymbol</key>
-			<string>starMainScreen</string>
-		</dict>
-		<dict>
-			<key>catalogPath</key>
-			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
-			<key>objcSymbol</key>
 			<string>ACImageNameCheckedBlue</string>
 			<key>relativePath</key>
 			<string>./Icons/checkedBlue.imageset</string>
 			<key>swiftSymbol</key>
 			<string>checkedBlue</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameEmptyStatsImage</string>
+			<key>relativePath</key>
+			<string>./Icons/emptyStatsImage.imageset</string>
+			<key>swiftSymbol</key>
+			<string>emptyStats</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -416,6 +446,16 @@
 			<string>./Icons/plus.imageset</string>
 			<key>swiftSymbol</key>
 			<string>plus</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameStarMainScreen</string>
+			<key>relativePath</key>
+			<string>./Icons/starMainScreen.imageset</string>
+			<key>swiftSymbol</key>
+			<string>starMainScreen</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
