@@ -249,10 +249,13 @@ final class TrackersViewController : UIViewController {
         }
         
         unpinnedTrackers = separetingTrackers(mainList: categories)
+        isCustomFilterActivated.isFilterActivated = true
         
         for filterIndex in 0..<4 {
             areFiltersEnabled[filterIndex] = !(filteringTrackersToShow(from: unpinnedTrackers, withFilterIndex: filterIndex)).isEmpty
         }
+        
+        isCustomFilterActivated.isFilterActivated = false
         
         let filterListViewController = FilterListViewController(areFiltersEnabled: areFiltersEnabled, isCustomFilterActive: isCustomFilterActivated)
         
@@ -403,12 +406,15 @@ final class TrackersViewController : UIViewController {
         (isListToShowEmpty && pinCategory.trackers.isEmpty)
         
         if hasToShowEmptyView{
-            if ((categoriesToShow.isEmpty && pinCategory.trackers.isEmpty &&  isCustomFilterActivated.isFilterActivated) || (isActiveSearchFiltering && isEmptySearchResult)) {
+            filtersButton.isHidden = true
+            if ((categoriesToShow.isEmpty && pinCategory.trackers.isEmpty) || (isActiveSearchFiltering && isEmptySearchResult)) {
+                
             emptyMainScreenView.updateImageToShow(with: UIImage(named: "notFoundImage"))
             emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewEmptySearchText)
             containerViewHolder.bringSubviewToFront(filtersButton)
         }
         if categories.isEmpty {
+            
                 emptyMainScreenView.updateImageToShow(with: UIImage(named: "starMainScreen"))
                 emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewHolderText)
                 containerViewHolder.bringSubviewToFront(filtersButton)
@@ -434,6 +440,7 @@ final class TrackersViewController : UIViewController {
         }
         else
         {
+            filtersButton.isHidden = false
             containerViewHolder.addSubview(scrollView)
         
             if isFirstScroll{
@@ -467,7 +474,7 @@ final class TrackersViewController : UIViewController {
             categoriesToShow = filteredData
             isActiveSearchFiltering = false
         }
-        if categoriesToShow.isEmpty && unpinnedTrackers.isEmpty {
+        if categoriesToShow.isEmpty &&  pinCategory.trackers.isEmpty {
             isListToShowEmpty = true
         }else{
             isListToShowEmpty = false
@@ -848,8 +855,11 @@ extension TrackersViewController : TrackerCategoryStoreDelegate{
 extension TrackersViewController : FilterListViewControllerDelegate {
     func customFilterDidSelect(withFilterIndex filterIndex: Int) {
         self.isCustomFilterActivated.filterIndex = filterIndex
+        if filterIndex == 1 {
             dateForFiltering? = Date()
+            trackerDatePicker.date = Date()
             trackerDateLabel.text = dateFormatter.string(from: Date())
+        }
         reloadView()
     }
 }
