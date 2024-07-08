@@ -1,4 +1,4 @@
 module AppMetricaProtobuf {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaProtobuf/Sources/include/AppMetricaProtobuf/AppMetricaProtobuf.h"
+umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaProtobuf/Sources/include/AppMetricaProtobuf/AppMetricaProtobuf.h"
 export *
 }

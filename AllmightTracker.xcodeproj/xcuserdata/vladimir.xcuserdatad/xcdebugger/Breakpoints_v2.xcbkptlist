@@ -7,33 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0B26CA3-91FA-41E9-9D5D-2F1587DD0E87"
+            uuid = "2547B66B-55A3-4C7D-B748-EE470DAEB7FA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AllmightTracker/Screens/TabBar+TrackersView)/TrackerViewCell.swift"
+            filePath = "AllmightTracker/Screens/TabBar+TrackersView)/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "cellPlusButtonTapped()"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "filtersButtonTapped()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "01A65D76-6D6A-462B-B18C-F457DD0C9CE7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AllmightTracker/Screens/TabBar+TrackersView)/StatisticsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "getAmountOfRecords()"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2547B66B-55A3-4C7D-B748-EE470DAEB7FA - 177fde5c9e077fd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AllmightTracker.TrackersViewController.filtersButtonTapped() -&gt; ()"
+                  moduleName = "AllmightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimir/Desktop/api%20changing%20%20and%20its%20all/AllmightTracker/AllmightTracker/Screens/TabBar+TrackersView)/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "253"
+                  endingLineNumber = "253">
+               </Location>
+               <Location
+                  uuid = "2547B66B-55A3-4C7D-B748-EE470DAEB7FA - 177fde5c9e077fd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AllmightTracker.TrackersViewController.filtersButtonTapped() -&gt; ()"
+                  moduleName = "AllmightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimir/Desktop/api%20changing%20%20and%20its%20all/AllmightTracker/AllmightTracker/Screens/TabBar+TrackersView)/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "253"
+                  endingLineNumber = "253">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

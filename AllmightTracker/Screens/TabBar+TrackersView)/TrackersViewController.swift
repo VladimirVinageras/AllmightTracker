@@ -229,24 +229,11 @@ final class TrackersViewController : UIViewController {
         if let dateForFiltering = dateForFiltering {
             isTryingToChangeTheFuture = Date() < dateForFiltering
         }
-        
-        guard let dateForFiltering = dateForFiltering else {return}
-        let dateForFilteringText = dateFormatter.string(from: dateForFiltering)
-        let currentDate = dateFormatter.string(from: Date())
-        
-        if (isCustomFilterActivated.filterIndex == 1 && dateForFilteringText != currentDate){
-            listHasToBeEmpty = true
-            trackerDatePicker.isHidden = true
-            
-        }else{
-            listHasToBeEmpty = false
-            trackerDatePicker.isHidden = true
-            view.sendSubviewToBack(trackerDatePicker)
-            reloadView()
-          
-        }
+        trackerDatePicker.isHidden = true
+        view.sendSubviewToBack(trackerDatePicker)
+        reloadView()
     }
-    
+
     @objc private func plusButtonTapped() {
         appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "add_track"])
         present(AddNewTrackerViewController(), animated: true)
@@ -416,8 +403,7 @@ final class TrackersViewController : UIViewController {
         (isListToShowEmpty && pinCategory.trackers.isEmpty)
         
         if hasToShowEmptyView{
-            
-        if (categoriesToShow.isEmpty && pinCategory.trackers.isEmpty && !isFirstScroll) || isActiveSearchFiltering && (isEmptySearchResult) {
+            if ((categoriesToShow.isEmpty && pinCategory.trackers.isEmpty &&  isCustomFilterActivated.isFilterActivated) || (isActiveSearchFiltering && isEmptySearchResult)) {
             emptyMainScreenView.updateImageToShow(with: UIImage(named: "notFoundImage"))
             emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewEmptySearchText)
             containerViewHolder.bringSubviewToFront(filtersButton)
@@ -651,8 +637,8 @@ final class TrackersViewController : UIViewController {
         if isFilterActivated && filterIndex != nil{
             switch filterIndex{
             case 0:  trackersToShow = filteringEventsByDate(from: categoriesList)
-            case 1: dateForFiltering? = Date()
-                trackersToShow = filteringEventsByDate(from: categoriesList)
+            case 1:  dateForFiltering = Date()
+                    trackersToShow = filteringEventsByDate(from: categoriesList)
             case 2: trackersToShow = filteringCompletedTrackers(from: categoriesList)
             default: trackersToShow = filteringNotCompletedTrackers(from: categoriesList)
             }
@@ -862,6 +848,8 @@ extension TrackersViewController : TrackerCategoryStoreDelegate{
 extension TrackersViewController : FilterListViewControllerDelegate {
     func customFilterDidSelect(withFilterIndex filterIndex: Int) {
         self.isCustomFilterActivated.filterIndex = filterIndex
+            dateForFiltering? = Date()
+            trackerDateLabel.text = dateFormatter.string(from: Date())
         reloadView()
     }
 }

@@ -1,4 +1,4 @@
 module AppMetricaFMDB {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaFMDB/Sources/include/AppMetricaFMDB/AppMetricaFMDB.h"
+umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaFMDB/Sources/include/AppMetricaFMDB/AppMetricaFMDB.h"
 export *
 }

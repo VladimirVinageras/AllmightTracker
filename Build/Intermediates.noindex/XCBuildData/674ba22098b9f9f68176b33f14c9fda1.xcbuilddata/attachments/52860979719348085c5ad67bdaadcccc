@@ -1,4 +1,0 @@
-module AppMetricaWebKit {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaWebKit/Sources/include/AppMetricaWebKit/AppMetricaWebKit.h"
-export *
-}
