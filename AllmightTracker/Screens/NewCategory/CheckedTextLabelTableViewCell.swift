@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class NewCategoryTableViewCell : UITableViewCell {
+final class CheckedTextLabelTableViewCell : UITableViewCell {
     
     private var cellTitleTextLabel : UILabel = {
         let titleLabel = UILabel()

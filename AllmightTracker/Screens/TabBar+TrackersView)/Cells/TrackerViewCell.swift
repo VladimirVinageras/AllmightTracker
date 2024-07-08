@@ -18,7 +18,7 @@ final class TrackerViewCell : UICollectionViewCell {
 
     private var completedTask : Bool = false
     private var amountOfDays = 0
-    private var calendarDate = Date()
+    private var calendarDate = ""
     private var trackerRecordStore = TrackerRecordStore()
     private var trackerID: UUID?
     
@@ -49,7 +49,7 @@ final class TrackerViewCell : UICollectionViewCell {
         pButton.layer.cornerRadius = 17
         pButton.layer.masksToBounds = true
         
-        pButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+        pButton.addTarget(self, action: #selector(cellPlusButtonTapped), for: .touchUpInside)
         return pButton
     }()
     
@@ -72,17 +72,18 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
     
-    @objc private func plusButtonTapped() {
-        
+    @objc private func cellPlusButtonTapped() {
+        guard let newDate = dateFormatter.date(from: calendarDate) else {return}
         if let trackerID = trackerID {
             completedTask.toggle()
                     do {
                         if completedTask {
-                            try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: calendarDate)
+                                try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: newDate)
                             trackerRecordStore.delegate?.storeRecord()
-                            amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
+                            amountOfDays =
+                            trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
                         } else {
-                            try trackerRecordStore.deleteTrackerRecord(idCompletedTracker: trackerID, completionDate: calendarDate)
+                            try trackerRecordStore.deleteTrackerRecord(idCompletedTracker: trackerID, completionDate: newDate)
                             trackerRecordStore.delegate?.storeRecord()
                             amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
                             amountOfDays = (amountOfDays < 0) ? 0 : amountOfDays
@@ -139,7 +140,7 @@ final class TrackerViewCell : UICollectionViewCell {
     }
     
 
-    func prepareDataForUsing(colorName: String, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : Date) {
+    func prepareDataForUsing(colorName: String, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : String) {
         self.calendarDate = calendarDate
         self.color = UIColor(named: colorName) ?? .trackerGray
         self.eventTitle = eventTitle
@@ -147,7 +148,7 @@ final class TrackerViewCell : UICollectionViewCell {
         self.trackerID = trackerID
         do{
             completedTask = try trackerRecordStore.fetchTrackerRecords().contains {
-                dateFormatter.string(from: $0.dateTrackerCompleted)  == dateFormatter.string(from: calendarDate) && $0.idCompletedTracker == trackerID
+                dateFormatter.string(from: $0.dateTrackerCompleted)  == calendarDate && $0.idCompletedTracker == trackerID
             }
          
         }

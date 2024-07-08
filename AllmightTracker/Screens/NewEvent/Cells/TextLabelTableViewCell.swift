@@ -1,5 +1,5 @@
 //
-//  CreateHabitTableViewCell.swift
+//  TextLabelTableViewCell.swift
 //  AllmightTracker
 //
 //  Created by Vladimir Vinakheras on 14.05.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class CreateHabitTableViewCell : UITableViewCell {
+final class TextLabelTableViewCell : UITableViewCell {
     private var isEmptySelectedElementsLabel = true
     private var selectedElement = ""
     private var tableViewCellConstraints : [NSLayoutConstraint?] = []
