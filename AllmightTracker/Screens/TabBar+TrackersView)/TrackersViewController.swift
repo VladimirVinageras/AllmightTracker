@@ -222,6 +222,7 @@ final class TrackersViewController : UIViewController {
     }
     
     @objc func dateValueChanged(_ sender: UIDatePicker) {
+        sender.isUserInteractionEnabled = false
         updateLabel(with: sender.date)
         isActiveDateFiltering = true
         dateForFiltering = sender.date
@@ -229,8 +230,9 @@ final class TrackersViewController : UIViewController {
         if let dateForFiltering = dateForFiltering {
             isTryingToChangeTheFuture = Date() < dateForFiltering
         }
-        trackerDatePicker.isHidden = true
+        sender.isHidden = true
         view.sendSubviewToBack(trackerDatePicker)
+        sender.isUserInteractionEnabled = true
         reloadView()
     }
     
