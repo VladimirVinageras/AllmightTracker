@@ -1,4 +1,0 @@
-module AppMetricaCrashes {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaCrashes/Sources/include/AppMetricaCrashes/AppMetricaCrashes.h"
-export *
-}

@@ -13,7 +13,7 @@ final class CreateCategoryViewController : UIViewController {
     
     weak var delegate: CreatingCategoryViewControllerProtocol?
     
-    private let viewModel : TrackerCateogoriesViewModel
+    private let viewModel : TrackerCategoriesViewModel
     
     private lazy var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
@@ -76,7 +76,7 @@ final class CreateCategoryViewController : UIViewController {
     }
     
     
-    init(viewModel: TrackerCateogoriesViewModel){
+    init(viewModel: TrackerCategoriesViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite

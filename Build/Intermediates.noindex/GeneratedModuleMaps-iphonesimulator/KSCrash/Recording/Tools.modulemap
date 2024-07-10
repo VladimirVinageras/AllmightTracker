@@ -1,4 +1,0 @@
-module KSCrash_Recording_Tools {
-umbrella "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/KSCrash/Source/KSCrash/Recording/Tools"
-export *
-}

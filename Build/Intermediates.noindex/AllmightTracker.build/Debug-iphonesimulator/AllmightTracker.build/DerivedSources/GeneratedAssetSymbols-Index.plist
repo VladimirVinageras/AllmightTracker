@@ -381,16 +381,6 @@
 			<key>catalogPath</key>
 			<string>/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/AllmightTracker/Assets.xcassets</string>
 			<key>objcSymbol</key>
-			<string>ACImageNameStarMainScreen</string>
-			<key>relativePath</key>
-			<string>./Icons/StarMainScreen.imageset</string>
-			<key>swiftSymbol</key>
-			<string>starMainScreen</string>
-		</dict>
-		<dict>
-			<key>catalogPath</key>
-			<string>/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/AllmightTracker/Assets.xcassets</string>
-			<key>objcSymbol</key>
 			<string>ACImageNameCheckedBlue</string>
 			<key>relativePath</key>
 			<string>./Icons/checkedBlue.imageset</string>
@@ -456,6 +446,16 @@
 			<string>./Icons/plus.imageset</string>
 			<key>swiftSymbol</key>
 			<string>plus</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/AllmightTracker/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameStarMainScreen</string>
+			<key>relativePath</key>
+			<string>./Icons/starMainScreen.imageset</string>
+			<key>swiftSymbol</key>
+			<string>starMainScreen</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

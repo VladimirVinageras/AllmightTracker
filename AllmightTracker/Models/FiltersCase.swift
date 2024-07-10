@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum Filters : Int {
+    case byDate = 0
+    case today
+    case completed
+    case notCompleted
+}

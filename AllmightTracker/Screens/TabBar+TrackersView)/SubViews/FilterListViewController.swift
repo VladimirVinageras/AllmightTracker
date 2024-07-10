@@ -15,7 +15,7 @@ final class FilterListViewController : UIViewController{
     var delegate: FilterListViewControllerDelegate?
     private var areFiltersEnable : [Bool] = []
     private var isCustomFilterActive : Bool
-    private var indexActiveFilter : Int?
+    private var activeFilter : Filters?
     
     private let filtersName = [
         dictionaryUI.filterListViewFiltersAllTrackers,
@@ -39,10 +39,10 @@ final class FilterListViewController : UIViewController{
         return parametersTableView
     }()
     
-    init(areFiltersEnabled: [Bool], isCustomFilterActive: (isFilterActivated:Bool,filterIndex:Int?)) {
+    init(areFiltersEnabled: [Bool], isCustomFilterActive: (isFilterActivated:Bool,filter: Filters?)) {
         self.areFiltersEnable = areFiltersEnabled
         self.isCustomFilterActive = isCustomFilterActive.isFilterActivated
-        self.indexActiveFilter = isCustomFilterActive.filterIndex
+        self.activeFilter = isCustomFilterActive.filter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -100,8 +100,8 @@ extension FilterListViewController : UITableViewDelegate, UITableViewDataSource 
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: сellIdentifier, for: indexPath) as? CheckedTextLabelTableViewCell
         else { return UITableViewCell() }
-        
-        if isCustomFilterActive && indexActiveFilter == indexPath.row{
+        guard let filter = Filters(rawValue: indexPath.row) else { return UITableViewCell() }
+        if activeFilter == filter{
             cell.toggleImageViewVisibility()
         }
         cell.updateTitleCellLabel(with: filtersName[indexPath.row].self)
@@ -119,7 +119,9 @@ extension FilterListViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: сellIdentifier, for: indexPath) as? CheckedTextLabelTableViewCell else {return}
-        handleSelection(for: indexPath.row)
+        guard let filter = Filters.init(rawValue: indexPath.row) else {return}
+        handleSelection(for: filter)
+        cell.toggleImageViewVisibility()
         cell.selectionStyle = . none
         tableView.deselectRow(at: indexPath, animated: true)
         dismiss(animated: true)
@@ -147,9 +149,9 @@ extension FilterListViewController : UITableViewDelegate, UITableViewDataSource 
 
 
 extension FilterListViewController {
-    private func handleSelection(for filterIndex: Int) {
+    private func handleSelection(for filter: Filters) {
         NotificationCenter.default.post(name: Notification.Name("ControlButtonColor"), object: nil)
-        delegate?.customFilterDidSelect(withFilterIndex: filterIndex)
+        delegate?.customFilterDidSelect(withFilter: filter)
        
         }
 }

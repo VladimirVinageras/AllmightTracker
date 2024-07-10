@@ -12,7 +12,7 @@ import UIKit
 final class AddNewCategoryViewController : UIViewController{
 
   
-    private var trackerCategoriesViewModel : TrackerCateogoriesViewModel
+    private var trackerCategoriesViewModel : TrackerCategoriesViewModel
 
     let categoryCellReuseIdentifier = "categoryCell"
     
@@ -63,7 +63,7 @@ final class AddNewCategoryViewController : UIViewController{
     private let starImageView :  UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "StarMainScreen")
+        imageView.image = UIImage(named: "starMainScreen")
         imageView.frame.size = CGSize(width: 80, height: 80)
         return imageView
     }()
@@ -80,7 +80,7 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     
-    init(viewModel: TrackerCateogoriesViewModel){
+    init(viewModel: TrackerCategoriesViewModel){
         self.trackerCategoriesViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite

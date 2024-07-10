@@ -1,4 +1,0 @@
-module AppMetricaAdSupport {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaAdSupport/Sources/include/AppMetricaAdSupport/AppMetricaAdSupport.h"
-export *
-}

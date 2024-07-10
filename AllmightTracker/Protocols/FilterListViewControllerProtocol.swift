@@ -9,5 +9,5 @@ import Foundation
 
 
 protocol FilterListViewControllerDelegate {
-    func customFilterDidSelect(withFilterIndex filterIndex: Int)
+    func customFilterDidSelect(withFilter filter: Filters)
 }

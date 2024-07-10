@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC343784A88B034E046530C0 /* Pods_AllmightTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D053CC6D71E6FAB58AC5143 /* Pods_AllmightTracker.framework */; };
 		E70A7AB42C076D0400E688AE /* TrackerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A7AB32C076D0400E688AE /* TrackerViewCell.swift */; };
 		E70A7AB62C0987A400E688AE /* MainHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A7AB52C0987A400E688AE /* MainHeaderCollectionView.swift */; };
 		E70A7AEB2C10F69A00E688AE /* UIColorMarshalling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A7AEA2C10F69A00E688AE /* UIColorMarshalling.swift */; };
@@ -60,10 +61,7 @@
 		E7DEF9F52C37757800D4AA96 /* EmptyMainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEF9F42C37757800D4AA96 /* EmptyMainScreenView.swift */; };
 		E7DEFA022C3AF82500D4AA96 /* StatisticsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEFA012C3AF82500D4AA96 /* StatisticsViewCell.swift */; };
 		E7DEFA072C3B8DB400D4AA96 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEFA062C3B8DB400D4AA96 /* AnalyticsService.swift */; };
-		E7DEFA0A2C3B8F0900D4AA96 /* AppMetricaAdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E7DEFA092C3B8F0900D4AA96 /* AppMetricaAdSupport */; };
-		E7DEFA0C2C3B8F0900D4AA96 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; productRef = E7DEFA0B2C3B8F0900D4AA96 /* AppMetricaCore */; };
-		E7DEFA0E2C3B8F0900D4AA96 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = E7DEFA0D2C3B8F0900D4AA96 /* AppMetricaCrashes */; };
-		E7DEFA102C3B8F0900D4AA96 /* AppMetricaWebKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7DEFA0F2C3B8F0900D4AA96 /* AppMetricaWebKit */; };
+		E7DEFA122C3CB0F200D4AA96 /* FiltersCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DEFA112C3CB0F200D4AA96 /* FiltersCase.swift */; };
 		E7EEAD1C2BE59F1900221B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */; };
 		E7EEAD1E2BE59F1900221B2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */; };
 		E7EEAD252BE59F1E00221B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7EEAD242BE59F1E00221B2A /* Assets.xcassets */; };
@@ -84,6 +82,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		585BE65537435148A2F96E9D /* Pods-AllmightTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllmightTracker.release.xcconfig"; path = "Target Support Files/Pods-AllmightTracker/Pods-AllmightTracker.release.xcconfig"; sourceTree = "<group>"; };
+		810BB2351BE4C33B827DB9BE /* Pods-AllmightTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllmightTracker.debug.xcconfig"; path = "Target Support Files/Pods-AllmightTracker/Pods-AllmightTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		9D053CC6D71E6FAB58AC5143 /* Pods_AllmightTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllmightTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70A7AB32C076D0400E688AE /* TrackerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewCell.swift; sourceTree = "<group>"; };
 		E70A7AB52C0987A400E688AE /* MainHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderCollectionView.swift; sourceTree = "<group>"; };
 		E70A7AEA2C10F69A00E688AE /* UIColorMarshalling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorMarshalling.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		E7482EEC2C18AAC200184A53 /* TrackerScheduleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerScheduleStore.swift; sourceTree = "<group>"; };
 		E7482EED2C18AAC200184A53 /* TrackerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
 		E7482F052C18B46700184A53 /* ModelCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelCoreData.xcdatamodel; sourceTree = "<group>"; };
+		E756E8C32C3DD9A6001A962A /* YandexMobileMetrica.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = YandexMobileMetrica.xcframework; path = Pods/YandexMobileMetrica/dynamic/YandexMobileMetrica.xcframework; sourceTree = "<group>"; };
 		E762A2332BFDE5DB009BA621 /* AddNewTrackerScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTrackerScheduleViewController.swift; sourceTree = "<group>"; };
 		E762A2362BFDE6ED009BA621 /* NewTrackerScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackerScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		E762A2392BFDF092009BA621 /* ScheduleViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		E7DEF9F42C37757800D4AA96 /* EmptyMainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMainScreenView.swift; sourceTree = "<group>"; };
 		E7DEFA012C3AF82500D4AA96 /* StatisticsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewCell.swift; sourceTree = "<group>"; };
 		E7DEFA062C3B8DB400D4AA96 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		E7DEFA112C3CB0F200D4AA96 /* FiltersCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCase.swift; sourceTree = "<group>"; };
 		E7EEAD182BE59F1900221B2A /* AllmightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllmightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EEAD1B2BE59F1900221B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7EEAD1D2BE59F1900221B2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,16 +170,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7DEFA102C3B8F0900D4AA96 /* AppMetricaWebKit in Frameworks */,
-				E7DEFA0E2C3B8F0900D4AA96 /* AppMetricaCrashes in Frameworks */,
-				E7DEFA0A2C3B8F0900D4AA96 /* AppMetricaAdSupport in Frameworks */,
-				E7DEFA0C2C3B8F0900D4AA96 /* AppMetricaCore in Frameworks */,
+				AC343784A88B034E046530C0 /* Pods_AllmightTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153446EC65ABBC0F85AA0EB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E756E8C32C3DD9A6001A962A /* YandexMobileMetrica.xcframework */,
+				9D053CC6D71E6FAB58AC5143 /* Pods_AllmightTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C4EA83E94FF46C2742C1DF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				810BB2351BE4C33B827DB9BE /* Pods-AllmightTracker.debug.xcconfig */,
+				585BE65537435148A2F96E9D /* Pods-AllmightTracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E71F9DC62BFD663F003FFFA4 /* NewCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +231,7 @@
 				E74640712BEE9DE60028826D /* TrackerSchedule.swift */,
 				E736523C2C043AC00001D8F6 /* ScheduleDay.swift */,
 				E7266BC32BFBE7D00022E378 /* Weekday.swift */,
+				E7DEFA112C3CB0F200D4AA96 /* FiltersCase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,6 +414,8 @@
 				E7EEAD1A2BE59F1900221B2A /* AllmightTracker */,
 				E7DEF9DE2C34BA5E00D4AA96 /* AllmightTrackerTests */,
 				E7EEAD192BE59F1900221B2A /* Products */,
+				4C4EA83E94FF46C2742C1DF2 /* Pods */,
+				153446EC65ABBC0F85AA0EB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -457,6 +478,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7EEAD2C2BE59F1E00221B2A /* Build configuration list for PBXNativeTarget "AllmightTracker" */;
 			buildPhases = (
+				F34B85023FD47490A849D2F5 /* [CP] Check Pods Manifest.lock */,
 				E7EEAD142BE59F1900221B2A /* Sources */,
 				E7EEAD152BE59F1900221B2A /* Frameworks */,
 				E7EEAD162BE59F1900221B2A /* Resources */,
@@ -466,12 +488,6 @@
 			dependencies = (
 			);
 			name = AllmightTracker;
-			packageProductDependencies = (
-				E7DEFA092C3B8F0900D4AA96 /* AppMetricaAdSupport */,
-				E7DEFA0B2C3B8F0900D4AA96 /* AppMetricaCore */,
-				E7DEFA0D2C3B8F0900D4AA96 /* AppMetricaCrashes */,
-				E7DEFA0F2C3B8F0900D4AA96 /* AppMetricaWebKit */,
-			);
 			productName = AllmightTracker;
 			productReference = E7EEAD182BE59F1900221B2A /* AllmightTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -508,7 +524,6 @@
 			mainGroup = E7EEAD0F2BE59F1900221B2A;
 			packageReferences = (
 				E7DEF9E62C34BA9800D4AA96 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */,
 			);
 			productRefGroup = E7EEAD192BE59F1900221B2A /* Products */;
 			projectDirPath = "";
@@ -541,6 +556,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F34B85023FD47490A849D2F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AllmightTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E7DEF9D92C34BA5D00D4AA96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -569,6 +609,7 @@
 				E7482EF62C18AAC200184A53 /* TrackerStoreError.swift in Sources */,
 				E7EEAD322BE7BCE700221B2A /* TrackersViewController.swift in Sources */,
 				E7BF0E442BF25C5B008C8E09 /* CreateHabitViewController.swift in Sources */,
+				E7DEFA122C3CB0F200D4AA96 /* FiltersCase.swift in Sources */,
 				E762A23C2BFE2F12009BA621 /* TrackersViewControllerProtocol.swift in Sources */,
 				E7EEAD302BE7BC8900221B2A /* TabBarController.swift in Sources */,
 				E7DEF9F22C35DD7900D4AA96 /* FilterListViewControllerProtocol.swift in Sources */,
@@ -815,6 +856,7 @@
 		};
 		E7EEAD2D2BE59F1E00221B2A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 810BB2351BE4C33B827DB9BE /* Pods-AllmightTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -847,6 +889,7 @@
 		};
 		E7EEAD2E2BE59F1E00221B2A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 585BE65537435148A2F96E9D /* Pods-AllmightTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -918,14 +961,6 @@
 				minimumVersion = 1.16.1;
 			};
 		};
-		E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/appmetrica/appmetrica-sdk-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -938,26 +973,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E7DEF9E62C34BA9800D4AA96 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		E7DEFA092C3B8F0900D4AA96 /* AppMetricaAdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
-			productName = AppMetricaAdSupport;
-		};
-		E7DEFA0B2C3B8F0900D4AA96 /* AppMetricaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
-			productName = AppMetricaCore;
-		};
-		E7DEFA0D2C3B8F0900D4AA96 /* AppMetricaCrashes */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
-			productName = AppMetricaCrashes;
-		};
-		E7DEFA0F2C3B8F0900D4AA96 /* AppMetricaWebKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7DEFA082C3B8F0900D4AA96 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
-			productName = AppMetricaWebKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

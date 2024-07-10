@@ -10,9 +10,9 @@ import UIKit
 
 struct Tracker{
     let id: UUID
-    var name: String
-    var colorName: String
-    var emoji: String
-    var schedule: TrackerSchedule
+    let name: String
+    let colorName: String
+    let emoji: String
+    let schedule: TrackerSchedule
     var isPinned: Bool
 }

@@ -1,5 +1,5 @@
 //
-//  TrackerCateogoriesViewModel.swift
+//  TrackerCategoriesViewModel.swift
 //  AllmightTracker
 //
 //  Created by Vladimir Vinakheras on 17.06.2024.
@@ -8,7 +8,7 @@
 
 
 
-final class TrackerCateogoriesViewModel {
+final class TrackerCategoriesViewModel {
     private let trackerCategoryStore : TrackerCategoryStore
     
     private(set) var selectedCategory : TrackerCategory? =  nil{

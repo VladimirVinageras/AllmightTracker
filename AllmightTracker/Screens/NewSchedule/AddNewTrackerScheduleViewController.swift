@@ -85,8 +85,8 @@ super.viewDidLoad()
     private func updateCellDaysSelected() {
         cellDaysSelected.removeAll()
         
-        selectedDaysBefore.sort{ day0,day1  in
-            return day0.scheduleDay.rawValue < day1.scheduleDay.rawValue
+        selectedDaysBefore.sort{ dayFirst,daySecond  in
+            return dayFirst.scheduleDay.rawValue < daySecond.scheduleDay.rawValue
         }
         
         for dayIndex in 0..<7 {

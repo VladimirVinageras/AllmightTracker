@@ -1,4 +1,0 @@
-module KSCrash_Reporting_Sinks {
-umbrella "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-fvnpezyhaxgynrerqhbshwenxvjb/SourcePackages/checkouts/KSCrash/Source/KSCrash/Reporting/Sinks"
-export *
-}

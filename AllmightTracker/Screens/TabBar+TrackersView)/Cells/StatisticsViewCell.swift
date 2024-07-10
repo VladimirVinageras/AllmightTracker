@@ -49,7 +49,7 @@ final class StatisticsViewCell : UITableViewCell {
             UIColor.gradientColor1.cgColor,
             UIColor.gradientColor2.cgColor,
             UIColor.gradientColor3.cgColor
-            ]
+        ]
         borderGradientLayer.startPoint = CGPoint(x: 0, y: 0)
         borderGradientLayer.endPoint = CGPoint(x: 1, y: 1)
         borderGradientLayer.cornerRadius = 16
@@ -62,11 +62,11 @@ final class StatisticsViewCell : UITableViewCell {
         borderGradientLayer.mask = borderShapeLayer
         contentView.layer.addSublayer(borderGradientLayer)
         contentView.layer.masksToBounds = true
-        }
+    }
     private func addSubviews(){
         contentView.addSubview(countStatsLabel)
         contentView.addSubview(titleParameterLabel)
-
+        
     }
     private func activateConstraints(){
         NSLayoutConstraint.activate([

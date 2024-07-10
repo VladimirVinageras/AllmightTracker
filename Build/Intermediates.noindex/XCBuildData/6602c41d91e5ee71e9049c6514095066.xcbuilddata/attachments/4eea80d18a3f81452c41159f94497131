@@ -1,4 +1,0 @@
-module AppMetricaHostState {
-umbrella header "/Users/vladimir/Library/Developer/Xcode/DerivedData/AllmightTracker-faekqodpxnkjikabcmvsocwukraf/SourcePackages/checkouts/appmetrica-sdk-ios/AppMetricaHostState/Sources/include/AppMetricaHostState/AppMetricaHostState.h"
-export *
-}

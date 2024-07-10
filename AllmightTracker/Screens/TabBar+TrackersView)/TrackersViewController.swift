@@ -20,7 +20,7 @@ final class TrackersViewController : UIViewController {
     
     //MARK: - EDITING VIEWCONTROLLER HELPER VARIABLES
     var eventToUpdate : Tracker?
-    var ammountOfDaysText = ""
+    var amountOfDaysText = ""
     
     //MARK: - STORE VARIABLES
     private var trackerStore = TrackerStore()
@@ -129,7 +129,7 @@ final class TrackersViewController : UIViewController {
     }()
     
     //MARK: - FILTERING VARIABLES
-    private var isCustomFilterActivated : (isFilterActivated: Bool, filterIndex : Int?)
+    private var isCustomFilterActivated : (isFilterActivated: Bool, filter : Filters?)
     private var isActiveDateFiltering : Bool = false
     private var isActiveSearchFiltering : Bool = false
     private var areFiltersEnabled : [Bool] = [true, true, true, true]
@@ -149,7 +149,7 @@ final class TrackersViewController : UIViewController {
     //MARK: - INITIALIZATION
     init() {
         isCustomFilterActivated.isFilterActivated = false
-        isCustomFilterActivated.filterIndex = nil
+        isCustomFilterActivated.filter = nil
         
         emptyMainScreenView = EmptyMainScreenView(imageToShow: imageToShow, textToShow: textToShow)
         super.init(nibName: nil, bundle: nil)
@@ -191,29 +191,29 @@ final class TrackersViewController : UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        appMetricAnalyticsService.report(event: "open", params: ["screen": "Main"])
+        appMetricAnalyticsService.mainScreenDidAppear()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        appMetricAnalyticsService.report(event: "close", params: ["screen": "Main"])
+        appMetricAnalyticsService.mainScreenDidDisappear()
     }
     
     //MARK: - @OBJC Functions
     @objc func controlButtonColor() {
-        isCustomFilterActivated.isFilterActivated = true
-        filtersButton.tintColor = isCustomFilterActivated.isFilterActivated ? .trackerRed: .trackerWhite
+        filtersButton.tintColor = isCustomFilterActivated.isFilterActivated ? .trackerRed : .trackerWhite
     }
     
     @objc private func reloadView() {
         do {
             categories = try trackerCategoryStore.fetchTrackerCategories()
-            filteringCompletedTrackersFromRecords()
+            completedTrackersOnDateForFiltering()
         } catch {
             print("Error fetching data: \(error)")
         }
-        setupContainerView()
         setupContainerHolder()
+        setupContainerView()
+        
     }
     
     @objc func dateLabelTapped() {
@@ -233,14 +233,14 @@ final class TrackersViewController : UIViewController {
         view.sendSubviewToBack(trackerDatePicker)
         reloadView()
     }
-
+    
     @objc private func plusButtonTapped() {
-        appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "add_track"])
+        appMetricAnalyticsService.mainScreenDidPlusButtonTap()
         present(AddNewTrackerViewController(), animated: true)
     }
     
     @objc private func filtersButtonTapped(){
-        appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "filter"])
+        appMetricAnalyticsService.mainScreenDidFilterButtonTap()
         do{
             categories = try trackerCategoryStore.fetchTrackerCategories()
         }
@@ -251,8 +251,8 @@ final class TrackersViewController : UIViewController {
         unpinnedTrackers = separetingTrackers(mainList: categories)
         isCustomFilterActivated.isFilterActivated = true
         
-        for filterIndex in 0..<4 {
-            areFiltersEnabled[filterIndex] = !(filteringTrackersToShow(from: unpinnedTrackers, withFilterIndex: filterIndex)).isEmpty
+        for filterIndex in 1..<4 {
+            areFiltersEnabled[filterIndex] = !(filteringTrackersToShow(from: unpinnedTrackers, withFilter: Filters(rawValue: filterIndex))).isEmpty
         }
         
         isCustomFilterActivated.isFilterActivated = false
@@ -276,9 +276,9 @@ final class TrackersViewController : UIViewController {
         }
         else {
             filteredData = categories
-            isEmptySearchResult = false
+            isEmptySearchResult = true
+            isActiveSearchFiltering = false
         }
-        categories = filteredData
         reloadView()
     }
     
@@ -294,14 +294,14 @@ final class TrackersViewController : UIViewController {
         }
     }
     func filtersButtonAnimation(buttonTransparencyToBe: CGFloat, distanceToMove: CGFloat){
-        UIView.animate(withDuration: 0.25, animations: {
-            let yPosition = self.filtersButton.center.y
-            self.filtersButton.center.y = yPosition + distanceToMove
-            self.filtersButton.alpha = buttonTransparencyToBe
+        UIView.animate(withDuration: 0.25, animations: { [weak self]  in
+            guard let yPosition = self?.filtersButton.center.y else {return}
+            self?.filtersButton.center.y = yPosition + distanceToMove
+            self?.filtersButton.alpha = buttonTransparencyToBe
             let scaleFactor = distanceToMove < 0 ? 4 : 1
             let rotationDegrees = distanceToMove < 0  ? Double.pi : 0
-            self.filtersButton.transform = CGAffineTransform(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
-            self.filtersButton.transform = CGAffineTransform(rotationAngle: rotationDegrees)
+            self?.filtersButton.transform = CGAffineTransform(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
+            self?.filtersButton.transform = CGAffineTransform(rotationAngle: rotationDegrees)
         }){(completed) in
             if completed{
                 if self.downAnimationStarted{ self.view.bringSubviewToFront(self.filtersButton)}
@@ -312,7 +312,7 @@ final class TrackersViewController : UIViewController {
     
     //MARK: - SCROLLVIEW DELEGATE
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0 {
             scrollUpButtonAnimation()
             downAnimationStarted = true
@@ -337,7 +337,7 @@ final class TrackersViewController : UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dateLabelTapped))
         trackerDateLabel.addGestureRecognizer(tapGesture)
     }
-   
+    
     
     private func updateLabel(with date: Date) {
         trackerDateLabel.text = dateFormatter.string(from: date)
@@ -401,28 +401,36 @@ final class TrackersViewController : UIViewController {
         
         containerViewHolder.removeConstraints(containerViewHolder.constraints)
         
-        hasToShowEmptyView =  categories.isEmpty ||
-        (isActiveSearchFiltering && isEmptySearchResult) ||
-        (isListToShowEmpty && pinCategory.trackers.isEmpty)
+        print("categories.isEmpty: \(categories.isEmpty)")
+        print("isActiveSearchFiltering: \(isActiveSearchFiltering)")
+        print("isEmptySearchResult: \(isEmptySearchResult)")
+        print("isListToShowEmpty: \(isListToShowEmpty)")
+        print("pinCategory.trackers.isEmpty: \(pinCategory.trackers.isEmpty)")
+        
+        
+        hasToShowEmptyView =  (categories.isEmpty ||
+                               (isActiveSearchFiltering && isEmptySearchResult)) || (isListToShowEmpty && pinCategory.trackers.isEmpty)
+        
+        print("hasToShowEmptyView: \(hasToShowEmptyView)")
         
         if hasToShowEmptyView{
-            filtersButton.isHidden = true
+            filtersButton.isHidden = false
             if ((categoriesToShow.isEmpty && pinCategory.trackers.isEmpty) || (isActiveSearchFiltering && isEmptySearchResult)) {
                 
-            emptyMainScreenView.updateImageToShow(with: UIImage(named: "notFoundImage"))
-            emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewEmptySearchText)
-            containerViewHolder.bringSubviewToFront(filtersButton)
-        }
-        if categories.isEmpty {
-            
+                emptyMainScreenView.updateImageToShow(with: UIImage(named: "notFoundImage"))
+                emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewEmptySearchText)
+                containerViewHolder.bringSubviewToFront(filtersButton)
+            }
+            if categories.isEmpty {
+                
                 emptyMainScreenView.updateImageToShow(with: UIImage(named: "starMainScreen"))
                 emptyMainScreenView.updateTextToShow(with: dictionaryUI.trackersViewHolderText)
                 containerViewHolder.bringSubviewToFront(filtersButton)
             }
-        
+            
             emptyMainScreenView.prepareStarMainScreen()
             containerViewHolder.addSubview(emptyMainScreenView)
-           
+            
             emptyMainScreenView.frame = CGRect(x: 0, y: 0, width: containerViewHolder.frame.width, height: containerViewHolder.frame.height)
             
             NSLayoutConstraint.activate([
@@ -437,12 +445,13 @@ final class TrackersViewController : UIViewController {
                 emptyMainScreenView.heightAnchor.constraint(equalTo: containerViewHolder.heightAnchor, multiplier: 1),
                 emptyMainScreenView.widthAnchor.constraint(equalTo: containerViewHolder.widthAnchor, multiplier: 1)
             ])
+            containerViewHolder.bringSubviewToFront(filtersButton)
         }
         else
         {
             filtersButton.isHidden = false
             containerViewHolder.addSubview(scrollView)
-        
+            
             if isFirstScroll{
                 containerViewHolder.bringSubviewToFront(filtersButton)
             }
@@ -466,9 +475,9 @@ final class TrackersViewController : UIViewController {
             view.removeFromSuperview()
         }
         
-         unpinnedTrackers = separetingTrackers(mainList: categories)
+        unpinnedTrackers = separetingTrackers(mainList: categories)
         
-        categoriesToShow = filteringTrackersToShow(from: unpinnedTrackers, withFilterIndex: isCustomFilterActivated.filterIndex)
+        categoriesToShow = filteringTrackersToShow(from: unpinnedTrackers, withFilter: isCustomFilterActivated.filter)
         
         if isActiveSearchFiltering {
             categoriesToShow = filteredData
@@ -578,7 +587,7 @@ final class TrackersViewController : UIViewController {
     
     private func filteringCompletedTrackers(from categories: [TrackerCategory]) -> [TrackerCategory]{
         var completedTrackersCategories : [TrackerCategory] = []
-        let recordsForFiltering = filteringCompletedTrackersFromRecords()
+        let recordsForFiltering = completedTrackersOnDateForFiltering()
         
         for category in categories {
             var completedTrackersInCategory: [Tracker] = []
@@ -599,7 +608,7 @@ final class TrackersViewController : UIViewController {
     
     private func filteringNotCompletedTrackers(from categories: [TrackerCategory]) -> [TrackerCategory]{
         var notCompletedTrackersCategories : [TrackerCategory] = []
-        let recordsForFiltering = filteringCompletedTrackersFromRecords()
+        let recordsForFiltering = completedTrackersOnDateForFiltering()
         
         for category in categories {
             var notCompletedTrackersInCategory: [Tracker] = []
@@ -618,7 +627,7 @@ final class TrackersViewController : UIViewController {
         return notCompletedTrackersCategories
     }
     
-    private func filteringCompletedTrackersFromRecords() -> [TrackerRecord]{
+    private func completedTrackersOnDateForFiltering() -> [TrackerRecord]{
         var completedTrackersToFilterWith : [TrackerRecord] = []
         do{
             if let dateForFiltering = dateForFiltering {
@@ -636,18 +645,18 @@ final class TrackersViewController : UIViewController {
     }
     
     
-    private func filteringTrackersToShow(from categoriesList: [TrackerCategory], withFilterIndex filterIndex: Int?) -> [TrackerCategory]{
+    private func filteringTrackersToShow(from categoriesList: [TrackerCategory], withFilter filter: Filters?) -> [TrackerCategory]{
         var trackersToShow : [TrackerCategory] = []
-        let filterIndex = filterIndex
+        let filter = filter
         let isFilterActivated = isCustomFilterActivated.isFilterActivated
         
-        if isFilterActivated && filterIndex != nil{
-            switch filterIndex{
-            case 0:  trackersToShow = filteringEventsByDate(from: categoriesList)
-            case 1:  dateForFiltering = Date()
-                    trackersToShow = filteringEventsByDate(from: categoriesList)
-            case 2: trackersToShow = filteringCompletedTrackers(from: categoriesList)
-            default: trackersToShow = filteringNotCompletedTrackers(from: categoriesList)
+        if isFilterActivated && filter != nil{
+            switch filter{
+            case .today:  dateForFiltering = Date()
+                trackersToShow = filteringEventsByDate(from: categoriesList)
+            case .completed: trackersToShow = filteringCompletedTrackers(from: categoriesList)
+            case .notCompleted: trackersToShow = filteringNotCompletedTrackers(from: categoriesList)
+            default:  trackersToShow = filteringEventsByDate(from: categoriesList)
             }
         }else{
             trackersToShow = filteringEventsByDate(from: categoriesList)
@@ -740,12 +749,12 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
                     }
                 },
                 UIAction(title: dictionaryUI.trackersViewContextMenuEdit) { [weak self] _ in
-                    self?.appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "edit"])
+                    self?.appMetricAnalyticsService.mainScreenContextualMenuDidEditTap()
                     guard let trackerId = cell.getTrackerID() else {return}
                     self?.editTracker(withId: trackerId)
                 },
                 UIAction(title: dictionaryUI.trackersViewContextMenuDelete, attributes: .destructive) { [weak self] _ in
-                    self?.appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "delete"])
+                    self?.appMetricAnalyticsService.mainScreenContextualMenuDidDeleteTap()
                     guard let self = self else {return}
                     
                     let deleteAction  = {[weak self] in
@@ -789,7 +798,7 @@ extension TrackersViewController : UICollectionViewDelegate, UICollectionViewDat
     private func editTracker(withId trackerId: UUID){
         eventToUpdate =  trackerStore.trackers.first(where: {$0.id == trackerId})
         let amountOfDaysTaskCompleted = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerId)
-        ammountOfDaysText = String.localizedStringWithFormat(
+        amountOfDaysText = String.localizedStringWithFormat(
             NSLocalizedString("numberOfDays", comment: ""), amountOfDaysTaskCompleted)
         
         let createHabitViewController = CreateHabitViewController(isAnHabit: true, isEditingAHabit: true)
@@ -853,18 +862,25 @@ extension TrackersViewController : TrackerCategoryStoreDelegate{
     }
 }
 extension TrackersViewController : FilterListViewControllerDelegate {
-    func customFilterDidSelect(withFilterIndex filterIndex: Int) {
-        self.isCustomFilterActivated.filterIndex = filterIndex
-        if filterIndex == 1 {
+    func customFilterDidSelect(withFilter filter: Filters) {
+        self.isCustomFilterActivated.isFilterActivated = true
+        self.isCustomFilterActivated.filter = filter
+        
+        guard let currentDateText = trackerDateLabel.text else {return}
+        dateForFiltering = dateFormatter.date(from: currentDateText)
+        if filter == .today {
             dateForFiltering? = Date()
             trackerDatePicker.date = Date()
             trackerDateLabel.text = dateFormatter.string(from: Date())
+        } else
+        if filter == .byDate {
+            self.isCustomFilterActivated.isFilterActivated = false
         }
+        self.controlButtonColor()
+        print(isCustomFilterActivated.isFilterActivated.description)
         reloadView()
     }
 }
-
-
 extension TrackersViewController : UIGestureRecognizerDelegate {
     
     func handleTapsOnScreen(){
@@ -872,14 +888,15 @@ extension TrackersViewController : UIGestureRecognizerDelegate {
         tapTextFieldGestureRecognizer.delegate = self
         view.addGestureRecognizer(tapTextFieldGestureRecognizer)
     }
-    
-    
 }
-
-
 extension TrackersViewController :  UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        reloadView()
         return true
     }
 }

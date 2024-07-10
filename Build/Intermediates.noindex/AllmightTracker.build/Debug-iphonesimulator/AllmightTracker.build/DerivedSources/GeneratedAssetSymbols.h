@@ -120,9 +120,6 @@ static NSString * const ACImageNameOnboardingBackgroundPage1 AC_SWIFT_PRIVATE = 
 /// The "OnboardingBackgroundPage2" asset catalog image resource.
 static NSString * const ACImageNameOnboardingBackgroundPage2 AC_SWIFT_PRIVATE = @"OnboardingBackgroundPage2";
 
-/// The "StarMainScreen" asset catalog image resource.
-static NSString * const ACImageNameStarMainScreen AC_SWIFT_PRIVATE = @"StarMainScreen";
-
 /// The "checkedBlue" asset catalog image resource.
 static NSString * const ACImageNameCheckedBlue AC_SWIFT_PRIVATE = @"checkedBlue";
 
@@ -143,6 +140,9 @@ static NSString * const ACImageNamePinSquare AC_SWIFT_PRIVATE = @"pinSquare";
 
 /// The "plus" asset catalog image resource.
 static NSString * const ACImageNamePlus AC_SWIFT_PRIVATE = @"plus";
+
+/// The "starMainScreen" asset catalog image resource.
+static NSString * const ACImageNameStarMainScreen AC_SWIFT_PRIVATE = @"starMainScreen";
 
 /// The "tabBarStatisticsIcon" asset catalog image resource.
 static NSString * const ACImageNameTabBarStatisticsIcon AC_SWIFT_PRIVATE = @"tabBarStatisticsIcon";

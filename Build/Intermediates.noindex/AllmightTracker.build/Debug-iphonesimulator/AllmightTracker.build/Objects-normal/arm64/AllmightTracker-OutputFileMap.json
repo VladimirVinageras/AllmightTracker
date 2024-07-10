@@ -175,6 +175,16 @@
     "swift-dependencies" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/DictionaryUI.swiftdeps",
     "swiftmodule" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/DictionaryUI~partial.swiftmodule"
   },
+  "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/AllmightTracker/Models/FiltersCase.swift" : {
+    "const-values" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.swiftconstvalues",
+    "dependencies" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.d",
+    "diagnostics" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.dia",
+    "index-unit-output-path" : "/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.o",
+    "llvm-bc" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.bc",
+    "object" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.o",
+    "swift-dependencies" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase.swiftdeps",
+    "swiftmodule" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/FiltersCase~partial.swiftmodule"
+  },
   "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/AllmightTracker/Models/ScheduleDay.swift" : {
     "const-values" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDay.swiftconstvalues",
     "dependencies" : "/Users/vladimir/Desktop/api changing  and its all/AllmightTracker/Build/Intermediates.noindex/AllmightTracker.build/Debug-iphonesimulator/AllmightTracker.build/Objects-normal/arm64/ScheduleDay.d",

@@ -417,6 +417,7 @@ SWIFT_CLASS("_TtC15AllmightTracker25CreateHabitViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
 - (void)viewDidAppear:(BOOL)animated;
+- (void)dismissKeyboard;
 - (void)clearTextField;
 - (void)textFieldDidChange:(UITextField * _Nonnull)textField;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
@@ -766,11 +767,12 @@ SWIFT_CLASS("_TtC15AllmightTracker22TrackersViewController")
 @end
 
 
+
+
 @interface TrackersViewController (SWIFT_EXTENSION(AllmightTracker)) <UITextFieldDelegate>
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldClear:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class UIContextMenuConfiguration;
 

@@ -73,7 +73,7 @@ final class TrackerViewCell : UICollectionViewCell {
     
     
     @objc private func cellPlusButtonTapped() {
-        appMetricAnalyticsService.report(event: "click", params: ["screen": "Main", "item": "track"])
+        appMetricAnalyticsService.didTapCellPlusButton()
         guard let newDate = dateFormatter.date(from: calendarDate) else {return}
         if let trackerID = trackerID {
             completedTask.toggle()

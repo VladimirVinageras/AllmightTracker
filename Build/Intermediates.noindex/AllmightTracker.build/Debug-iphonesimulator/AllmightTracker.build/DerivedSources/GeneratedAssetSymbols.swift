@@ -142,9 +142,6 @@ extension ImageResource {
     /// The "OnboardingBackgroundPage2" asset catalog image resource.
     static let onboardingBackgroundPage2 = ImageResource(name: "OnboardingBackgroundPage2", bundle: resourceBundle)
 
-    /// The "StarMainScreen" asset catalog image resource.
-    static let starMainScreen = ImageResource(name: "StarMainScreen", bundle: resourceBundle)
-
     /// The "checkedBlue" asset catalog image resource.
     static let checkedBlue = ImageResource(name: "checkedBlue", bundle: resourceBundle)
 
@@ -165,6 +162,9 @@ extension ImageResource {
 
     /// The "plus" asset catalog image resource.
     static let plus = ImageResource(name: "plus", bundle: resourceBundle)
+
+    /// The "starMainScreen" asset catalog image resource.
+    static let starMainScreen = ImageResource(name: "starMainScreen", bundle: resourceBundle)
 
     /// The "tabBarStatisticsIcon" asset catalog image resource.
     static let tabBarStatisticsIcon = ImageResource(name: "tabBarStatisticsIcon", bundle: resourceBundle)
@@ -1057,15 +1057,6 @@ extension AppKit.NSImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: AppKit.NSImage {
-#if !targetEnvironment(macCatalyst)
-        .init(resource: .starMainScreen)
-#else
-        .init()
-#endif
-    }
-
     /// The "checkedBlue" asset catalog image.
     static var checkedBlue: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -1124,6 +1115,15 @@ extension AppKit.NSImage {
     static var plus: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif
@@ -1191,15 +1191,6 @@ extension UIKit.UIImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: UIKit.UIImage {
-#if !os(watchOS)
-        .init(resource: .starMainScreen)
-#else
-        .init()
-#endif
-    }
-
     /// The "checkedBlue" asset catalog image.
     static var checkedBlue: UIKit.UIImage {
 #if !os(watchOS)
@@ -1258,6 +1249,15 @@ extension UIKit.UIImage {
     static var plus: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif
