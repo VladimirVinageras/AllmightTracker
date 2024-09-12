@@ -78,8 +78,20 @@ extension ColorResource {
     /// The "ColorSelection9" asset catalog color resource.
     static let colorSelection9 = ColorResource(name: "ColorSelection9", bundle: resourceBundle)
 
+    /// The "GradientColor1" asset catalog color resource.
+    static let gradientColor1 = ColorResource(name: "GradientColor1", bundle: resourceBundle)
+
+    /// The "GradientColor2" asset catalog color resource.
+    static let gradientColor2 = ColorResource(name: "GradientColor2", bundle: resourceBundle)
+
+    /// The "GradientColor3" asset catalog color resource.
+    static let gradientColor3 = ColorResource(name: "GradientColor3", bundle: resourceBundle)
+
     /// The "LaunchScreenBackground" asset catalog color resource.
     static let launchScreenBackground = ColorResource(name: "LaunchScreenBackground", bundle: resourceBundle)
+
+    /// The "OnboardingViewGray" asset catalog color resource.
+    static let onboardingViewGray = ColorResource(name: "OnboardingViewGray", bundle: resourceBundle)
 
     /// The "TrackerBackgroundDay" asset catalog color resource.
     static let trackerBackgroundDay = ColorResource(name: "TrackerBackgroundDay", bundle: resourceBundle)
@@ -89,6 +101,9 @@ extension ColorResource {
 
     /// The "TrackerBlue" asset catalog color resource.
     static let trackerBlue = ColorResource(name: "TrackerBlue", bundle: resourceBundle)
+
+    /// The "TrackerDateLabelTextColor" asset catalog color resource.
+    static let trackerDateLabelText = ColorResource(name: "TrackerDateLabelTextColor", bundle: resourceBundle)
 
     /// The "TrackerGray" asset catalog color resource.
     static let trackerGray = ColorResource(name: "TrackerGray", bundle: resourceBundle)
@@ -108,6 +123,9 @@ extension ColorResource {
     /// The "TrackerWhite" asset catalog color resource.
     static let trackerWhite = ColorResource(name: "TrackerWhite", bundle: resourceBundle)
 
+    /// The "onboardingViewBlack" asset catalog color resource.
+    static let onboardingViewBlack = ColorResource(name: "onboardingViewBlack", bundle: resourceBundle)
+
 }
 
 // MARK: - Image Symbols -
@@ -124,11 +142,11 @@ extension ImageResource {
     /// The "OnboardingBackgroundPage2" asset catalog image resource.
     static let onboardingBackgroundPage2 = ImageResource(name: "OnboardingBackgroundPage2", bundle: resourceBundle)
 
-    /// The "StarMainScreen" asset catalog image resource.
-    static let starMainScreen = ImageResource(name: "StarMainScreen", bundle: resourceBundle)
-
     /// The "checkedBlue" asset catalog image resource.
     static let checkedBlue = ImageResource(name: "checkedBlue", bundle: resourceBundle)
+
+    /// The "emptyStatsImage" asset catalog image resource.
+    static let emptyStats = ImageResource(name: "emptyStatsImage", bundle: resourceBundle)
 
     /// The "navBarAddIcon" asset catalog image resource.
     static let navBarAddIcon = ImageResource(name: "navBarAddIcon", bundle: resourceBundle)
@@ -139,8 +157,14 @@ extension ImageResource {
     /// The "notFoundImage" asset catalog image resource.
     static let notFound = ImageResource(name: "notFoundImage", bundle: resourceBundle)
 
+    /// The "pinSquare" asset catalog image resource.
+    static let pinSquare = ImageResource(name: "pinSquare", bundle: resourceBundle)
+
     /// The "plus" asset catalog image resource.
     static let plus = ImageResource(name: "plus", bundle: resourceBundle)
+
+    /// The "starMainScreen" asset catalog image resource.
+    static let starMainScreen = ImageResource(name: "starMainScreen", bundle: resourceBundle)
 
     /// The "tabBarStatisticsIcon" asset catalog image resource.
     static let tabBarStatisticsIcon = ImageResource(name: "tabBarStatisticsIcon", bundle: resourceBundle)
@@ -322,10 +346,46 @@ extension AppKit.NSColor {
 #endif
     }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .gradientColor3)
+#else
+        .init()
+#endif
+    }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: AppKit.NSColor {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .launchScreenBackground)
+#else
+        .init()
+#endif
+    }
+
+    /// The "OnboardingViewGray" asset catalog color.
+    static var onboardingViewGray: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .onboardingViewGray)
 #else
         .init()
 #endif
@@ -353,6 +413,15 @@ extension AppKit.NSColor {
     static var trackerBlue: AppKit.NSColor {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .trackerBlue)
+#else
+        .init()
+#endif
+    }
+
+    /// The "TrackerDateLabelTextColor" asset catalog color.
+    static var trackerDateLabelText: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .trackerDateLabelText)
 #else
         .init()
 #endif
@@ -407,6 +476,15 @@ extension AppKit.NSColor {
     static var trackerWhite: AppKit.NSColor {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .trackerWhite)
+#else
+        .init()
+#endif
+    }
+
+    /// The "onboardingViewBlack" asset catalog color.
+    static var onboardingViewBlack: AppKit.NSColor {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .onboardingViewBlack)
 #else
         .init()
 #endif
@@ -582,10 +660,46 @@ extension UIKit.UIColor {
 #endif
     }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor1)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor2)
+#else
+        .init()
+#endif
+    }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .gradientColor3)
+#else
+        .init()
+#endif
+    }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: UIKit.UIColor {
 #if !os(watchOS)
         .init(resource: .launchScreenBackground)
+#else
+        .init()
+#endif
+    }
+
+    /// The "OnboardingViewGray" asset catalog color.
+    static var onboardingViewGray: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .onboardingViewGray)
 #else
         .init()
 #endif
@@ -613,6 +727,15 @@ extension UIKit.UIColor {
     static var trackerBlue: UIKit.UIColor {
 #if !os(watchOS)
         .init(resource: .trackerBlue)
+#else
+        .init()
+#endif
+    }
+
+    /// The "TrackerDateLabelTextColor" asset catalog color.
+    static var trackerDateLabelText: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .trackerDateLabelText)
 #else
         .init()
 #endif
@@ -667,6 +790,15 @@ extension UIKit.UIColor {
     static var trackerWhite: UIKit.UIColor {
 #if !os(watchOS)
         .init(resource: .trackerWhite)
+#else
+        .init()
+#endif
+    }
+
+    /// The "onboardingViewBlack" asset catalog color.
+    static var onboardingViewBlack: UIKit.UIColor {
+#if !os(watchOS)
+        .init(resource: .onboardingViewBlack)
 #else
         .init()
 #endif
@@ -733,8 +865,20 @@ extension SwiftUI.Color {
     /// The "ColorSelection9" asset catalog color.
     static var colorSelection9: SwiftUI.Color { .init(.colorSelection9) }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: SwiftUI.Color { .init(.gradientColor1) }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: SwiftUI.Color { .init(.gradientColor2) }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: SwiftUI.Color { .init(.gradientColor3) }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: SwiftUI.Color { .init(.launchScreenBackground) }
+
+    /// The "OnboardingViewGray" asset catalog color.
+    static var onboardingViewGray: SwiftUI.Color { .init(.onboardingViewGray) }
 
     /// The "TrackerBackgroundDay" asset catalog color.
     static var trackerBackgroundDay: SwiftUI.Color { .init(.trackerBackgroundDay) }
@@ -744,6 +888,9 @@ extension SwiftUI.Color {
 
     /// The "TrackerBlue" asset catalog color.
     static var trackerBlue: SwiftUI.Color { .init(.trackerBlue) }
+
+    /// The "TrackerDateLabelTextColor" asset catalog color.
+    static var trackerDateLabelText: SwiftUI.Color { .init(.trackerDateLabelText) }
 
     /// The "TrackerGray" asset catalog color.
     static var trackerGray: SwiftUI.Color { .init(.trackerGray) }
@@ -762,6 +909,9 @@ extension SwiftUI.Color {
 
     /// The "TrackerWhite" asset catalog color.
     static var trackerWhite: SwiftUI.Color { .init(.trackerWhite) }
+
+    /// The "onboardingViewBlack" asset catalog color.
+    static var onboardingViewBlack: SwiftUI.Color { .init(.onboardingViewBlack) }
 
 }
 
@@ -822,8 +972,20 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
     /// The "ColorSelection9" asset catalog color.
     static var colorSelection9: SwiftUI.Color { .init(.colorSelection9) }
 
+    /// The "GradientColor1" asset catalog color.
+    static var gradientColor1: SwiftUI.Color { .init(.gradientColor1) }
+
+    /// The "GradientColor2" asset catalog color.
+    static var gradientColor2: SwiftUI.Color { .init(.gradientColor2) }
+
+    /// The "GradientColor3" asset catalog color.
+    static var gradientColor3: SwiftUI.Color { .init(.gradientColor3) }
+
     /// The "LaunchScreenBackground" asset catalog color.
     static var launchScreenBackground: SwiftUI.Color { .init(.launchScreenBackground) }
+
+    /// The "OnboardingViewGray" asset catalog color.
+    static var onboardingViewGray: SwiftUI.Color { .init(.onboardingViewGray) }
 
     /// The "TrackerBackgroundDay" asset catalog color.
     static var trackerBackgroundDay: SwiftUI.Color { .init(.trackerBackgroundDay) }
@@ -833,6 +995,9 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 
     /// The "TrackerBlue" asset catalog color.
     static var trackerBlue: SwiftUI.Color { .init(.trackerBlue) }
+
+    /// The "TrackerDateLabelTextColor" asset catalog color.
+    static var trackerDateLabelText: SwiftUI.Color { .init(.trackerDateLabelText) }
 
     /// The "TrackerGray" asset catalog color.
     static var trackerGray: SwiftUI.Color { .init(.trackerGray) }
@@ -851,6 +1016,9 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 
     /// The "TrackerWhite" asset catalog color.
     static var trackerWhite: SwiftUI.Color { .init(.trackerWhite) }
+
+    /// The "onboardingViewBlack" asset catalog color.
+    static var onboardingViewBlack: SwiftUI.Color { .init(.onboardingViewBlack) }
 
 }
 #endif
@@ -889,19 +1057,19 @@ extension AppKit.NSImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: AppKit.NSImage {
+    /// The "checkedBlue" asset catalog image.
+    static var checkedBlue: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
-        .init(resource: .starMainScreen)
+        .init(resource: .checkedBlue)
 #else
         .init()
 #endif
     }
 
-    /// The "checkedBlue" asset catalog image.
-    static var checkedBlue: AppKit.NSImage {
+    /// The "emptyStatsImage" asset catalog image.
+    static var emptyStats: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
-        .init(resource: .checkedBlue)
+        .init(resource: .emptyStats)
 #else
         .init()
 #endif
@@ -934,10 +1102,28 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "pinSquare" asset catalog image.
+    static var pinSquare: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .pinSquare)
+#else
+        .init()
+#endif
+    }
+
     /// The "plus" asset catalog image.
     static var plus: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif
@@ -1005,19 +1191,19 @@ extension UIKit.UIImage {
 #endif
     }
 
-    /// The "StarMainScreen" asset catalog image.
-    static var starMainScreen: UIKit.UIImage {
+    /// The "checkedBlue" asset catalog image.
+    static var checkedBlue: UIKit.UIImage {
 #if !os(watchOS)
-        .init(resource: .starMainScreen)
+        .init(resource: .checkedBlue)
 #else
         .init()
 #endif
     }
 
-    /// The "checkedBlue" asset catalog image.
-    static var checkedBlue: UIKit.UIImage {
+    /// The "emptyStatsImage" asset catalog image.
+    static var emptyStats: UIKit.UIImage {
 #if !os(watchOS)
-        .init(resource: .checkedBlue)
+        .init(resource: .emptyStats)
 #else
         .init()
 #endif
@@ -1050,10 +1236,28 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "pinSquare" asset catalog image.
+    static var pinSquare: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .pinSquare)
+#else
+        .init()
+#endif
+    }
+
     /// The "plus" asset catalog image.
     static var plus: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .plus)
+#else
+        .init()
+#endif
+    }
+
+    /// The "starMainScreen" asset catalog image.
+    static var starMainScreen: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .starMainScreen)
 #else
         .init()
 #endif

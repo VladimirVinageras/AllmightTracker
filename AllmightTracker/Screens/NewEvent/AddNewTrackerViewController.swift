@@ -36,7 +36,7 @@ super.viewDidLoad()
         newHabitButton = UIButton(type: .custom)
         guard let newHabitButton = newHabitButton else {return}
 
-        newHabitButton.setTitle("Привычка", for: .normal)
+        newHabitButton.setTitle(dictionaryUI.createHabitViewTitle, for: .normal)
         newHabitButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newHabitButton.setTitleColor(.trackerWhite, for: .normal)
         newHabitButton.backgroundColor = .trackerBlack
@@ -50,7 +50,7 @@ super.viewDidLoad()
         
         newSingleEventButton = UIButton(type: .custom)
         guard let newSingleEventButton = newSingleEventButton else {return}
-        newSingleEventButton.setTitle("Нерегулярное событие", for: .normal)
+        newSingleEventButton.setTitle(dictionaryUI.addNewTrackerViewOnceTimeEvent, for: .normal)
         newSingleEventButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newSingleEventButton.setTitleColor(.trackerWhite, for: .normal)
         newSingleEventButton.backgroundColor = .trackerBlack
@@ -68,7 +68,7 @@ super.viewDidLoad()
         guard let viewTitleLabel = viewTitlelLabel else {return}
         view.addSubview(viewTitleLabel)
         viewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        viewTitleLabel.text = "Создание трекера"
+        viewTitleLabel.text = dictionaryUI.createHabitViewTitle
         viewTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         viewTitleLabel.textColor = .trackerBlack
     }
@@ -94,13 +94,13 @@ super.viewDidLoad()
     }
     
     @objc func callCreateHabitViewController(){
-        let createHabitViewController = CreateHabitViewController(isAnHabit: true)
+        let createHabitViewController = CreateHabitViewController(isAnHabit: true, isEditingAHabit: false)
         present(createHabitViewController, animated: true)
     }
     
     @objc func callCreateSingleEventViewController(){
         
-        let createHabitViewController = CreateHabitViewController(isAnHabit: false)
+        let createHabitViewController = CreateHabitViewController(isAnHabit: false, isEditingAHabit: false)
         present(createHabitViewController, animated: true)
     }
 }

@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  AllmightTracker
+
+  Created by Vladimir Vinakheras on 22.06.2024.
+  
+*/
+"onboardingView.TextPage1" = "Only track \nwhat you want";
+"onboardingView.TextPage2" = "Even if it's not liters of water and yoga";
+"onboardingView.BtnAction" = "What a technology!";
+"tabBar.trackers" = "Trackers" ;
+"tabBar.statistics" = "Statistics" ;
+"statisticsView.EmptyViewText" = "Nothing to analize right now";
+"statisticsView.ParameterTitle" = "Trackers completed";
+"trackersView.contextMenu.pin" = "Pin";
+"trackersView.contextMenu.unpin" = "Unpin";
+"trackersView.contextMenu.edit" = "Edit";
+"trackersView.contextMenu.delete" = "Delete";
+"trackersView.contextMenu.deleteMessage" = "Are you sure you want to delete the tracker?";
+"trackersView.title" = "Trackers" ;
+"trackersView.searchHolderText" = "Search";
+"trackersView.holderText" = "What will we track?";
+"trackersView.emptySearchText" = "Not results found";
+"trackersView.pinnedCategoryName" = "Pinned Trackers";
+"trackersView.filtersButtonTitle" = "Filters";
+"addNewTrackerView.createTrackerTitle" = "Creating a tracker";
+"addNewTrackerView.habit" = "Habit";
+"addNewTrackerView.onceTimeEvent" = "Irregular event";
+"createHabitView.title" = "New habit";
+"createHabitView.editingTitle" = "Editing a habit";
+"createHabitView.cellCategory" = "Category";
+"createHabitView.cellSchedule" = "Schedule";
+"createHabitView.emojisCollectionTitle" = "Emojis";
+"createHabitView.colorCollectionTitle" = "Color";
+"createHabitView.btnCancelTitle" = "Cancel";
+"createHabitView.btnCreateTitle" = "Create";
+"createHabitView.btnEditTitle" = "Done";
+"createHabitView.textFieldHolderText" = "Enter the name of the tracker";
+"createHabitView.everyDayHabit" = "Every Day";
+"createHabitView.longTrackerTitleLimitText" = "38 characters limit";
+"addCategoryView.title" = "Category";
+"addCategoryView.btnAddCategory" = "Add category";
+"addCategoryView.holderText" = "Habits and events can be \n combined by meaning";
+"createCategory.title" = "New Category";
+"createCategory.textFieldHolderText" = "Enter a category name";
+"createCategory.btnReady" = "Done";
+"addNewSchedule.title" = "Schedule";
+"addNewSchedule.btnReady" = "Done";
+"filterListView.title" = "Filters";
+"filterListView.filters.allTrackers" = "All trackers";
+"filterListView.filters.todayTrackers" = "Trackers for today";
+"filterListView.filters.completedTrackers" = "Completed";
+"filterListView.filters.notCompletedTrackers" = "Not completed";
+"weekDay.monday" = "Monday";
+"weekDay.thuesday" = "Tuesday";
+"weekDay.wednesday" = "Wednesday";
+"weekDay.thursday" = "Thursday";
+"weekDay.friday" = "Friday";
+"weekDay.saturday" = "Saturday";
+"weekDay.sunday" = "Sunday";
+"weekDay.shortMonday" = "Mon";
+"weekDay.shortThuesday" = "Tue";
+"weekDay.shortWednesday" = "Wed";
+"weekDay.shortThursday" = "Thu";
+"weekDay.shortFriday" = "Fri";
+"weekDay.shortSaturday" = "Sat";
+"weekDay.shortSunday" = "Sun";

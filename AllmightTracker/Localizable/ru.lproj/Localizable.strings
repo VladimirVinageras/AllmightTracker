@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  AllmightTracker
+
+  Created by Vladimir Vinakheras on 22.06.2024.
+  
+*/
+"onboardingView.TextPage1" = "Отслеживайте только \n то, что хотите";
+"onboardingView.TextPage2" = "Даже если это \n не литры воды и йога";
+"onboardingView.BtnAction" = "Вот это технологии!";
+"tabBar.trackers" = "Трекеры" ;
+"tabBar.statistics" = "Статистика" ;
+"statisticsView.EmptyViewText" = "Анализировать пока нечего";
+"statisticsView.ParameterTitle" = "Трекеров завершено";
+"trackersView.contextMenu.pin" = "Закрепить";
+"trackersView.contextMenu.unpin" = "Открепить";
+"trackersView.contextMenu.edit" = "Редактировать";
+"trackersView.contextMenu.delete" = "Удалить";
+"trackersView.contextMenu.deleteMessage" = "Уверены что хотите удалить трекер?";
+"trackersView.title" = "Трекеры" ;
+"trackersView.searchHolderText" = "Поиск";
+"trackersView.holderText" = "Что будем отслеживать?";
+"trackersView.emptySearchText" = "Ничего не найдено";
+"trackersView.pinnedCategoryName" = "Закрепленые трекеры";
+"trackersView.filtersButtonTitle" = "Фильтры";
+"addNewTrackerView.createTrackerTitle" = "Создание трекера";
+"addNewTrackerView.habit" = "Привычика";
+"addNewTrackerView.onceTimeEvent" = "Нерегулярное событие";
+"createHabitView.title" = "Новая привычка";
+"createHabitView.editingTitle" = "Редактирование привычки";
+"createHabitView.cellCategory" = "Категория";
+"createHabitView.cellSchedule" = "Расписание";
+"createHabitView.emojisCollectionTitle" = "Emojis";
+"createHabitView.colorCollectionTitle" = "Цвет";
+"createHabitView.btnCancelTitle" = "Отмена";
+"createHabitView.btnCreateTitle" = "Создать";
+"createHabitView.btnEditTitle" = "Сохранить";
+"createHabitView.textFieldHolderText" = "Введите название трекера ";
+"createHabitView.everyDayHabit" = "Каждый день";
+"createHabitView.longTrackerTitleLimitText" = "Ограничение 38 символов";
+"addCategoryView.title" = "Категория";
+"addCategoryView.btnAddCategory" = "Добавить категорию";
+"addCategoryView.holderText" = "Привычки и события можно \n объединить по смыслу";
+"createCategory.title" = "Новая категория";
+"createCategory.textFieldHolderText" = "Введите название категории";
+"createCategory.btnReady"  = "Готово";
+"addNewSchedule.title" = "Расписание";
+"addNewSchedule.btnReady" = "Готово";
+"filterListView.title" = "Фильтры";
+"filterListView.filters.allTrackers" = "Все трекеры";
+"filterListView.filters.todayTrackers" = "Трекеры на сегодня";
+"filterListView.filters.completedTrackers" = "Завершенные";
+"filterListView.filters.notCompletedTrackers" = "Не завершенные";
+"weekDay.monday" = "Понедельник";
+"weekDay.thuesday" = "Вторник";
+"weekDay.wednesday" = "Среда";
+"weekDay.thursday" = "Четверг";
+"weekDay.friday" = "Пятница";
+"weekDay.saturday" = "Суббота";
+"weekDay.sunday" = "Воскресенье";
+"weekDay.shortMonday" = "Пн";
+"weekDay.shortThuesday" = "Вт";
+"weekDay.shortWednesday" = "Ср";
+"weekDay.shortThursday" = "Чт";
+"weekDay.shortFriday" = "Пт";
+"weekDay.shortSaturday" = "Сб";
+"weekDay.shortSunday" = "Вс";

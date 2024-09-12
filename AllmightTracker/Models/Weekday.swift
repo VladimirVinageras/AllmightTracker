@@ -20,37 +20,37 @@ enum Weekday: Int, CaseIterable, Codable {
     var name: String {
         switch self {
         case .monday:
-            return "Понедельник"
+            return dictionaryUI.weekDayMonday
         case .tuesday:
-            return "Вторник"
+            return dictionaryUI.weekDayThuesday
         case .wednesday:
-            return "Среда"
+            return dictionaryUI.weekDayWednesday
         case .thursday:
-            return "Четверг"
+            return dictionaryUI.weekDayThursday
         case .friday:
-            return "Пятница"
+            return dictionaryUI.weekDayFriday
         case .saturday:
-            return "Суббота"
+            return dictionaryUI.weekDaySaturday
         case .sunday:
-            return "Воскресенье"
+            return dictionaryUI.weekDaySunday
         }
     }
     var shortDaysName: String {
         switch self {
         case .monday:
-            return "Пн"
+            return dictionaryUI.weekDayShortMonday
         case .tuesday:
-            return "Вт"
+            return dictionaryUI.weekDayShortThuesday
         case .wednesday:
-            return "Ср"
+            return dictionaryUI.weekDayShortWednesday
         case .thursday:
-            return "Чт"
+            return dictionaryUI.weekDayShortThursday
         case .friday:
-            return "Пт"
+            return dictionaryUI.weekDayShortFriday
         case .saturday:
-            return "Сб"
+            return dictionaryUI.weekDayShortSaturday
         case .sunday:
-            return "Вс"
+            return dictionaryUI.weekDayShortSunday
         }
     }
 }

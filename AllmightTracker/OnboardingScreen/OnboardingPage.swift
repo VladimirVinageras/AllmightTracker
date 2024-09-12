@@ -49,18 +49,18 @@ final class OnboardingPage : UIViewController {
     private func setupUI(){
         textLabel.font = UIFont.systemFont(ofSize: 31.8, weight: .bold)
         textLabel.textAlignment = .center
-        textLabel.textColor = .trackerBlack
+        textLabel.textColor = .onboardingViewBlack
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.numberOfLines = 2
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
     
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Вот это технологии!", for: .normal)
+        button.setTitle(dictionaryUI.onboardingViewBtnAction, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
-        button.backgroundColor = .trackerBlack
-        button.tintColor = .trackerWhite
+        button.backgroundColor = .onboardingViewBlack
+        button.tintColor = .white
         button.addTarget(self, action: #selector(buttonTaped), for: .touchUpInside)
     }
     @objc func buttonTaped(){

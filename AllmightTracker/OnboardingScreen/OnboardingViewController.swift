@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingViewController: UIPageViewController {
+final class OnboardingViewController: UIPageViewController  {
     
     static let isNotMyFirstTime = "isNotMyFirstTime"
 
@@ -25,24 +25,27 @@ final class OnboardingViewController: UIPageViewController {
             let pageControl = UIPageControl()
             pageControl.numberOfPages = pages.count
             pageControl.currentPage = 0
-            pageControl.currentPageIndicatorTintColor = .brown
-            pageControl.pageIndicatorTintColor = .orange
+            pageControl.currentPageIndicatorTintColor = .onboardingViewBlack
+        pageControl.pageIndicatorTintColor = .onboardingViewGray
             pageControl.translatesAutoresizingMaskIntoConstraints = false
             return pageControl
         }()
     
     lazy var pages: [OnboardingPage] = {
         let page1 = OnboardingPage(with: UIImage(resource: .onboardingBackgroundPage1))
-        page1.textLabel.text = "Отслеживайте только \n то, что хотите"
+        page1.textLabel.text = dictionaryUI.onboardingViewTextPage1
+        page1.textLabel.textColor = .black
     
         let page2 = OnboardingPage(with: UIImage(resource: .onboardingBackgroundPage2))
-        page2.textLabel.text = "Даже если это \n не литры воды и йога"
-        
+        page2.textLabel.text = dictionaryUI.onboardingViewTextPage2
+        page2.textLabel.textColor = .black
         return [page1, page2]
     }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        overrideUserInterfaceStyle = .light
         
         dataSource = self
         delegate = self
@@ -92,8 +95,8 @@ extension OnboardingViewController : UIPageViewControllerDataSource {
 
 extension OnboardingViewController : UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard completed, 
-              let currentViewController = pageViewController.viewControllers?.first else {
+        guard completed,
+                let currentViewController = pageViewController.viewControllers?.first else {
             return
         }
         

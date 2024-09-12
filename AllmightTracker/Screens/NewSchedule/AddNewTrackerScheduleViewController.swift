@@ -20,7 +20,7 @@ final class AddNewTrackerScheduleViewController : UIViewController {
     private let scheduleViewTitle: UILabel = {
         let viewTitle = UILabel()
         viewTitle.translatesAutoresizingMaskIntoConstraints = false
-        viewTitle.text = "Расписание"
+        viewTitle.text = dictionaryUI.addNewScheduleTitle
         viewTitle.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         viewTitle.textColor = .trackerBlack
         return viewTitle
@@ -37,7 +37,7 @@ final class AddNewTrackerScheduleViewController : UIViewController {
     private let scheduleDoneButton : UIButton = {
         let scheduleButton = UIButton(type: .custom)
         scheduleButton.translatesAutoresizingMaskIntoConstraints = false
-        scheduleButton.setTitle("Готово", for: .normal)
+        scheduleButton.setTitle(dictionaryUI.addNewScheduleBtnReady, for: .normal)
         scheduleButton.setTitleColor(.trackerWhite, for: .normal)
         scheduleButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         scheduleButton.backgroundColor = .trackerBlack
@@ -76,7 +76,7 @@ super.viewDidLoad()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       selectedDaysBefore =  scheduleViewControllerDelegate?.checkingSelectedDays() ?? []
+        selectedDaysBefore =  scheduleViewControllerDelegate?.checkingSelectedDays() ?? []
         updateCellDaysSelected()
         scheduleTableView.reloadData()
         daysSelected.removeAll()
@@ -84,6 +84,11 @@ super.viewDidLoad()
     
     private func updateCellDaysSelected() {
         cellDaysSelected.removeAll()
+        
+        selectedDaysBefore.sort{ dayFirst,daySecond  in
+            return dayFirst.scheduleDay.rawValue < daySecond.scheduleDay.rawValue
+        }
+        
         for dayIndex in 0..<7 {
             var weekDay: ScheduleDay?
             if selectedDaysBefore.isEmpty || selectedDaysBefore == nil{

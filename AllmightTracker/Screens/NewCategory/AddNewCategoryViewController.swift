@@ -12,13 +12,13 @@ import UIKit
 final class AddNewCategoryViewController : UIViewController{
 
   
-    private var trackerCategoriesViewModel : TrackerCateogoriesViewModel
+    private var trackerCategoriesViewModel : TrackerCategoriesViewModel
 
     let categoryCellReuseIdentifier = "categoryCell"
     
     private var newCategoryButton : UIButton = {
         let categoryButton = UIButton(type: .custom)
-        categoryButton.setTitle("Добавить категорию", for: .normal)
+        categoryButton.setTitle(dictionaryUI.addCategoryViewBtnAddCategory, for: .normal)
         categoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         categoryButton.setTitleColor(.trackerWhite, for: .normal)
         categoryButton.backgroundColor = .trackerBlack
@@ -37,7 +37,7 @@ final class AddNewCategoryViewController : UIViewController{
     private var viewTitleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Категория"
+        titleLabel.text = dictionaryUI.addCategoryViewTitle
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabel.textColor = .trackerBlack
         return titleLabel
@@ -63,7 +63,7 @@ final class AddNewCategoryViewController : UIViewController{
     private let starImageView :  UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "StarMainScreen")
+        imageView.image = UIImage(named: "starMainScreen")
         imageView.frame.size = CGSize(width: 80, height: 80)
         return imageView
     }()
@@ -72,7 +72,7 @@ final class AddNewCategoryViewController : UIViewController{
         let label = UILabel()
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Привычки и события можно \n объединить по смыслу"
+        label.text = dictionaryUI.addCategoryViewHolderText
         label.textAlignment = .center
         label.textColor = .trackerBlack
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
@@ -80,7 +80,7 @@ final class AddNewCategoryViewController : UIViewController{
     }()
     
     
-    init(viewModel: TrackerCateogoriesViewModel){
+    init(viewModel: TrackerCategoriesViewModel){
         self.trackerCategoriesViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
@@ -162,7 +162,7 @@ final class AddNewCategoryViewController : UIViewController{
     func prepareCategoriesTableView(){
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
-        categoriesTableView.register(NewCategoryTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
+        categoriesTableView.register(CheckedTextLabelTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
     }
     func addSubviews(){
         view.addSubview(viewTitleLabel)
@@ -192,7 +192,7 @@ extension AddNewCategoryViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
-                                                       for: indexPath) as? NewCategoryTableViewCell else {return NewCategoryTableViewCell()}
+                                                       for: indexPath) as? CheckedTextLabelTableViewCell else {return CheckedTextLabelTableViewCell()}
         let newTitle = self.trackerCategoriesViewModel.trackerCategories[indexPath.row].title
         cell.updateTitleCellLabel(with: newTitle)
         return cell
@@ -203,7 +203,7 @@ extension AddNewCategoryViewController : UITableViewDataSource {
 extension AddNewCategoryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
-                                                       for: indexPath) as? NewCategoryTableViewCell else {return}
+                                                       for: indexPath) as? CheckedTextLabelTableViewCell else {return}
         cell.toggleImageViewVisibility()
     
         self.trackerCategoriesViewModel.didSelect(at: indexPath.row)

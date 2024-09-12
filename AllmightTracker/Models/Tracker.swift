@@ -11,7 +11,8 @@ import UIKit
 struct Tracker{
     let id: UUID
     let name: String
-    let color: UIColor
+    let colorName: String
     let emoji: String
     let schedule: TrackerSchedule
+    var isPinned: Bool
 }
