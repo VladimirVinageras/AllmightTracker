@@ -10,7 +10,7 @@ import UIKit
 
 final class CheckedTextLabelTableViewCell : UITableViewCell {
     
-    var cellTitleTextLabel : UILabel = {
+    private(set) var cellTitleTextLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = ""
@@ -30,9 +30,7 @@ final class CheckedTextLabelTableViewCell : UITableViewCell {
     }()
     
     private func activateConstraints(){
-        
         NSLayoutConstraint.activate([
-            
             cellTitleTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             cellTitleTextLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             cellTitleTextLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -42,16 +40,13 @@ final class CheckedTextLabelTableViewCell : UITableViewCell {
             navigationRightImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             navigationRightImageView.widthAnchor.constraint(equalToConstant: 24),
             navigationRightImageView.heightAnchor.constraint(equalToConstant: 24),
-            
         ])
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         clipsToBounds = true
         backgroundColor = .trackerBackgroundDay
-        
         contentView.addSubview(cellTitleTextLabel)
         contentView.addSubview(navigationRightImageView)
         activateConstraints()

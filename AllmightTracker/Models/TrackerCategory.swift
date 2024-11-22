@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 struct TrackerCategory: Equatable{
+    var title: String
+    var trackers: [Tracker]
+    
     static func == (lhs: TrackerCategory, rhs: TrackerCategory) -> Bool {
         return lhs.title == rhs.title
     }
-    
-    var title: String
-    var trackers: [Tracker]
 }

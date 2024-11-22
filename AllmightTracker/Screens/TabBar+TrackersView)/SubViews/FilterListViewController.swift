@@ -10,13 +10,11 @@ import UIKit
 
 final class FilterListViewController : UIViewController{
     
-    let сellIdentifier = "cellIdentifier"
-    
+    private let сellIdentifier = "cellIdentifier"
     var delegate: FilterListViewControllerDelegate?
     private var areFiltersEnable : [Bool] = []
     private var isCustomFilterActive : Bool
     private var activeFilter : Filters?
-    
     private let filtersName = [
         dictionaryUI.filterListViewFiltersAllTrackers,
         dictionaryUI.filterListViewFiltersTodayTrackers,
@@ -45,7 +43,6 @@ final class FilterListViewController : UIViewController{
         self.activeFilter = isCustomFilterActive.filter
         super.init(nibName: nil, bundle: nil)
     }
-
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -61,7 +58,6 @@ final class FilterListViewController : UIViewController{
     }
     
     func setupTableView(){
-
         filtersTableView.delegate = self
         filtersTableView.dataSource = self
         filtersTableView.register(CheckedTextLabelTableViewCell.self, forCellReuseIdentifier: сellIdentifier)
@@ -76,7 +72,6 @@ final class FilterListViewController : UIViewController{
     }
     
     private func activateConstraints(){
-        
         NSLayoutConstraint.activate([
             viewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 26),
             viewTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -86,20 +81,21 @@ final class FilterListViewController : UIViewController{
             filtersTableView.topAnchor.constraint(equalTo: viewTitleLabel.bottomAnchor, constant: 24),
             filtersTableView.heightAnchor.constraint(equalToConstant: CGFloat(filtersTableView.numberOfRows(inSection: 0)*75))
         ])
-        
     }
 }
 
 extension FilterListViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filtersName.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filtersName.count
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: сellIdentifier, for: indexPath) as? CheckedTextLabelTableViewCell
-        else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: сellIdentifier, for: indexPath) as? CheckedTextLabelTableViewCell else { return UITableViewCell() }
         guard let filter = Filters(rawValue: indexPath.row) else { return UITableViewCell() }
         if activeFilter == filter{
             cell.toggleImageViewVisibility()
@@ -131,8 +127,7 @@ extension FilterListViewController : UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: сellIdentifier, for: indexPath) as? CheckedTextLabelTableViewCell else {return}
         cell.isSelected = false
     }
-
-
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row < (filtersName.count - 1) {
             let horizontalBarInset: CGFloat = 16
@@ -147,15 +142,12 @@ extension FilterListViewController : UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-
 extension FilterListViewController {
     private func handleSelection(for filter: Filters) {
         NotificationCenter.default.post(name: Notification.Name("ControlButtonColor"), object: nil)
         delegate?.customFilterDidSelect(withFilter: filter)
-       
-        }
+    }
 }
-
 
 extension CheckedTextLabelTableViewCell {
     func disabledCellStyle(){

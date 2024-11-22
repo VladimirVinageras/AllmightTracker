@@ -54,7 +54,6 @@ struct DictionaryUI {
     let filterListViewFiltersTodayTrackers = NSLocalizedString("filterListView.filters.todayTrackers", comment: "")
     let filterListViewFiltersCompletedTrackers = NSLocalizedString("filterListView.filters.completedTrackers", comment: "")
     let filterListViewFiltersNotCompletedTrackers = NSLocalizedString("filterListView.filters.notCompletedTrackers", comment: "")
-    
     let weekDayMonday = NSLocalizedString("weekDay.monday", comment: "")
     let weekDayThuesday = NSLocalizedString("weekDay.thuesday", comment: "")
     let weekDayWednesday = NSLocalizedString("weekDay.wednesday", comment: "")

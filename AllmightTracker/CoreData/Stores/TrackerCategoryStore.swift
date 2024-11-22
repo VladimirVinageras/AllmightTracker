@@ -10,11 +10,9 @@ import CoreData
 import UIKit
 
 final class TrackerCategoryStore: NSObject {
-    
     //MARK: - VARIABLES
     private var context: NSManagedObjectContext
     weak var delegate: TrackerCategoryStoreDelegate?
-    
     private lazy var fetchedResultsController = {
         let fetchRequest = TrackerCategoryCoreData.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -30,15 +28,16 @@ final class TrackerCategoryStore: NSObject {
         try? controller.performFetch()
         return controller
     }()
-    
     private let trackerStore = TrackerStore()
-    
-    var trackerCategories: [TrackerCategory] {
+    private var _trackerCategories: [TrackerCategory] {
         guard
             let objects = self.fetchedResultsController.fetchedObjects,
             let categories = try? objects.map({ try self.trackerCategory(from: $0)})
         else { return [] }
         return categories
+    }
+    var trackerCategories: [TrackerCategory] {
+        return _trackerCategories
     }
     
     // MARK: - FUNCTIONS

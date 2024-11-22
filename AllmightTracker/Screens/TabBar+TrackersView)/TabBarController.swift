@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class TabBarController: UITabBarController {
-  
+    
     override func viewDidLoad() {
         let trackerViewController = UINavigationController(rootViewController: TrackersViewController.shared)
         trackerViewController.tabBarItem = UITabBarItem(title: dictionaryUI.tabBarTrackers, image: UIImage(named: "tabBarTrackersIcon"), selectedImage: nil)

@@ -11,39 +11,39 @@ import UIKit
 
 
 final class OnboardingPage : UIViewController {
-    var textLabel = UILabel()
-    var imageView = UIImageView()
-    var button = UIButton()
-    
+    private var textLabel = UILabel()
+    private var imageView = UIImageView()
+    private var button = UIButton()
     
     init(with image : UIImage){
-    super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         imageView.image = image
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
-     super.viewDidLoad()
+        super.viewDidLoad()
         setupUI()
         addSubviews()
         activateConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadView), name: Notification.Name("ReloadOnboardingPage"), object: nil)
     }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ReloadOnboardingPage"), object: nil)
     }
     
-   @objc private func reloadView(){
+    @objc private func reloadView(){
         setupUI()
     }
     
-   private func addSubviews(){
-       view.addSubview(imageView)
-       view.addSubview(textLabel)
-       view.addSubview(button)
+    private func addSubviews(){
+        view.addSubview(imageView)
+        view.addSubview(textLabel)
+        view.addSubview(button)
     }
     
     private func setupUI(){
@@ -54,7 +54,7 @@ final class OnboardingPage : UIViewController {
         textLabel.numberOfLines = 2
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(dictionaryUI.onboardingViewBtnAction, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -81,21 +81,26 @@ final class OnboardingPage : UIViewController {
     
     private func activateConstraints(){
         NSLayoutConstraint.activate([
-        imageView.topAnchor.constraint(equalTo: view.topAnchor),
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        
-        button.heightAnchor.constraint(equalToConstant: 60),
-        button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -84),
-        
-        textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-        textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        textLabel.heightAnchor.constraint(equalToConstant: 76),
-        textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 432)
-        
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            button.heightAnchor.constraint(equalToConstant: 60),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -84),
+            
+            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textLabel.heightAnchor.constraint(equalToConstant: 76),
+            textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 432)
+            
         ])
+    }
+    
+    func configureText(_ text: String, textColor: UIColor) {
+        textLabel.text = text
+        textLabel.textColor = textColor
     }
 }

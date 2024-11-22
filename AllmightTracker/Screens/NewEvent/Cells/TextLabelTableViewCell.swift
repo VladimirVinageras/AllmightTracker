@@ -12,8 +12,7 @@ final class TextLabelTableViewCell : UITableViewCell {
     private var isEmptySelectedElementsLabel = true
     private var selectedElement = ""
     private var tableViewCellConstraints : [NSLayoutConstraint?] = []
-    
-    var cellTitleTextLabel : UILabel = {
+    private var cellTitleTextLabel : UILabel = {
         let  titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = ""
@@ -21,7 +20,6 @@ final class TextLabelTableViewCell : UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         return titleLabel
     }()
-    
     
     private var selectedElementsLabel : UILabel = {
         let selectedElements = UILabel()
@@ -37,9 +35,7 @@ final class TextLabelTableViewCell : UITableViewCell {
         vstack.axis = .vertical
         vstack.translatesAutoresizingMaskIntoConstraints = false
         vstack.spacing = 2
-    
         return vstack
-        
     }()
     
     private var navigationRightImageView : UIImageView = {
@@ -51,20 +47,17 @@ final class TextLabelTableViewCell : UITableViewCell {
     }()
     
     private func activateConstraints(){
-        
         NSLayoutConstraint.activate([
-            
             elementsVStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             elementsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             elementsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -56),
             elementsVStack.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             elementsVStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14),
-        
+            
             navigationRightImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             navigationRightImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             navigationRightImageView.widthAnchor.constraint(equalToConstant: 24),
-            navigationRightImageView.heightAnchor.constraint(equalToConstant: 24),
-            
+            navigationRightImageView.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
     
@@ -73,10 +66,8 @@ final class TextLabelTableViewCell : UITableViewCell {
         addSubview(selectedElementsLabel)
         addSubview(elementsVStack)
         addSubview(navigationRightImageView)
-    
         elementsVStack.addArrangedSubview(cellTitleTextLabel)
         elementsVStack.addArrangedSubview(selectedElementsLabel)
-
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

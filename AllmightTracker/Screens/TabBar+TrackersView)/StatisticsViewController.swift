@@ -22,8 +22,7 @@ final class StatisticsViewController : UIViewController {
     //NAV BAR ELEMENTS & VARIABLES
     private var navigationBar = UIView()
     private let screenTitle = UILabel()
-    
-    
+
     init() {
         statisticsTableView = UITableView(frame: .zero)
         imageToShow  = UIImage(named: "emptyStatsImage")
@@ -74,6 +73,7 @@ final class StatisticsViewController : UIViewController {
             navigationBar.heightAnchor.constraint(equalToConstant: 138)
         ])
     }
+    
     func loadingView(){
         for view in view.subviews{
             view.removeFromSuperview()
@@ -111,7 +111,6 @@ final class StatisticsViewController : UIViewController {
         return amountOfRecords
     }
     
-    
     func prepareUIElements(){
         statisticsTableView.translatesAutoresizingMaskIntoConstraints = false
         statisticsTableView.register(StatisticsViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -119,7 +118,6 @@ final class StatisticsViewController : UIViewController {
         emptyMainScreeView.translatesAutoresizingMaskIntoConstraints = false
     }
 }
-
 
 extension StatisticsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,8 +134,4 @@ extension StatisticsViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    
-    
-    
-    
 }

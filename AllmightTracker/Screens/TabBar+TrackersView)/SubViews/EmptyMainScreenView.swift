@@ -8,13 +8,9 @@
 import Foundation
 import UIKit
 
-
-
-
 final class EmptyMainScreenView : UIView{
     private let starImageView = UIImageView()
     private let starLabel = UILabel()
-    
     private var imageToShow : UIImage?
     private var textToShow  : String?
     init(imageToShow: UIImage?, textToShow: String?){
@@ -27,7 +23,6 @@ final class EmptyMainScreenView : UIView{
         addSubview(starLabel)
         activateConstraints()
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

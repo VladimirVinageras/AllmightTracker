@@ -5,9 +5,6 @@
 //  Created by Vladimir Vinakheras on 17.06.2024.
 //
 
-
-
-
 final class TrackerCategoriesViewModel {
     private let trackerCategoryStore : TrackerCategoryStore
     
@@ -22,10 +19,9 @@ final class TrackerCategoriesViewModel {
             categoriesBinding?(trackerCategories)
         }
     }
- 
+    
     var categoriesBinding : Binding<[TrackerCategory]>?
     var selectedCategoryBinding : Binding<TrackerCategory?>?
-    
     
     init(trackerCategoryStore: TrackerCategoryStore) {
         self.trackerCategoryStore = trackerCategoryStore
@@ -52,5 +48,5 @@ final class TrackerCategoriesViewModel {
     func didSelect(at indexPosition: Int ){
         selectedCategory = trackerCategories[indexPosition]
     }
-
+    
 }

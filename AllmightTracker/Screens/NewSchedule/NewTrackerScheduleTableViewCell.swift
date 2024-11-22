@@ -11,7 +11,7 @@ import UIKit
 
 final class NewTrackerScheduleTableViewCell : UITableViewCell {
     
-    var day: ScheduleDay = ScheduleDay(scheduleDay: .sunday, isScheduled: false)
+    private var day: ScheduleDay = ScheduleDay(scheduleDay: .sunday, isScheduled: false)
     var cellDelegate : ScheduleCellProtocol?
     
     private let weekday: UILabel = {
@@ -51,7 +51,6 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
     @objc private func daySwitchTapped(){
         day.isScheduled.toggle()
         cellDelegate?.updateDayStatus(to: day, with: weekdaySwitch.isOn)
-       
     }
     
     func setupWeekday(with day: ScheduleDay){
@@ -59,6 +58,5 @@ final class NewTrackerScheduleTableViewCell : UITableViewCell {
         weekday.text = day.scheduleDay.name
         weekdaySwitch.setOn(day.isScheduled, animated: true)
     }
-    
 }
 

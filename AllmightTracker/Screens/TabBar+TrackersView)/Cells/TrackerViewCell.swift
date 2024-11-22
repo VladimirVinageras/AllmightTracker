@@ -11,11 +11,9 @@ import UIKit
 final class TrackerViewCell : UICollectionViewCell {
     
     private let appMetricAnalyticsService = AnalyticsService()
-
     private var color : UIColor = .clear
     private var eventTitle : String = ""
     private var emoji: String = ""
-
     private var completedTask : Bool = false
     private var amountOfDays = 0
     private var calendarDate = ""
@@ -38,8 +36,8 @@ final class TrackerViewCell : UICollectionViewCell {
         return hstack
     }()
     
-    var trackerCard = TrackerCard()
-
+    private(set) var trackerCard = TrackerCard()
+    
     private var plusButton : UIButton = {
         var pButton = UIButton(type: .system)
         pButton.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +46,6 @@ final class TrackerViewCell : UICollectionViewCell {
         pButton.tintColor = .white
         pButton.layer.cornerRadius = 17
         pButton.layer.masksToBounds = true
-        
         pButton.addTarget(self, action: #selector(cellPlusButtonTapped), for: .touchUpInside)
         return pButton
     }()
@@ -71,31 +68,30 @@ final class TrackerViewCell : UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     @objc private func cellPlusButtonTapped() {
         appMetricAnalyticsService.didTapCellPlusButton()
         guard let newDate = dateFormatter.date(from: calendarDate) else {return}
         if let trackerID = trackerID {
             completedTask.toggle()
-                    do {
-                        if completedTask {
-                                try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: newDate)
-                            trackerRecordStore.delegate?.storeRecord()
-                            amountOfDays =
-                            trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
-                        } else {
-                            try trackerRecordStore.deleteTrackerRecord(idCompletedTracker: trackerID, completionDate: newDate)
-                            trackerRecordStore.delegate?.storeRecord()
-                            amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
-                            amountOfDays = (amountOfDays < 0) ? 0 : amountOfDays
-                        }
-                    } catch {
-                        print("Error saving tracker record: \(error)")
-                    }
-            
+            do {
+                if completedTask {
+                    try trackerRecordStore.addNewTrackerRecord(trackerID, completionDate: newDate)
+                    trackerRecordStore.delegate?.storeRecord()
+                    amountOfDays =
+                    trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
+                } else {
+                    try trackerRecordStore.deleteTrackerRecord(idCompletedTracker: trackerID, completionDate: newDate)
+                    trackerRecordStore.delegate?.storeRecord()
+                    amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
+                    amountOfDays = (amountOfDays < 0) ? 0 : amountOfDays
                 }
-                updatePlusButton()
-                updateDaysLabelText()
+            } catch {
+                print("Error saving tracker record: \(error)")
+            }
+            
+        }
+        updatePlusButton()
+        updateDaysLabelText()
     }
     
     private func updateDaysLabelText() {
@@ -110,7 +106,6 @@ final class TrackerViewCell : UICollectionViewCell {
         plusButton.tintColor = .trackerWhite
     }
     
-  
     private func dayText(amountOfDays: Int) -> String{
         let amountOfDaysTaskCompleted = amountOfDays
         let daysTextString = String.localizedStringWithFormat(
@@ -119,11 +114,9 @@ final class TrackerViewCell : UICollectionViewCell {
         )
         return daysTextString
     }
-
+    
     private func prepareTrackerCard(){
-        trackerCard.color = color
-        trackerCard.eventTitle = eventTitle
-        trackerCard.emoji = emoji
+        trackerCard.updateTrackerCard(color: color, eventTitle: eventTitle, emoji: emoji)
         trackerCard.prepareCard()
     }
     
@@ -133,6 +126,7 @@ final class TrackerViewCell : UICollectionViewCell {
         hStack.addSubview(plusButton)
         hStack.addSubview(daysLabel)
     }
+    
     private func prepareVerticalStack(){
         trackerCard.prepareCard()
         prepareHorizontalStack()
@@ -140,7 +134,6 @@ final class TrackerViewCell : UICollectionViewCell {
         vStack.addSubview(hStack)
     }
     
-
     func prepareDataForUsing(colorName: String, eventTitle: String, emoji: String, trackerID: UUID, calendarDate : String) {
         self.calendarDate = calendarDate
         self.color = UIColor(named: colorName) ?? .trackerGray
@@ -151,13 +144,11 @@ final class TrackerViewCell : UICollectionViewCell {
             completedTask = try trackerRecordStore.fetchTrackerRecords().contains {
                 dateFormatter.string(from: $0.dateTrackerCompleted)  == calendarDate && $0.idCompletedTracker == trackerID
             }
-         
         }
         catch{
             print("\(TrackerStoreError.decodingErrorInvalidFetch)")
         }
         amountOfDays = trackerRecordStore.countingTimesCompleted(idCompletedTracker: trackerID)
-        
         prepareTrackerCard()
         updatePlusButton()
         prepareVerticalStack()
@@ -169,54 +160,54 @@ final class TrackerViewCell : UICollectionViewCell {
     
     func activateAllConstraints(){
         NSLayoutConstraint.activate([
-        vStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-        vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-        vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        vStack.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-        
-        trackerCard.topAnchor.constraint(equalTo: vStack.topAnchor),
-        trackerCard.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
-        trackerCard.heightAnchor.constraint(equalToConstant: 90),
-        trackerCard.widthAnchor.constraint(equalToConstant: 167),
-        
-        hStack.topAnchor.constraint(equalTo: trackerCard.bottomAnchor),
-        hStack.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
-        hStack.widthAnchor.constraint(equalToConstant: 167),
-        hStack.heightAnchor.constraint(equalToConstant: 58),
-        
-        plusButton.topAnchor.constraint(equalTo: hStack.topAnchor, constant: 8),
-        plusButton.trailingAnchor.constraint(equalTo: hStack.trailingAnchor, constant: -12),
-        plusButton.heightAnchor.constraint(equalToConstant: 34),
-        plusButton.widthAnchor.constraint(equalToConstant: 34),
-        
-        daysLabel.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor),
-        daysLabel.leadingAnchor.constraint(equalTo: hStack.leadingAnchor, constant: 12),
-        daysLabel.heightAnchor.constraint(equalToConstant: 18),
-        daysLabel.widthAnchor.constraint(equalToConstant: 101)
-    
+            vStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            vStack.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            
+            trackerCard.topAnchor.constraint(equalTo: vStack.topAnchor),
+            trackerCard.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
+            trackerCard.heightAnchor.constraint(equalToConstant: 90),
+            trackerCard.widthAnchor.constraint(equalToConstant: 167),
+            
+            hStack.topAnchor.constraint(equalTo: trackerCard.bottomAnchor),
+            hStack.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
+            hStack.widthAnchor.constraint(equalToConstant: 167),
+            hStack.heightAnchor.constraint(equalToConstant: 58),
+            
+            plusButton.topAnchor.constraint(equalTo: hStack.topAnchor, constant: 8),
+            plusButton.trailingAnchor.constraint(equalTo: hStack.trailingAnchor, constant: -12),
+            plusButton.heightAnchor.constraint(equalToConstant: 34),
+            plusButton.widthAnchor.constraint(equalToConstant: 34),
+            
+            daysLabel.centerYAnchor.constraint(equalTo: plusButton.centerYAnchor),
+            daysLabel.leadingAnchor.constraint(equalTo: hStack.leadingAnchor, constant: 12),
+            daysLabel.heightAnchor.constraint(equalToConstant: 18),
+            daysLabel.widthAnchor.constraint(equalToConstant: 101)
         ])
     }
-    
     
     func getTrackerID() -> UUID? {
         return trackerID
     }
     
     func getTrackerCard()-> UIViewController {
-        
-        var temporalTrackerCard = TrackerCard(color: color, eventTitle: eventTitle, emoji: emoji)
+        let temporalTrackerCard = TrackerCard(color: color, eventTitle: eventTitle, emoji: emoji)
         let trackerCardViewController = UIViewController()
         trackerCardViewController.view.backgroundColor = color
-        trackerCardViewController.view.frame = CGRect(x: 0, y: 0, width: temporalTrackerCard.bounds.width, height: temporalTrackerCard.bounds.height)
+        trackerCardViewController.view.frame = CGRect(x: 0,
+                                                      y: 0,
+                                                      width: temporalTrackerCard.bounds.width,
+                                                      height: temporalTrackerCard.bounds.height)
         trackerCardViewController.view.layer.cornerRadius = 0
         trackerCardViewController.view.clipsToBounds = true
         temporalTrackerCard.center = trackerCardViewController.view.center
         trackerCardViewController.view.addSubview(temporalTrackerCard)
-        trackerCardViewController.preferredContentSize = CGSize(width: temporalTrackerCard.frame.width , height: temporalTrackerCard.frame.height)
+        trackerCardViewController.preferredContentSize = CGSize(width: temporalTrackerCard.frame.width ,
+                                                                height: temporalTrackerCard.frame.height)
         return trackerCardViewController
     }
-    
     
     func willHidePin(is toHide: Bool) {
         trackerCard.pinnedEvent.isHidden = toHide
@@ -225,6 +216,5 @@ final class TrackerViewCell : UICollectionViewCell {
     func isPinHidden() -> Bool{
         return trackerCard.pinnedEvent.isHidden
     }
-
 }
 

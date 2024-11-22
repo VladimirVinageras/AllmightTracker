@@ -20,22 +20,21 @@ final class AddNewTrackerViewController : UIViewController {
         view.backgroundColor = .trackerWhite
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
-super.viewDidLoad()
+        super.viewDidLoad()
         prepareButtons()
         prepareViewTitle()
         activateConstraints()
     }
+    
     func prepareButtons(){
         newHabitButton = UIButton(type: .custom)
         guard let newHabitButton = newHabitButton else {return}
-
+        
         newHabitButton.setTitle(dictionaryUI.createHabitViewTitle, for: .normal)
         newHabitButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         newHabitButton.setTitleColor(.trackerWhite, for: .normal)
@@ -44,9 +43,7 @@ super.viewDidLoad()
         newHabitButton.layer.cornerRadius = 16
         newHabitButton.translatesAutoresizingMaskIntoConstraints = false
         newHabitButton.addTarget(self, action: #selector(callCreateHabitViewController), for: .touchUpInside)
-        
         view.addSubview(newHabitButton)
-    
         
         newSingleEventButton = UIButton(type: .custom)
         guard let newSingleEventButton = newSingleEventButton else {return}
@@ -55,12 +52,10 @@ super.viewDidLoad()
         newSingleEventButton.setTitleColor(.trackerWhite, for: .normal)
         newSingleEventButton.backgroundColor = .trackerBlack
         newSingleEventButton.contentEdgeInsets = UIEdgeInsets(top: 19, left: 32, bottom: 19, right: 32)
-
         newSingleEventButton.layer.cornerRadius = 16
         newSingleEventButton.translatesAutoresizingMaskIntoConstraints = false
         newSingleEventButton.addTarget(self, action: #selector(callCreateSingleEventViewController), for: .touchUpInside)
         view.addSubview(newSingleEventButton)
-        
     }
     
     func prepareViewTitle(){
@@ -89,7 +84,6 @@ super.viewDidLoad()
             newSingleEventButton.topAnchor.constraint(equalTo: newHabitButton.bottomAnchor, constant: 16),
             newSingleEventButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             newSingleEventButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-
         ])
     }
     
@@ -99,7 +93,6 @@ super.viewDidLoad()
     }
     
     @objc func callCreateSingleEventViewController(){
-        
         let createHabitViewController = CreateHabitViewController(isAnHabit: false, isEditingAHabit: false)
         present(createHabitViewController, animated: true)
     }

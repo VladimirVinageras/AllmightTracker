@@ -16,7 +16,7 @@ final class TrackerScheduleStore {
     private let context: NSManagedObjectContext
     
     //MARK: - FUNCTIONS
-     
+    
     convenience init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Could not retrieve the context from the AppDelegate")
@@ -24,24 +24,24 @@ final class TrackerScheduleStore {
         let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
-
+    
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-
+    
     func fetchTrackerSchedules() throws -> [TrackerSchedule] {
         let fetchRequest = TrackerScheduleCoreData.fetchRequest()
         let trackerScheduleFromCoreData = try context.fetch(fetchRequest)
         return try trackerScheduleFromCoreData.map { try self.trackerSchedule(from: $0) }
     }
-
+    
     func addNewTrackerSchedule(_ trackerSchedule: TrackerSchedule) throws -> TrackerScheduleCoreData{
         let trackerScheduleCoreData = TrackerScheduleCoreData(context: context)
         try updateExistingTrackerSchedule(trackerScheduleCoreData, with: trackerSchedule)
         try context.save()
         return trackerScheduleCoreData
     }
-
+    
     func updateExistingTrackerSchedule(_ trackerScheduleCoreData: TrackerScheduleCoreData, with trackerSchedule: TrackerSchedule) throws {
         trackerScheduleCoreData.id = trackerSchedule.id
         trackerScheduleCoreData.dateStart = Date()
@@ -59,7 +59,7 @@ final class TrackerScheduleStore {
         
         trackerScheduleCoreData.scheduledDays =  NSSet(array: scheduledDaysCoreData)
     }
-
+    
     func trackerSchedule(from trackerScheduleCoreData: TrackerScheduleCoreData) throws -> TrackerSchedule {
         guard let id = trackerScheduleCoreData.id else {
             throw TrackerScheduleStoreError.decodingErroInvalidScheduledDays
@@ -72,6 +72,4 @@ final class TrackerScheduleStore {
         
         return TrackerSchedule(id: id, isAnHabit: trackerScheduleCoreData.isAnHabit, scheduledDays: scheduledDays)
     }
-
-
 }

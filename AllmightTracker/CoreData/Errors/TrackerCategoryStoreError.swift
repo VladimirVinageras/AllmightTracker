@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum TrackerCategoryStoreError: Error {
     case decodingErrorInvalidTitle
     case decodingErrorInvalidTracker

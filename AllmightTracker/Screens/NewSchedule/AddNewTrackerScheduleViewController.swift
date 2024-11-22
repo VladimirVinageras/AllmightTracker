@@ -9,13 +9,11 @@ import Foundation
 import UIKit
 
 final class AddNewTrackerScheduleViewController : UIViewController {
-    var selectedDaysBefore: [ScheduleDay]  = []
-    var cellDaysSelected = [ScheduleDay]()
-    var daysSelected = [String]()
-    
+    private var selectedDaysBefore: [ScheduleDay]  = []
+    private var cellDaysSelected = [ScheduleDay]()
+    private var daysSelected = [String]()
     var scheduleViewControllerDelegate : ScheduleViewControllerProtocol?
-    let trackerScheduleCellReuseIdentifier = "scheduleTableViewCell"
-    
+    private let trackerScheduleCellReuseIdentifier = "scheduleTableViewCell"
     
     private let scheduleViewTitle: UILabel = {
         let viewTitle = UILabel()
@@ -44,7 +42,6 @@ final class AddNewTrackerScheduleViewController : UIViewController {
         scheduleButton.layer.cornerRadius = 16
         scheduleButton.addTarget(self, action: #selector(scheduleDoneButtonTapped), for: .touchUpInside)
         return scheduleButton
-        
     }()
     
     @objc private func scheduleDoneButtonTapped(){
@@ -53,10 +50,8 @@ final class AddNewTrackerScheduleViewController : UIViewController {
         dismiss(animated: true)
     }
     
-    
     init(){
         super.init(nibName: nil, bundle: nil)
-        
         for dayIndex in 0..<7 {
             let weekDay = ScheduleDay(scheduleDay: Weekday.allCases[dayIndex], isScheduled: false)
             cellDaysSelected.append(weekDay)
@@ -67,8 +62,9 @@ final class AddNewTrackerScheduleViewController : UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
-super.viewDidLoad()
+        super.viewDidLoad()
         addSubviews()
         activateConstraints()
         prepareScheduleTableView()
@@ -84,11 +80,9 @@ super.viewDidLoad()
     
     private func updateCellDaysSelected() {
         cellDaysSelected.removeAll()
-        
         selectedDaysBefore.sort{ dayFirst,daySecond  in
             return dayFirst.scheduleDay.rawValue < daySecond.scheduleDay.rawValue
         }
-        
         for dayIndex in 0..<7 {
             var weekDay: ScheduleDay?
             if selectedDaysBefore.isEmpty || selectedDaysBefore == nil{
@@ -102,7 +96,6 @@ super.viewDidLoad()
         }
     }
     
-    
     func prepareScheduleTableView(){
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
@@ -114,7 +107,7 @@ super.viewDidLoad()
         view.addSubview(scheduleTableView)
         view.addSubview(scheduleDoneButton)
     }
-
+    
     func activateConstraints(){
         NSLayoutConstraint.activate([
             scheduleViewTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 26),
@@ -130,22 +123,19 @@ super.viewDidLoad()
         ])
     }
     
-     func selectedShortDays() -> String {
-       var selectedShortDaysArray: [String] = []
-
+    func selectedShortDays() -> String {
+        var selectedShortDaysArray: [String] = []
         for dayIndex in 0..<7 {
             if self.cellDaysSelected[dayIndex].isScheduled {
                 let shortName = self.cellDaysSelected[dayIndex].scheduleDay.shortDaysName
-                    selectedShortDaysArray.append(shortName)
-                }
+                selectedShortDaysArray.append(shortName)
             }
-    return selectedShortDaysArray.joined(separator: ", ")
+        }
+        return selectedShortDaysArray.joined(separator: ", ")
     }
-
 }
 
 extension AddNewTrackerScheduleViewController : UITableViewDelegate{
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         scheduleTableView.deselectRow(at: indexPath, animated: true)
     }
@@ -168,7 +158,7 @@ extension AddNewTrackerScheduleViewController :  UITableViewDataSource{
 
 extension AddNewTrackerScheduleViewController : ScheduleCellProtocol {
     func updateDayStatus(to day: ScheduleDay, with newStatus: Bool) {
-            cellDaysSelected[day.scheduleDay.rawValue - 1] = day
+        cellDaysSelected[day.scheduleDay.rawValue - 1] = day
     }
 }
 

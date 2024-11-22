@@ -9,16 +9,14 @@ import Foundation
 import UIKit
 
 final class TrackerCard : UIView{
-
-         var color : UIColor
-         var eventTitle : String
-         var emoji : String
-         
-        
-         var titleEventLabel = UILabel()
-         var emojiLabel = UIButton(type: .system)
-         var pinnedEvent = UIImageView()
-          
+    
+    private var color : UIColor
+    private var eventTitle : String
+    private var emoji : String
+    private var titleEventLabel = UILabel()
+    private var emojiLabel = UIButton(type: .system)
+    private(set) var pinnedEvent = UIImageView()
+    
     init(color: UIColor, eventTitle: String, emoji: String) {
         self.color = color
         self.eventTitle = eventTitle
@@ -39,13 +37,12 @@ final class TrackerCard : UIView{
         prepareCard()
     }
     
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupUI(){
-        
         layer.cornerRadius = 16
         layer.frame = CGRect(x: 0, y: 0, width: 167, height: 90)
         
@@ -75,17 +72,17 @@ final class TrackerCard : UIView{
         self.addSubview(emojiLabel)
         self.addSubview(titleEventLabel)
         self.addSubview(pinnedEvent)
-
-    }
-        func prepareCard(){
-            backgroundColor = color
-            titleEventLabel.text = eventTitle
-            emojiLabel.setTitle(emoji, for: .normal)
         
+    }
+    func prepareCard(){
+        backgroundColor = color
+        titleEventLabel.text = eventTitle
+        emojiLabel.setTitle(emoji, for: .normal)
+        
+        
+        NSLayoutConstraint.activate([
             
-            NSLayoutConstraint.activate([
-                
-                emojiLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
+            emojiLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
             emojiLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
             emojiLabel.heightAnchor.constraint(equalToConstant: 24),
             emojiLabel.widthAnchor.constraint(equalToConstant: 24),
@@ -100,6 +97,12 @@ final class TrackerCard : UIView{
             titleEventLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
             titleEventLabel.heightAnchor.constraint(equalToConstant: 34),
             titleEventLabel.widthAnchor.constraint(equalToConstant: 143)
-            ])
-        }
+        ])
     }
+    
+    func updateTrackerCard(color: UIColor, eventTitle: String, emoji: String) {
+        self.color = color
+        self.eventTitle = eventTitle
+        self.emoji = emoji
+    }
+}

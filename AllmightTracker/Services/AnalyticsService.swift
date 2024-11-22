@@ -13,10 +13,8 @@ struct AnalyticsService {
         guard let configuration = YMMYandexMetricaConfiguration(apiKey: "6bbe5134-2506-4f1b-b7ca-e767df00433c") else {
             return
         }
-        
         YMMYandexMetrica.activate(with: configuration)
     }
-    
     
     func report(event: String, params : [AnyHashable : Any]) {
         YMMYandexMetrica.reportEvent(event, parameters: params, onFailure: { error in

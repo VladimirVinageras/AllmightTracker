@@ -10,12 +10,8 @@ import UIKit
 
 
 final class AddNewCategoryViewController : UIViewController{
-
-  
     private var trackerCategoriesViewModel : TrackerCategoriesViewModel
-
-    let categoryCellReuseIdentifier = "categoryCell"
-    
+    private let categoryCellReuseIdentifier = "categoryCell"
     private var newCategoryButton : UIButton = {
         let categoryButton = UIButton(type: .custom)
         categoryButton.setTitle(dictionaryUI.addCategoryViewBtnAddCategory, for: .normal)
@@ -59,7 +55,6 @@ final class AddNewCategoryViewController : UIViewController{
         return tableView
     }()
     
-    
     private let starImageView :  UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,17 +74,16 @@ final class AddNewCategoryViewController : UIViewController{
         return label
     }()
     
-    
     init(viewModel: TrackerCategoriesViewModel){
         self.trackerCategoriesViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .trackerWhite
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         binding()
@@ -103,30 +97,28 @@ final class AddNewCategoryViewController : UIViewController{
         binding()
     }
     
-   private func binding(){
-       trackerCategoriesViewModel.categoriesBinding = { [weak self] _ in
-               guard let self = self else  {return}
-              self.prepareCategoriesTableView()
-               self.categoriesTableView.reloadData()
-           self.setupContainerView()
-           self.categoriesTableView.reloadData()
-           }
+    private func binding(){
+        trackerCategoriesViewModel.categoriesBinding = { [weak self] _ in
+            guard let self = self else  {return}
+            self.prepareCategoriesTableView()
+            self.categoriesTableView.reloadData()
+            self.setupContainerView()
+            self.categoriesTableView.reloadData()
+        }
     }
-    
     
     func updateCategoriesTableViewHeight(){
         let numberOfCells = categoriesTableView.numberOfRows(inSection: 0)
         let cellHeight: CGFloat = 75
         let totalHeight = CGFloat(numberOfCells) * cellHeight
         categoriesTableView.heightAnchor.constraint(equalToConstant: totalHeight).isActive = true
-        
     }
+    
     func setupContainerView(){
         for view in containerViewHolder.subviews {
             view.removeFromSuperview()
         }
         containerViewHolder.removeConstraints(containerViewHolder.constraints)
-        
         if self.trackerCategoriesViewModel.trackerCategories.isEmpty {
             starLabel.isHidden = false
             starImageView.isHidden = false
@@ -159,16 +151,19 @@ final class AddNewCategoryViewController : UIViewController{
             ])
         }
     }
+    
     func prepareCategoriesTableView(){
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
         categoriesTableView.register(CheckedTextLabelTableViewCell.self, forCellReuseIdentifier: categoryCellReuseIdentifier)
     }
+    
     func addSubviews(){
         view.addSubview(viewTitleLabel)
         view.addSubview(containerViewHolder)
         view.addSubview(newCategoryButton)
     }
+    
     func activateConstraints(){
         NSLayoutConstraint.activate([
             viewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 26),
@@ -197,17 +192,14 @@ extension AddNewCategoryViewController : UITableViewDataSource {
         cell.updateTitleCellLabel(with: newTitle)
         return cell
     }
-    
-    
 }
+
 extension AddNewCategoryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCellReuseIdentifier,
                                                        for: indexPath) as? CheckedTextLabelTableViewCell else {return}
         cell.toggleImageViewVisibility()
-    
         self.trackerCategoriesViewModel.didSelect(at: indexPath.row)
-    
         categoriesTableView.deselectRow(at: indexPath, animated: true)
         dismiss(animated: true)
     }

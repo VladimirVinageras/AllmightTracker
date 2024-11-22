@@ -10,12 +10,9 @@ import UIKit
 import CoreData
 
 final class TrackerStore: NSObject{
-    
     //MARK: - VARIABLES
     private var context: NSManagedObjectContext
-    
     private let uiColorMarshalling = UIColorMarshalling()
-
     private lazy var fetchedResultsController = {
         let fetchRequest = TrackerCoreData.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -30,7 +27,6 @@ final class TrackerStore: NSObject{
         try? controller.performFetch()
         return controller
     }()
-    
     var trackers: [Tracker] {
         guard
             let objects = self.fetchedResultsController.fetchedObjects,
@@ -38,9 +34,6 @@ final class TrackerStore: NSObject{
         else { return [] }
         return trackers
     }
-    
-    
-    
     weak var delegate: TrackerStoreDelegate?
     
     // MARK: - FUNCTIONS
@@ -58,14 +51,12 @@ final class TrackerStore: NSObject{
         fetchedResultsController.delegate = self
     }
     
-    
     func addNewTracker(_ tracker: Tracker) throws -> TrackerCoreData{
         let trackerCoreData = TrackerCoreData(context: context)
         try updateExistingTracker(trackerCoreData, with: tracker)
         try context.save()
         return trackerCoreData
     }
-    
     
     private func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) throws {
         trackerCoreData.id = tracker.id
@@ -92,8 +83,6 @@ final class TrackerStore: NSObject{
         }
         try context.save()
     }
-
-    
     
     private func fetchTracker(by id: UUID) -> TrackerCoreData? {
         let fetchRequest = NSFetchRequest<TrackerCoreData>(entityName: "TrackerCoreData")
@@ -104,20 +93,18 @@ final class TrackerStore: NSObject{
         }
         return trackerCoreData.first
     }
-
-    
     
     func tracker(from trackerCoreData: TrackerCoreData) throws -> Tracker {
-         guard let id = trackerCoreData.id,
-               let emoji = trackerCoreData.emoji,
-               let colorString = trackerCoreData.color,
-               let name = trackerCoreData.name else {
-             throw TrackerStoreError.decodingErrorInvalidFetch
-         }
+        guard let id = trackerCoreData.id,
+              let emoji = trackerCoreData.emoji,
+              let colorString = trackerCoreData.color,
+              let name = trackerCoreData.name else {
+            throw TrackerStoreError.decodingErrorInvalidFetch
+        }
         let colorName = colorString
         let isPinned = trackerCoreData.isPinned
-    
-         var schedule: TrackerSchedule? = nil
+        
+        var schedule: TrackerSchedule? = nil
         if let scheduleCoreData = trackerCoreData.schedule {
             schedule = try trackerSchedule(from: scheduleCoreData)
         }
@@ -125,8 +112,8 @@ final class TrackerStore: NSObject{
             throw TrackerStoreError.decodingErrorInvalidSchedule
         }
         return Tracker(id: id, name: name, colorName: colorName, emoji: emoji, schedule: schedule, isPinned: isPinned)
-     }
-     
+    }
+    
     private func trackerSchedule(from trackerScheduleCoreData: TrackerScheduleCoreData) throws -> TrackerSchedule {
         return try TrackerScheduleStore(context: context).trackerSchedule(from: trackerScheduleCoreData)
     }
@@ -141,7 +128,7 @@ final class TrackerStore: NSObject{
     }
     
     func deleteTracker(by id: UUID) throws {
-       guard let trackerToDelete = fetchTracker(by: id) else {return}
+        guard let trackerToDelete = fetchTracker(by: id) else {return}
         context.delete(trackerToDelete)
         try context.save()
     }
